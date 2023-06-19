@@ -1,16 +1,20 @@
 import { Button, SxProps, Theme, Typography } from "@mui/material";
 import HighlightedText from "./HighlightedText";
+import { useState } from "react";
 
 type HighlightedButtonProps = {
   children: string;
-  sx: SxProps<Theme>;
+  circleLocationProps: SxProps<Theme>;
   onClick: () => void;
   active?: boolean;
 };
 
 const HighlightedButton = (props: HighlightedButtonProps) => {
+  const [isClicked, setIsClicked] = useState(props.active);
+
   return (
     <Button
+      disableRipple
       variant="text"
       sx={{
         textTransform: "none",
@@ -18,17 +22,37 @@ const HighlightedButton = (props: HighlightedButtonProps) => {
           backgroundColor: "transparent",
         },
         color: "black",
-        ...props.sx,
+        ...props.circleLocationProps,
+        "&::after": {
+          content: '""',
+          position: "absolute",
+          top: "0",
+          left: "0",
+          width: props.active ? "100%" : "0%",
+          height: "100%",
+          background: "#D1F678",
+          borderRadius: "20px",
+          animation: `${props.active ? "growFromLeft" : ""} 0.6s forwards`,
+        },
+        "@keyframes growFromLeft": {
+          from: {
+            width: "0%",
+          },
+          to: {
+            width: "100%",
+          },
+        },
       }}
-      onClick={props.onClick}
+      onClick={() => {
+        props.onClick();
+      }}
     >
-      {props.active ? (
-        <HighlightedText fontSize={30}>{props.children}</HighlightedText>
-      ) : (
-        <Typography variant="body1" fontSize={30}>
-          {props.children}
-        </Typography>
-      )}
+      <Typography
+        variant="body1"
+        sx={{ fontSize: 32, zIndex: 1, marginRight: 2, marginLeft: 2 }}
+      >
+        {props.children}
+      </Typography>
     </Button>
   );
 };

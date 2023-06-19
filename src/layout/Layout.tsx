@@ -11,12 +11,9 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div
       style={{
-        background: "linear-gradient(to right, #FFFFFF, #EDECEC)",
-        backgroundImage: `url(${backLeft})`,
-        top: 0,
-        position: "absolute",
-        backgroundSize: "contain",
-        backgroundRepeat: "no-repeat",
+        // backgroundColor: "red"
+        background: "linear-gradient(90deg, #FFFFFF 0%, #EDECEC 100%)",
+        // background: "linear-gradient(90deg, #FFFFFF 0%, red 100%)",
       }}
     >
       <Header />

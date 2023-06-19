@@ -1,17 +1,6 @@
-import {
-  Backdrop,
-  Box,
-  Button,
-  Grid,
-  keyframes,
-  makeStyles,
-  Paper,
-  styled,
-  Typography,
-} from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useState } from "react";
 import HighlightedButton from "../components/HighlightedButton";
-import wheel from "./../assets/wheel.png";
 
 const wheelRadius = 300;
 
@@ -30,7 +19,7 @@ const buttonCoordinates = deegrees.map((deegree) => {
   };
 });
 
-const buttonStyle = {
+const buttonLocations = {
   position: "absolute",
   margin: "auto",
   "&:nth-of-type(1)": {
@@ -61,7 +50,7 @@ const circleStyle = {
   right: -wheelRadius,
 };
 
-const Information = () => {
+const Wheel = () => {
   const [angle, setAngle] = useState(0);
 
   const handleClick = (newAngle: number) => {
@@ -72,13 +61,20 @@ const Information = () => {
     if (wheel) wheel.style.transform = transform;
   };
 
+  const ballAngle = (53 * Math.PI) / 180;
+  const innerWHeelRadius = 275; // Half of the diameter
+
+  const ballCoordinates = {
+    x: innerWHeelRadius * Math.cos(ballAngle),
+    y: innerWHeelRadius * Math.sin(ballAngle),
+  };
+
   return (
     <Box
       sx={{
         width: "100%",
         overflow: "hidden",
-        background:
-          "radial-gradient(126.38% 242.21% at 83.4% 91.45%, rgba(123, 159, 246, 0.27) 54.17%, rgba(207, 207, 207, 0.13) 94.42%, rgba(207, 207, 207, 0.42) 100%)",
+        t: 6,
       }}
     >
       <Grid container>
@@ -86,50 +82,64 @@ const Information = () => {
         <Grid item xs={6} sx={{ display: "flex", justifyContent: "flex-end" }}>
           <Box sx={circleStyle}>
             <Box
-              id={"wheel"}
+              id="wheel"
               sx={{
-                width: 600,
-                height: 600,
+                width: 2 * wheelRadius - 50,
+                height: 2 * wheelRadius - 50,
                 borderRadius: "50%",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 transition: "transform 0.5s ease",
+                backgroundImage:
+                  "linear-gradient(180deg, #7B9FF6 0%, #FFFFFF 100%)",
+                boxShadow: "0px 79px 40px 50px rgba(0, 0, 0, 0.05)",
+                position: "relative",
               }}
             >
-              <img src={wheel} width={550} height={550} />
+              <Box
+                sx={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: "50%",
+                  backgroundColor: "secondary.main",
+                  position: "absolute",
+                  top: -ballCoordinates.y + innerWHeelRadius - 20,
+                  left: -ballCoordinates.x + innerWHeelRadius - 20,
+                }}
+              />
             </Box>
-            active={true}
+
             <HighlightedButton
-              sx={buttonStyle}
+              circleLocationProps={buttonLocations}
               onClick={() => handleClick(0)}
               active={angle == 0}
             >
               UX Design
             </HighlightedButton>
             <HighlightedButton
-              sx={buttonStyle}
+              circleLocationProps={buttonLocations}
               onClick={() => handleClick(30)}
               active={angle == 30}
             >
               UI Design
             </HighlightedButton>
             <HighlightedButton
-              sx={buttonStyle}
+              circleLocationProps={buttonLocations}
               onClick={() => handleClick(53)}
               active={angle == 53}
             >
               App Design
             </HighlightedButton>
             <HighlightedButton
-              sx={buttonStyle}
+              circleLocationProps={buttonLocations}
               onClick={() => handleClick(78)}
               active={angle == 78}
             >
               Web Design
             </HighlightedButton>
             <HighlightedButton
-              sx={buttonStyle}
+              circleLocationProps={buttonLocations}
               onClick={() => handleClick(108)}
               active={angle == 108}
             >
@@ -142,4 +152,4 @@ const Information = () => {
   );
 };
 
-export default Information;
+export default Wheel;

@@ -1,0 +1,32 @@
+.carousel-container {
+  /* position: relative; */
+  /* height: 1000px;  */
+}
+
+.carousel {
+  /* position: absolute; */
+  /* top: 50%; */
+  /* left: 0; */
+  /* transform: translateY(10%); */
+  /* width: 80%;
+  height: 80%; */
+  /* margin: 10; */
+  /* padding: 10; */
+  /* background-color: blueviolet; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+/* 
+.slide {
+  /* background-color: aliceblue; */
+/* display: flex; */
+/* align-items: center; */
+/* justify-content: center; */
+/* position: relative; */
+/* transform: translateY(10%); */
+/* background-color: aqua; */
+/* transition: all 0.3s ease-in-out; */
+/* width: 80%; */
+/* height: 100%; */
+/* } */

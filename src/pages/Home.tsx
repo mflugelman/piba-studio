@@ -1,57 +1,27 @@
-import {
-  Backdrop,
-  Box,
-  Divider,
-  Grid,
-  Paper,
-  Typography,
-  useMediaQuery,
-} from "@mui/material";
+import { Backdrop, Box, Button, IconButton, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import ArrowButton from "../components/ArrowButton";
 import pibaStudio from "./../assets/pibastudio.png";
-import reel1 from "./../assets/reel1.png";
-import backLeft from "./../assets/backImageLeft.png";
-import HighlightedText from "../components/HighlightedText";
+import plantRight from "./../assets/plantRight.png";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 const Home = () => {
-  const [open, setOpen] = useState(true);
+  const [backdropOpen, setBackdropOpen] = useState(true);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    const handleWindowResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
+    const timer = setTimeout(() => {
+      setBackdropOpen(false);
+    }, 2500);
 
-    window.addEventListener("resize", handleWindowResize);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowResize);
-    };
-  });
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.pageYOffset > 0) {
-        setOpen(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => clearTimeout(timer); // Cleanup the timer on unmount or state change
   }, []);
-
-  const isSmallScreen = useMediaQuery("(max-width:600px)");
 
   const backDrop = () => {
     return (
       <>
         <Backdrop
-          open={open}
+          open={backdropOpen}
           sx={{
             backgroundColor: "rgba(255, 255, 255,0.87)",
             zIndex: 1000,
@@ -64,7 +34,7 @@ const Home = () => {
             width="100%"
             m={4}
           >
-            <img src={pibaStudio} alt="my image" width="100%" />
+            <img src={pibaStudio} alt="Piba Studio" width="100%" />
           </Box>
         </Backdrop>
       </>
@@ -72,58 +42,64 @@ const Home = () => {
   };
 
   return (
-    <Box marginTop={10}>
+    <Box
+      sx={{
+        marginTop: "100px",
+        backgroundImage: `url(${plantRight})`,
+        width: "100%",
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "right",
+      }}
+    >
       <Box
         sx={{
-          pl: { lg: 8, xs: 4 },
+          p: 16,
           display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
         }}
       >
-        {!isSmallScreen ? (
-          <Divider
-            orientation="vertical"
-            sx={{ marginLeft: 4, marginRight: 4, height: "80%" }}
-          />
-        ) : null}
-
-        <Box>
-          <Typography
-            variant="h3"
-            align="left"
-            sx={{
-              fontSize: {
-                lg: 50,
-                xs: 23,
-              },
-            }}
-          >
-            <b>
-              meaningfull digital <br />
-              experiences
-            </b>{" "}
-            through creative, <br /> purpose-driven design
-          </Typography>
-          <Grid container>
-            <Grid item sm={6} sx={{ display: "flex", alignItems: "center" }}>
-              <HighlightedText fontSize={24}>
-                a bit of what we do
-              </HighlightedText>
-              <ArrowButton />
-            </Grid>
-            <Grid item sm={3} sx={{ padding: 0 }}>
-              <img
-                src={reel1}
-                style={{ margin: 0, width: "100%", padding: 0 }}
-              />
-            </Grid>
-            <Grid item sm={3}>
-              <img src={reel1} width="100%" />
-            </Grid>
-          </Grid>
+        <Typography variant="h1" align="left">
+          Meaningfull digital <br />
+          experiences through creative, <br />
+          purpose-driven design
+        </Typography>
+        <Box mt={4}>
+          <Button variant="contained">
+            <Typography variant="body2" m={1}>
+              LETS GET IN TOUCH
+            </Typography>
+          </Button>
         </Box>
       </Box>
-
-      {/* {backDrop()} */}
+      <Box
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      >
+        <Box
+          sx={{
+            width: "40px",
+            height: "9px",
+            backgroundColor: "secondary.main",
+            m: 2,
+          }}
+        ></Box>
+        <Typography m={2} variant="body2">
+          Scroll to explore
+        </Typography>
+        <IconButton
+          sx={{
+            m: 2,
+            color: "black",
+            outline: "2px solid black",
+            borderRadius: "46%",
+          }}
+          aria-label="upload picture"
+          component="label"
+        >
+          <ArrowDownwardIcon />
+        </IconButton>
+      </Box>
     </Box>
   );
 };

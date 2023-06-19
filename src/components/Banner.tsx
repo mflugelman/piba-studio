@@ -1,5 +1,4 @@
 import { Box, Typography } from "@mui/material";
-import ArrowButton from "./ArrowButton";
 
 const Banner = () => {
   return (
@@ -18,7 +17,6 @@ const Banner = () => {
         <Typography variant="body1" m={2}>
           Lets talk about it
         </Typography>
-        <ArrowButton />
       </Box>
     </Box>
   );
