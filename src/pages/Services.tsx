@@ -19,7 +19,7 @@ const Services = () => {
       <Grid container>
         <Grid item xs={7} sx={{ display: "flex", alignItems: "center" }}>
           <Box m={4} pl={4} borderLeft={1}>
-            <Typography variant="body1" textAlign={"left"}>
+            <Typography variant="body1" textAlign={"left"} fontWeight={300}>
               Our team is dedicated to creating intuitive and enjoyable
               experiences for your customers. Our UX design process begins with
               extensive research to understand your users' needs and behaviors.

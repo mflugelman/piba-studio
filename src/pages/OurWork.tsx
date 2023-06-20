@@ -31,10 +31,15 @@ const OurWork: React.FC = () => {
         </Grid>
         <Grid item xs={5}>
           <Box>
-            <Typography variant="h4" textAlign="left" mt={4}>
+            <Typography variant="title" textAlign="left" m={4}>
               Task Management Dashboard
             </Typography>
-            <Typography variant="body1" color="#FAFAFA" textAlign="left">
+            <Typography
+              variant="body1"
+              color="white.main"
+              textAlign="left"
+              mt={2}
+            >
               Through our collaborative design process, we revolutionized task
               management by crafting an intuitive platform that boosts
               productivity and coordination.

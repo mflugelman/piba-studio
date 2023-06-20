@@ -10,6 +10,25 @@ declare module "@mui/material/styles" {
     black: PaletteOptions["primary"];
     white: PaletteOptions["primary"];
   }
+
+  interface TypographyVariants {
+    title: React.CSSProperties;
+    buttonLinks: React.CSSProperties;
+  }
+
+  // allow configuration using `createTheme`
+  interface TypographyVariantsOptions {
+    title?: React.CSSProperties;
+    buttonLinks?: React.CSSProperties;
+  }
+}
+
+// Update the Typography's variant prop options
+declare module "@mui/material/Typography" {
+  interface TypographyPropsVariantOverrides {
+    title: true;
+    buttonLinks: true;
+  }
 }
 
 let palette = {
@@ -18,7 +37,7 @@ let palette = {
     light: "#AFBDE3",
   },
   info: {
-    main: "#4F4F4F",
+    main: "#EBE7DA",
   },
   secondary: {
     main: "#D1F678",
@@ -40,46 +59,68 @@ let theme = createTheme({
       fontSize: 80,
       fontWeight: 300,
       color: palette.black.main,
+      fontFamily: "Lato",
     },
     h2: {
       fontSize: 72,
       fontWeight: 400,
       color: palette.white.main,
+      fontFamily: "Lato",
     },
     h3: {
-      fontSize: 42,
-      fontWeight: 400,
-      color: palette.info.main,
+      fontSize: 60,
+      fontWeight: 300,
+      color: palette.black.main,
+      fontFamily: "Lato",
     },
     h4: {
-      fontWeight: 500,
-      fontSize: 30,
-      fontFamily: "Poppins",
-      color: palette.white.main,
+      fontWeight: 600,
+      fontSize: 50,
+      fontFamily: "Lato",
+      color: palette.black.main,
     },
     h5: {
       fontWeight: 300,
-      fontSize: 60,
+      fontSize: 42,
       fontFamily: "Lato",
       color: palette.black.main,
     },
     h6: {
       fontWeight: 500,
-      fontSize: 24,
-      fontFamily: "Poppins",
+      fontSize: 32,
+      fontFamily: "Lato",
       color: palette.black.main,
     },
+    title: {
+      fontWeight: 500,
+      fontSize: 30,
+      fontFamily: "Poppins",
+      color: palette.white.main,
+    },
     body1: {
-      fontWeight: 300,
-      fontSize: 24,
+      fontWeight: 400,
+      fontSize: 25,
       color: palette.black.main,
       fontFamily: "Poppins",
     },
     body2: {
-      fontWeight: 300,
+      fontWeight: 400,
       fontSize: 18,
       color: palette.black.main,
       fontFamily: "Poppins",
+    },
+    button: {
+      fontWeight: 300,
+      fontSize: 18,
+      fontFamily: "Poppins",
+      color: palette.black.main,
+      textTransform: "none",
+    },
+    buttonLinks: {
+      fontWeight: 700,
+      fontSize: 20,
+      fontFamily: "Lato",
+      color: palette.info.main,
     },
   },
 
@@ -90,6 +131,10 @@ let theme = createTheme({
           textTransform: "none",
           borderRadius: 12,
           fontFamily: "Poppins",
+          borderWidth: 2,
+          "&:hover": {
+            borderWidth: 2,
+          },
         },
       },
     },

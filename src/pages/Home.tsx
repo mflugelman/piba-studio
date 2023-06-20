@@ -44,7 +44,6 @@ const Home = () => {
   return (
     <Box
       sx={{
-        marginTop: "100px",
         backgroundImage: `url(${plantRight})`,
         width: "100%",
         backgroundSize: "contain",
@@ -67,7 +66,7 @@ const Home = () => {
         </Typography>
         <Box mt={4}>
           <Button variant="contained">
-            <Typography variant="body2" m={1}>
+            <Typography variant="button" fontWeight={500} color="white.main">
               LETS GET IN TOUCH
             </Typography>
           </Button>
@@ -84,14 +83,14 @@ const Home = () => {
             m: 2,
           }}
         ></Box>
-        <Typography m={2} variant="body2">
+        <Typography m={1} variant="title">
           Scroll to explore
         </Typography>
         <IconButton
           sx={{
             m: 2,
-            color: "black",
-            outline: "2px solid black",
+            color: "black.main",
+            outline: "2px solid",
             borderRadius: "46%",
           }}
           aria-label="upload picture"

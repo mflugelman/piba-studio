@@ -19,36 +19,34 @@ const Footer = () => {
       }}
     >
       <Box>
-        <Typography variant="h3" color="white.main" align="left">
+        <Typography variant="h5" color="info.main" align="left">
           Say hi!
         </Typography>
-        <Typography variant="h6" color="white.main" align="left">
+        <Typography variant="body1" color="info.main" align="left">
           hellopibastudio@gmail.com
         </Typography>
-        <Typography variant="body2" color="white.main" align="left">
-          Based UK & Ireland, working worldwide
+        <Typography
+          color="white.main"
+          align="left"
+          fontFamily="Lato"
+          fontWeight={700}
+          sx={{ fontSize: "16px !important" }}
+        >
+          BASED UK & IRELAND, WORKING WORLDWIDE
         </Typography>
       </Box>
       <Box sx={{ display: "flex", alignItems: "flex-end" }}>
         <Button>
-          <Typography variant="body2" color="white.main">
-            Instragram
-          </Typography>
+          <Typography variant="buttonLinks">Instragram</Typography>
         </Button>
         <Button>
-          <Typography variant="body2" color="white.main">
-            Linkedin
-          </Typography>
+          <Typography variant="buttonLinks">Linkedin</Typography>
         </Button>
         <Button>
-          <Typography variant="body2" color="white.main">
-            Behance
-          </Typography>
+          <Typography variant="buttonLinks">Behance</Typography>
         </Button>
         <Button>
-          <Typography variant="body2" color="white.main">
-            Dribble
-          </Typography>
+          <Typography variant="buttonLinks">Dribble</Typography>
         </Button>
       </Box>
     </Box>

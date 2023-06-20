@@ -16,13 +16,13 @@ type InfoCardProps = {
 const InfoCard = (props: InfoCardProps) => {
   return (
     <Card
-      sx={{ backgroundColor: props.color, p: 6, m: 6, borderRadius: "36px" }}
+      sx={{ backgroundColor: props.color, p: 2, m: 6, borderRadius: "36px" }}
       elevation={0}
     >
-      <Typography variant="h4" color="black.main" textAlign={"left"}>
-        {props.title}
-      </Typography>
       <CardContent>
+        <Typography variant="h6" color="black.main" textAlign={"left"}>
+          {props.title}
+        </Typography>
         <Typography variant="body2" textAlign={"left"}>
           {props.body}
         </Typography>
