@@ -48,15 +48,30 @@ function Header() {
       <Grid item sm={1} display={"flex"} justifyContent={"flex-start"}>
         <Box component="img" src={logoSmall} />
       </Grid>
-      <Grid item sm={8} display={"flex"} justifyContent={"flex-start"}>
-        <Button sx={{ ml: 2, mr: 2 }}>Projects</Button>
-        <Button sx={{ ml: 2, mr: 2 }}>Services</Button>
-        <Button sx={{ ml: 2, mr: 2 }}>About Us</Button>
-        <Button sx={{ ml: 2, mr: 2 }}>Say hi!</Button>
+      <Grid item sm={1}>
+        <Button>
+          <Typography variant="button">Projects</Typography>
+        </Button>
       </Grid>
-      <Grid item sm={3} display={"flex"} justifyContent={"flex-end"}>
+      <Grid item sm={1}>
+        <Button>
+          <Typography variant="button">Services</Typography>
+        </Button>
+      </Grid>
+      <Grid item sm={1}>
+        <Button>
+          <Typography variant="button">About Us</Typography>
+        </Button>
+      </Grid>
+      <Grid item sm={1}>
+        <Button>
+          <Typography variant="button">Say hi!</Typography>
+        </Button>
+      </Grid>
+
+      <Grid item sm={7} display={"flex"} justifyContent={"flex-end"}>
         <Button variant="outlined">
-          <Typography variant="body2" color={"primary"}>
+          <Typography variant="button" fontWeight={600} color={"primary"}>
             BOOK A CALL
           </Typography>
         </Button>

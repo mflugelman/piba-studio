@@ -23,9 +23,9 @@ const LetsTalk = () => {
             alignItems: "center",
           }}
         >
-          <Typography variant="h5" textAlign={"left"}>
-            This was us. We are excited to hear about you, let’s explore your
-            project
+          <Typography variant="h3" textAlign={"left"}>
+            This was us. <br />
+            We are excited to hear about you, let’s explore your project
           </Typography>
         </Grid>
         <Grid
@@ -37,17 +37,11 @@ const LetsTalk = () => {
             justifyContent: "center",
           }}
         >
-          <Typography
-            variant="h5"
-            fontSize={50}
-            fontWeight={600}
-            textAlign={"left"}
-            m={4}
-          >
+          <Typography variant="h4" textAlign={"left"} m={4}>
             Let's Talk!
           </Typography>
           <Button variant="contained">
-            <Typography variant="body2" color="white.main">
+            <Typography variant="button" color="white.main">
               BOOK A CALL
             </Typography>
           </Button>

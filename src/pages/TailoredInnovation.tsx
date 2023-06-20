@@ -16,7 +16,7 @@ const TailoredInnovation = () => {
             alignItems: "center",
           }}
         >
-          <Typography variant="h3" color={"white.main"} textAlign={"left"}>
+          <Typography variant="h5" color={"white.main"} textAlign={"left"}>
             Tailored innovation for
             <br /> your success
           </Typography>
@@ -29,7 +29,12 @@ const TailoredInnovation = () => {
             alignItems: "center",
           }}
         >
-          <Typography variant="body1" color={"white.main"} textAlign={"left"}>
+          <Typography
+            variant="body1"
+            color={"white.main"}
+            textAlign={"left"}
+            fontWeight={300}
+          >
             We bring together creativity, technical expertise, and strategic
             thinking to develop innovative solutions that exceed our clients'
             expectations. We believe that every project is unique and requires a

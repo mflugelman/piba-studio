@@ -48,8 +48,8 @@ const HighlightedButton = (props: HighlightedButtonProps) => {
       }}
     >
       <Typography
-        variant="body1"
-        sx={{ fontSize: 32, zIndex: 1, marginRight: 2, marginLeft: 2 }}
+        variant="h6"
+        sx={{ zIndex: 1, marginRight: 2, marginLeft: 2 }}
       >
         {props.children}
       </Typography>
