@@ -13,10 +13,14 @@ import LetsTalk from "./pages/LetsTalk";
 import Footer from "./pages/Footer";
 import WorkWithUs from "./pages/WorkWithUs";
 
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+
+let theme = responsiveFontSizes(themes.theme);
+
 function App() {
   return (
     <div className="App">
-      <ThemeProvider theme={themes.theme}>
+      <ThemeProvider theme={theme}>
         <Layout>
           <Home />
           <OurWork />
@@ -26,7 +30,6 @@ function App() {
           <WorkWithUs />
           <LetsTalk />
           <Footer />
-          {/* <Banner /> */}
         </Layout>
       </ThemeProvider>
     </div>

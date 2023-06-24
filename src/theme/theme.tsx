@@ -111,7 +111,6 @@ let theme = createTheme({
     },
     button: {
       fontWeight: 300,
-      fontSize: 18,
       fontFamily: "Poppins",
       color: palette.black.main,
       textTransform: "none",

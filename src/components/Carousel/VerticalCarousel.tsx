@@ -13,10 +13,13 @@ import { SxProps } from "@mui/material/styles";
 
 type VerticalCarouselProps = {
   selectedSlide: number;
+  setSelectedSlide: (slide: number) => void;
 };
 
 const VerticalCarousel = (props: VerticalCarouselProps) => {
-  const carouselRef = useRef<Carousel>(null);
+  const carouselRef = useRef<Carousel>();
+
+  console.log(props.selectedSlide);
 
   const images = [
     CommunityWebsite,
@@ -35,6 +38,7 @@ const VerticalCarousel = (props: VerticalCarouselProps) => {
     arrows: false,
     centerPadding: "10px",
     swipeToSlide: true,
+    beforeChange: (current, next) => props.setSelectedSlide(next),
   };
 
   const getBoxStyles = (selected: boolean): SxProps => {
@@ -59,7 +63,11 @@ const VerticalCarousel = (props: VerticalCarouselProps) => {
         {images.map((image, index) => (
           <div key={index}>
             <Box sx={{ p: 3 }}>
-              <Box component="img" src={image} sx={getBoxStyles(true)} />
+              <Box
+                component="img"
+                src={image}
+                sx={getBoxStyles(index === props.selectedSlide)}
+              />
             </Box>
           </div>
         ))}
