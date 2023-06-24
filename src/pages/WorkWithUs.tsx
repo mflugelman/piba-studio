@@ -7,9 +7,9 @@ import ThisIsPibaImage from "./../assets/ThisIsPibaImage.png";
 import InfoCard from "../components/InfoCard";
 const WorkWithUs = () => {
   return (
-    <Box sx={{ display: "flex" }}>
-      <Grid container p={15} spacing={6}>
-        <Grid item sm={6}>
+    <Box>
+      <Grid container sx={{ display: "flex", justifyContent: "center" }}>
+        <Grid item sm={12} md={5}>
           <InfoCard
             title={"Innovative Solutions"}
             body={
@@ -25,7 +25,7 @@ const WorkWithUs = () => {
             color={"#F7C7C2"}
           />
         </Grid>
-        <Grid item sm={6} mt={20}>
+        <Grid item sm={12} md={5}>
           <InfoCard
             color="#F7C2E5"
             title={"Collaborative Partnership"}

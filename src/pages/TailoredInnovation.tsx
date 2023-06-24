@@ -6,24 +6,26 @@ import DashTitle from "../components/DashTitle";
 import ThisIsPibaImage from "./../assets/ThisIsPibaImage.png";
 const TailoredInnovation = () => {
   return (
-    <Box sx={{ backgroundColor: "black.main", p: 10 }}>
-      <Grid container>
+    <Box sx={{ backgroundColor: "black.main", p: { xs: 4, md: 10 } }}>
+      <Grid container spacing={4}>
         <Grid
           item
-          xs={6}
+          xs={12}
+          md={6}
           sx={{
             display: "flex",
             alignItems: "center",
           }}
         >
-          <Typography variant="h5" color={"white.main"} textAlign={"left"}>
+          <Typography variant="h5" color={"white.main"} textAlign="left">
             Tailored innovation for
             <br /> your success
           </Typography>
         </Grid>
         <Grid
           item
-          xs={6}
+          xs={12}
+          md={6}
           sx={{
             display: "flex",
             alignItems: "center",

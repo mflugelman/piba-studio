@@ -10,14 +10,19 @@ const Services = () => {
       sx={{
         width: "100%",
         overflow: "hidden",
-        t: 6,
       }}
     >
-      <DashTitle color="black" dashPosition="left">
-        How we can help
-      </DashTitle>
+      <Box p={10}>
+        <DashTitle color="black" dashPosition="left">
+          How we can help
+        </DashTitle>
+      </Box>
       <Grid container>
-        <Grid item xs={7} sx={{ display: "flex", alignItems: "center" }}>
+        <Grid
+          item
+          xs={7}
+          sx={{ display: "flex", alignItems: "center", pl: 10 }}
+        >
           <Box m={4} pl={4} borderLeft={1}>
             <Typography variant="body1" textAlign={"left"} fontWeight={300}>
               Our team is dedicated to creating intuitive and enjoyable

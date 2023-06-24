@@ -11,13 +11,14 @@ const LetsTalk = () => {
         background:
           "radial-gradient(126.38% 242.21% at 83.4% 91.45%, rgba(123, 159, 246, 0.27) 54.17%, rgba(207, 207, 207, 0.13) 94.42%, rgba(207, 207, 207, 0.42) 100%);",
         // transform: "rotate(-180deg)",
-        p: 10,
+        p: { xs: 4, md: 10 },
       }}
     >
-      <Grid container>
+      <Grid container spacing={4}>
         <Grid
           item
-          xs={6}
+          xs={12}
+          md={6}
           sx={{
             display: "flex",
             alignItems: "center",
@@ -30,14 +31,15 @@ const LetsTalk = () => {
         </Grid>
         <Grid
           item
-          xs={6}
+          xs={12}
+          md={6}
           sx={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
+            justifyContent: "space-evenly",
           }}
         >
-          <Typography variant="h4" textAlign={"left"} m={4}>
+          <Typography variant="h4" textAlign={"left"}>
             Let's Talk!
           </Typography>
           <Button variant="contained">
