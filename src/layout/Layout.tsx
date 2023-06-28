@@ -13,6 +13,7 @@ const Layout = ({ children }: LayoutProps) => {
       style={{
         // backgroundColor: "red"
         background: "linear-gradient(90deg, #FFFFFF 0%, #EDECEC 100%)",
+        width: "100%",
         // background: "linear-gradient(90deg, #FFFFFF 0%, red 100%)",
       }}
     >

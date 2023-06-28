@@ -12,7 +12,7 @@ const Home = () => {
       setBackdropOpen(false);
     }, 2500);
 
-    return () => clearTimeout(timer); // Cleanup the timer on unmount or state change
+    return () => clearTimeout(timer);
   }, []);
 
   const backDrop = () => {

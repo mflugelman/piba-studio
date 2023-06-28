@@ -1,22 +1,52 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
-import { useState } from "react";
+import { Box, Button, Grid, Slide, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 import HighlightedButton from "../components/HighlightedButton";
 import Wheel from "../components/Wheel";
 import DashTitle from "../components/DashTitle";
 import ThisIsPibaImage from "./../assets/ThisIsPibaImage.png";
 import InfoCard from "../components/InfoCard";
+import { useInView } from "react-intersection-observer";
 const WorkWithUs = () => {
+  const [visible, setVisible] = useState([false, false, false]);
+
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 1,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      setTimeout(() => {
+        setVisible([true, visible[1], visible[2]]);
+      }, 500);
+    }
+    // if (inView) {
+    //   setTimeout(() => {
+    //     setVisible([true, true, visible[2]]);
+    //   }, 1000);
+    // }
+    // if (inView) {
+    //   setTimeout(() => {
+    //     setVisible([true, true, true]);
+    //   }, 1500);
+    // }
+  }, [inView]);
+
+  console.log(inView);
+
   return (
     <Box>
       <Grid container sx={{ display: "flex", justifyContent: "center" }}>
         <Grid item sm={12} md={5}>
-          <InfoCard
-            title={"Innovative Solutions"}
-            body={
-              "We pride ourselves on delivering innovative solutions that push boundaries and exceed expectations. With our forward-thinking approach and dedication to staying at the forefront of design trends and technologies, we can provide clients with fresh and cutting-edge solutions that set them apart from the competition."
-            }
-            color={"#CDDFF8"}
-          />
+          <Slide direction="left" in={visible[0]} mountOnEnter unmountOnExit>
+            <InfoCard
+              title={"Innovative Solutions"}
+              body={
+                "We pride ourselves on delivering innovative solutions that push boundaries and exceed expectations. With our forward-thinking approach and dedication to staying at the forefront of design trends and technologies, we can provide clients with fresh and cutting-edge solutions that set them apart from the competition."
+              }
+              color={"#CDDFF8"}
+            />
+          </Slide>
           <InfoCard
             title={"Purposeful Design"}
             body={
@@ -25,6 +55,7 @@ const WorkWithUs = () => {
             color={"#F7C7C2"}
           />
         </Grid>
+        <Box ref={ref}></Box>
         <Grid item sm={12} md={5}>
           <InfoCard
             color="#F7C2E5"

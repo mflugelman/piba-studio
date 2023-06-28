@@ -49,7 +49,14 @@ const HighlightedButton = (props: HighlightedButtonProps) => {
     >
       <Typography
         variant="h6"
-        sx={{ zIndex: 1, marginRight: 2, marginLeft: 2 }}
+        sx={{
+          zIndex: 1,
+          marginRight: 2,
+          marginLeft: 2,
+          "&:hover": {
+            fontWeight: "bold",
+          },
+        }}
       >
         {props.children}
       </Typography>
