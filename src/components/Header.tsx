@@ -38,7 +38,7 @@ function Header() {
     <Grid
       container
       sx={{
-        background: "linear-gradient(90deg, #FFFFFF 0%, #EDECEC 105.72%);",
+        background: "linear-gradient(90deg, #FFFFFF 0%, #EDECEC 100%);",
         boxShadow: "0px 4px 40px rgba(0, 0, 0, 0.14);",
         pr: 4,
         pl: 4,
