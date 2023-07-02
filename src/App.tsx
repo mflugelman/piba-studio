@@ -14,22 +14,69 @@ import Footer from "./pages/Footer";
 import WorkWithUs from "./pages/WorkWithUs";
 
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import Header from "./components/Header";
+import { useInView } from "react-intersection-observer";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 let theme = responsiveFontSizes(themes.theme);
 
 function App() {
+  const [currentSection, setCurrentSection] = useState("");
+
+  const [homeRef, inViewHome] = useInView();
+  const [projectsRef, inViewProjects] = useInView();
+  const [servicesRef, inViewServices] = useInView();
+  const [aboutUsRef, inViewAboutUs] = useInView();
+  const [sayHiRef, inViewSayHi] = useInView();
+
+  const handleClickScroll = (elementId: string) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      // 👇 Will scroll smoothly to the top of the next section
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    if (inViewProjects) {
+      setCurrentSection("projects");
+    } else if (inViewServices) {
+      setCurrentSection("services");
+    } else if (inViewAboutUs) {
+      setCurrentSection("about-us");
+    } else if (inViewSayHi) {
+      setCurrentSection("say-hi");
+    } else if (inViewProjects) {
+      setCurrentSection("");
+    }
+  }, [inViewHome, inViewProjects, inViewServices, inViewAboutUs, inViewSayHi]);
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
         <Layout>
-          <Home />
-          <OurWork />
-          <Services />
-          <ThisIsPiba />
-          <TailoredInnovation />
+          <Header
+            onButtonClick={handleClickScroll}
+            activeButton={currentSection}
+          />
+          <div ref={homeRef} id="home">
+            <Home />
+          </div>
+          <div ref={projectsRef} id="projects">
+            <OurWork />
+          </div>
+          <div ref={servicesRef} id="services">
+            <Services />
+          </div>
+          <div ref={aboutUsRef} id="about-us">
+            <ThisIsPiba />
+            <TailoredInnovation />
+          </div>
           <WorkWithUs />
-          <LetsTalk />
-          <Footer />
+          <div ref={sayHiRef} id="say-hi">
+            <LetsTalk />
+            <Footer />
+          </div>
         </Layout>
       </ThemeProvider>
     </div>

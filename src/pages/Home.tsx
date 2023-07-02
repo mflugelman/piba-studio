@@ -15,6 +15,19 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleAutoHover = () => {
+    const scrollStep = window.innerHeight / 50; // Adjust the scroll step to control the smoothness
+
+    const scroll = () => {
+      if (window.pageYOffset < window.innerHeight) {
+        window.scrollBy(0, scrollStep);
+        requestAnimationFrame(scroll);
+      }
+    };
+
+    scroll();
+  };
+
   const backDrop = () => {
     return (
       <>
@@ -43,7 +56,6 @@ const Home = () => {
     <Box
       sx={{
         backgroundImage: `url(${plantRight})`,
-        // width: "100vw",
         height: { xs: "80vh", md: "100vh" },
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
@@ -70,7 +82,23 @@ const Home = () => {
           purpose-driven design
         </Typography>
         <Box mt={4}>
-          <Button variant="contained">
+          <Button
+            disableElevation
+            variant="contained"
+            onClick={() =>
+              window.scrollTo({
+                behavior: "smooth",
+                top: document.documentElement.scrollHeight,
+              })
+            }
+            sx={{
+              boxShadow: "0px 0px 10px theme.primary.main",
+              ":hover": {
+                backgroundColor: "#F7C2E5B5",
+                boxShadow: "0px 0px 10px 0px #F7C2E5B5",
+              },
+            }}
+          >
             <Typography variant="button" color="white.main" m={1}>
               LETS GET IN TOUCH
             </Typography>
@@ -83,6 +111,7 @@ const Home = () => {
           justifyContent: "center",
           alignSelf: "center",
           alignItems: "center",
+          m: 5,
         }}
       >
         <Box
@@ -93,21 +122,34 @@ const Home = () => {
             m: 2,
           }}
         ></Box>
-        <Typography m={2} variant="body2">
-          Scroll to explore
-        </Typography>
-        <IconButton
+        <Button
+          disableElevation
+          disableRipple
           sx={{
-            m: 2,
-            color: "black.main",
-            outline: "2px solid black",
-            borderRadius: "46%",
+            "&:hover": {
+              backgroundColor: "transparent", // Set the hover background color to transparent
+              boxShadow: "none", // Remove the hover box shadow
+            },
           }}
-          aria-label="upload picture"
-          component="label"
+          onMouseEnter={handleAutoHover}
         >
-          <ArrowDownwardIcon />
-        </IconButton>
+          <Typography m={2} variant="body2">
+            Scroll to explore
+          </Typography>
+          <IconButton
+            sx={{
+              m: 2,
+              color: "black.main",
+              outline: "2px solid",
+              outlineColor: "black.main",
+              borderRadius: "46%",
+            }}
+            aria-label="upload picture"
+            component="label"
+          >
+            <ArrowDownwardIcon />
+          </IconButton>
+        </Button>
       </Box>
     </Box>
   );
