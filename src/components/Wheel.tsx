@@ -1,7 +1,6 @@
 import { Box, Fade, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 import HighlightedButton from "../components/HighlightedButton";
-import { text } from "stream/consumers";
 
 const wheelRadius = 300;
 
@@ -87,12 +86,18 @@ const circleStyle = {
 
 const Wheel = () => {
   const [angle, setAngle] = useState(0);
+  const [fade, setFade] = useState(true);
   const handleClick = (newAngle: number) => {
-    setAngle(newAngle);
+    setFade(false);
+
     const degrees = -newAngle;
     const transform = `rotate(${degrees}deg)`;
     const wheel = document.getElementById("wheel");
-    if (wheel) wheel.style.transform = transform;
+    if (wheel) wheel.style.transform = transform; // Start the fade-in effect
+    setTimeout(() => {
+      setFade(true);
+      setAngle(newAngle);
+    }, 250);
   };
 
   const ballAngle = (53 * Math.PI) / 180;
@@ -117,10 +122,14 @@ const Wheel = () => {
           xs={6}
           sx={{ display: "flex", alignItems: "center", pl: 10 }}
         >
-          <Box m={4} pl={4} borderLeft={1}>
-            <Typography variant="body1" textAlign={"left"} fontWeight={300}>
-              {texts[findKeyByValue(angle)]}
-            </Typography>
+          <Box>
+            <Fade in={fade} timeout={{ enter: 250, exit: 250 }}>
+              <Box m={4} pl={4} borderLeft={1}>
+                <Typography variant="body1" textAlign={"left"} fontWeight={300}>
+                  {texts[findKeyByValue(angle)]}
+                </Typography>
+              </Box>
+            </Fade>
           </Box>
         </Grid>
         <Grid item xs={6} sx={{ display: "flex", justifyContent: "flex-end" }}>
@@ -134,7 +143,7 @@ const Wheel = () => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                transition: "transform 0.5s ease",
+                transition: "transform 0.6s ease",
                 backgroundImage:
                   "linear-gradient(180deg, #7B9FF6 0%, #FFFFFF 100%)",
                 boxShadow: "0px 79px 40px 50px rgba(0, 0, 0, 0.05)",

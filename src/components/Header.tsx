@@ -1,10 +1,26 @@
 import { useEffect, useState } from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
 import logoSmall from "./../assets/logo-small.png";
+import HeaderButton from "./HeaderButton";
+import "./../App.css";
 
-function Header() {
+type HeaderProps = {
+  onButtonClick: (value: string) => void;
+  activeButton: string;
+};
+
+function Header(props: HeaderProps) {
   const [isBannerVisible, setIsBannerVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [activeButton, setActiveButton] = useState(props.activeButton);
+
+  const handleClick = (value: string) => {
+    props.onButtonClick(value);
+  };
+
+  useEffect(() => {
+    setActiveButton(props.activeButton); // Update activeButton state when props.activeButton changes
+  }, [props.activeButton]);
 
   const centerButtonGrid = {
     display: "flex",
@@ -62,27 +78,66 @@ function Header() {
           justifyContent: { xs: "center", sm: "flex-start" },
         }}
       >
-        <Box component="img" src={logoSmall} />
-      </Grid>
-      <Grid item xs={3} sm={2} md={1} sx={centerButtonGrid}>
-        <Button>
-          <Typography variant="button">Projects</Typography>
+        <Button
+          disableElevation
+          disableRipple
+          sx={{
+            "&:hover": {
+              backgroundColor: "transparent", // Set the hover background color to transparent
+              boxShadow: "none", // Remove the hover box shadow
+            },
+          }}
+          onClick={() => {
+            handleClick("home");
+            setActiveButton("");
+          }}
+        >
+          <img src={logoSmall} alt="Logo" />
         </Button>
       </Grid>
       <Grid item xs={3} sm={2} md={1} sx={centerButtonGrid}>
-        <Button>
-          <Typography variant="button">Services</Typography>
-        </Button>
+        <HeaderButton
+          onClick={() => {
+            handleClick("projects");
+            setActiveButton("projects");
+          }}
+          active={activeButton == "projects"}
+        >
+          Projects
+        </HeaderButton>
       </Grid>
       <Grid item xs={3} sm={2} md={1} sx={centerButtonGrid}>
-        <Button>
-          <Typography variant="button">About Us</Typography>
-        </Button>
+        <HeaderButton
+          onClick={() => {
+            handleClick("services");
+            setActiveButton("services");
+          }}
+          active={activeButton == "services"}
+        >
+          Services
+        </HeaderButton>
       </Grid>
       <Grid item xs={3} sm={2} md={1} sx={centerButtonGrid}>
-        <Button>
-          <Typography variant="button">Say hi!</Typography>
-        </Button>
+        <HeaderButton
+          onClick={() => {
+            handleClick("about-us");
+            setActiveButton("about-us");
+          }}
+          active={activeButton == "about-us"}
+        >
+          About us
+        </HeaderButton>
+      </Grid>
+      <Grid item xs={3} sm={2} md={1} sx={centerButtonGrid}>
+        <HeaderButton
+          onClick={() => {
+            handleClick("say-hi");
+            setActiveButton("say-hi");
+          }}
+          active={activeButton == "say-hi"}
+        >
+          Say hi!
+        </HeaderButton>
       </Grid>
       <Grid
         item
@@ -90,11 +145,17 @@ function Header() {
         sm={3}
         md={7}
         sx={{
+          ...centerButtonGrid,
           display: "flex",
           justifyContent: { xs: "center", sm: "flex-end" },
         }}
       >
-        <Button variant="outlined">
+        <Button
+          variant="outlined"
+          onClick={() =>
+            window.open("https://calendly.com/hellopibastudio", "_blank")
+          }
+        >
           <Typography variant="button" fontWeight={600} color={"primary"}>
             BOOK A CALL
           </Typography>

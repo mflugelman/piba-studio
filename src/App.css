@@ -40,3 +40,8 @@
 .background-red {
   background-color: red;
 }
+
+.Still-Button:hover {
+  background-color: transparent;
+  box-shadow: none;
+}

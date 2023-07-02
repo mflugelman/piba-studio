@@ -126,15 +126,29 @@ let theme = createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
-        root: {
+        // root: {
+        //   textTransform: "none",
+        //   borderRadius: 12,
+        //   fontFamily: "Poppins",
+        //   borderWidth: 2,
+        //   "&:hover": {
+        //     borderWidth: 2,
+        //   },
+        // },
+        root: ({ ownerState }) => ({
           textTransform: "none",
           borderRadius: 12,
           fontFamily: "Poppins",
           borderWidth: 2,
-          "&:hover": {
-            borderWidth: 2,
-          },
-        },
+          ...(ownerState.variant === "contained" && {
+            backgroundColor: "primary.main",
+            boxShadow: `0px 0px 10px 0px ${palette.primary.main}`,
+            ":hover": {
+              backgroundColor: "#F7C2E5B5",
+              boxShadow: "0px 0px 10px 0px #F7C2E5B5",
+            },
+          }),
+        }),
       },
     },
   },

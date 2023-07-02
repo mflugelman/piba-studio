@@ -38,15 +38,13 @@ const WorkWithUs = () => {
     <Box>
       <Grid container sx={{ display: "flex", justifyContent: "center" }}>
         <Grid item sm={12} md={5}>
-          <Slide direction="left" in={visible[0]} mountOnEnter unmountOnExit>
-            <InfoCard
-              title={"Innovative Solutions"}
-              body={
-                "We pride ourselves on delivering innovative solutions that push boundaries and exceed expectations. With our forward-thinking approach and dedication to staying at the forefront of design trends and technologies, we can provide clients with fresh and cutting-edge solutions that set them apart from the competition."
-              }
-              color={"#CDDFF8"}
-            />
-          </Slide>
+          <InfoCard
+            title={"Innovative Solutions"}
+            body={
+              "We pride ourselves on delivering innovative solutions that push boundaries and exceed expectations. With our forward-thinking approach and dedication to staying at the forefront of design trends and technologies, we can provide clients with fresh and cutting-edge solutions that set them apart from the competition."
+            }
+            color={"#CDDFF8"}
+          />
           <InfoCard
             title={"Purposeful Design"}
             body={
