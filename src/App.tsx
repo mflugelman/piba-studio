@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 
 import { ThemeProvider } from "@mui/material/styles";
 import { themes } from "./theme/theme";
-import Banner from "./components/Banner";
 import OurWork from "./pages/OurWork";
 import Services from "./pages/Services";
 import ThisIsPiba from "./pages/ThisIsPiba";

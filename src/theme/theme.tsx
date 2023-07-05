@@ -14,12 +14,14 @@ declare module "@mui/material/styles" {
   interface TypographyVariants {
     title: React.CSSProperties;
     buttonLinks: React.CSSProperties;
+    jumbo: React.CSSProperties;
   }
 
   // allow configuration using `createTheme`
   interface TypographyVariantsOptions {
     title?: React.CSSProperties;
     buttonLinks?: React.CSSProperties;
+    jumbo?: React.CSSProperties;
   }
 }
 
@@ -28,6 +30,7 @@ declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     title: true;
     buttonLinks: true;
+    jumbo: true;
   }
 }
 
@@ -55,6 +58,12 @@ let theme = createTheme({
 
   typography: {
     fontFamily: ["Lato", "Poppins", "Oxygen", "sans-serif"].join(","),
+    jumbo: {
+      fontSize: 100,
+      fontWeight: 400,
+      color: palette.white.main,
+      fontFamily: "Lato",
+    },
     h1: {
       fontSize: 80,
       fontWeight: 300,
@@ -102,6 +111,7 @@ let theme = createTheme({
       fontSize: 25,
       color: palette.black.main,
       fontFamily: "Poppins",
+      lineHeight: 1.8,
     },
     body2: {
       fontWeight: 400,
@@ -144,8 +154,7 @@ let theme = createTheme({
             backgroundColor: "primary.main",
             boxShadow: `0px 0px 10px 0px ${palette.primary.main}`,
             ":hover": {
-              backgroundColor: "#F7C2E5B5",
-              boxShadow: "0px 0px 10px 0px #F7C2E5B5",
+              boxShadow: `0px 0px 10px 0px ${palette.primary.main}`,
             },
           }),
         }),

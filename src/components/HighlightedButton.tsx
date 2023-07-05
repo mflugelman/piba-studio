@@ -1,5 +1,4 @@
 import { Button, SxProps, Theme, Typography } from "@mui/material";
-import HighlightedText from "./HighlightedText";
 import { useState } from "react";
 
 type HighlightedButtonProps = {
