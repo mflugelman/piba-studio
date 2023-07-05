@@ -1,10 +1,10 @@
-import { Box, Button, Typography } from "@mui/material";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Box, Typography } from "@mui/material";
 
 type DashTitleProps = {
   children: string;
   dashPosition: "left" | "right";
   color: "black" | "white";
+  variant?: "h2" | "jumbo";
 };
 
 const DashTitle = (props: DashTitleProps) => {
@@ -27,7 +27,7 @@ const DashTitle = (props: DashTitleProps) => {
         />
       ) : null}
       <Typography
-        variant="h2"
+        variant={props.variant ? props.variant : "h2"}
         textAlign={props.dashPosition}
         mr={2}
         ml={2}

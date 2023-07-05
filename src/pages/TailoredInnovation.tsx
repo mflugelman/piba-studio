@@ -1,12 +1,15 @@
 import { Box, Grid, Typography } from "@mui/material";
-import { useState } from "react";
-import HighlightedButton from "../components/HighlightedButton";
-import Wheel from "../components/Wheel";
-import DashTitle from "../components/DashTitle";
-import ThisIsPibaImage from "./../assets/ThisIsPibaImage.png";
 const TailoredInnovation = () => {
   return (
-    <Box sx={{ backgroundColor: "black.main", p: { xs: 4, md: 10 } }}>
+    <Box
+      sx={{
+        backgroundColor: "black.main",
+        display: "flex",
+        alignItems: "center",
+        p: { xs: 4, md: 10 },
+        height: "40vh",
+      }}
+    >
       <Grid container spacing={4}>
         <Grid
           item

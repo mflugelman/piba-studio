@@ -74,6 +74,8 @@ const carrouselData: CarrouselContent[] = [
   },
 ];
 
+const debounceDelay = 40;
+
 type VerticalCarouselProps = {};
 
 const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
@@ -166,7 +168,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
     } else {
       carouselRef.current?.slickPrev(); // Scroll up, go to the previous slide
     }
-  }, 20); // Adjust the delay time as needed
+  }, debounceDelay); // Adjust the delay time as needed
 
   const handleSlideClick = (index: number) => {
     const slide = carrouselData[index];
@@ -181,7 +183,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
 
     if (selectedSlide == carrouselData.length - 1) allowScroll();
 
-    const timeoutId = setTimeout(enableScrollEvent, 20); // Adjust the delay time to match the debounce delay
+    const timeoutId = setTimeout(enableScrollEvent, debounceDelay);
 
     return () => {
       clearTimeout(timeoutId);
@@ -206,7 +208,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
                   className="slide"
                   onClick={() => handleSlideClick(index)}
                 >
-                  <Box p={5}>
+                  <Box p={5} key={"image" + index}>
                     <Box
                       component="img"
                       src={carrouselComponent.image}
@@ -237,11 +239,12 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
             </Typography>
           </Box>
           <Box sx={{ display: "flex" }}>
-            {carrouselData[selectedSlide].tags.map((tag) => (
-              <Tag>{tag}</Tag>
+            {carrouselData[selectedSlide].tags.map((tag, index) => (
+              <Tag key={"tag" + index}>{tag}</Tag>
             ))}
           </Box>
           <Button
+            onClick={() => handleSlideClick(selectedSlide)}
             disableRipple
             sx={{
               alignSelf: "flex-start",

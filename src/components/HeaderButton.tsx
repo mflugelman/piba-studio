@@ -9,8 +9,6 @@ type HeaderButtonButtonProps = {
 };
 
 const HeaderButton = (props: HeaderButtonButtonProps) => {
-  const [isClicked, setIsClicked] = useState(props.active);
-
   return (
     <Button
       disableRipple
@@ -27,7 +25,7 @@ const HeaderButton = (props: HeaderButtonButtonProps) => {
         color: "black",
         "&::after": {
           content: '""',
-          position: "absolute", // Change from "absolute" to "relative"
+          position: "absolute",
           top: "0",
           left: "0",
           width: props.active ? "100%" : "0%",

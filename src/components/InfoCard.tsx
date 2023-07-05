@@ -11,6 +11,9 @@ type InfoCardProps = {
   title: string;
   body: string;
   color: string;
+  imageUrl: string;
+  backgroundPosition: "right" | "left";
+  backgroundPositionY: number | string;
 };
 
 const InfoCard = (props: InfoCardProps) => {
@@ -18,21 +21,21 @@ const InfoCard = (props: InfoCardProps) => {
     <Card
       sx={{
         backgroundColor: props.color,
-        p: 2,
-        m: 6,
+        mt: 1,
+        mb: 1,
+        p: 6,
+        height: 500,
         borderRadius: "36px",
-        height: "400",
+        backgroundImage: `url(${props.imageUrl})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: props.backgroundPosition,
+        backgroundSize: "auto 60%",
+        backgroundPositionY: props.backgroundPositionY,
+        boxShadow: 0,
       }}
       elevation={0}
     >
-      <CardContent
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100%", // Added this
-        }}
-      >
+      <CardContent>
         <Box
           sx={{
             display: "flex",
@@ -41,10 +44,24 @@ const InfoCard = (props: InfoCardProps) => {
             alignItems: "center",
           }}
         >
-          <Typography variant="h6" color="black.main" textAlign="left">
-            {props.title}
-          </Typography>
-          <Typography variant="body2" textAlign="left">
+          <Box sx={{ alignSelf: "flex-start" }}>
+            <Typography variant="h6" color="black.main" textAlign="left">
+              {props.title}
+            </Typography>
+            <Box
+              sx={{
+                height: 10,
+                width: 50,
+                backgroundColor: "secondary.main",
+                mb: 6,
+              }}
+            />
+          </Box>
+          <Typography
+            variant="body2"
+            textAlign="left"
+            sx={{ lineHeight: "40px" }}
+          >
             {props.body}
           </Typography>
         </Box>

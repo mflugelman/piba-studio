@@ -7,8 +7,6 @@ import {
   Fade,
 } from "@mui/material";
 import { useState, useEffect, useRef } from "react";
-import HighlightedButton from "../components/HighlightedButton";
-import Wheel from "../components/Wheel";
 import DashTitle from "../components/DashTitle";
 import ThisIsPibaImage from "./../assets/thisispiba.png";
 import { useInView } from "react-intersection-observer";
@@ -20,8 +18,7 @@ const ThisIsPiba: React.FC = () => {
   );
 
   const [visible, setVisible] = useState([false, false, false]);
-  const { ref, inView, entry } = useInView({
-    /* Optional options */
+  const { ref, inView } = useInView({
     threshold: 1,
   });
 
@@ -49,6 +46,7 @@ const ThisIsPiba: React.FC = () => {
         position: "relative",
         overflow: "hidden",
         width: "100%",
+        height: "110vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -84,14 +82,14 @@ const ThisIsPiba: React.FC = () => {
       >
         <Grid container p={{ xs: 2, md: 10 }}>
           <Grid item md={8} xs={12}>
-            <Box>
+            <Box mb={6}>
               <DashTitle dashPosition="left" color="black">
                 This is Piba
               </DashTitle>
             </Box>
-            <Typography variant="body1" textAlign="left" ref={ref}>
-              <Fade in={visible[0]} timeout={timeout}>
-                <p>
+            <Fade in={visible[0]} timeout={timeout}>
+              <p>
+                <Typography variant="body1" textAlign="left" ref={ref}>
                   Founded by two young professional women who started their
                   lives from scratch in a different country,{" "}
                   <strong>
@@ -99,27 +97,31 @@ const ThisIsPiba: React.FC = () => {
                     resilience that come from overcoming obstacles and embracing
                     new challenges.
                   </strong>
-                </p>
-              </Fade>
-              <Fade in={visible[1]} timeout={timeout}>
-                <p>
+                </Typography>
+              </p>
+            </Fade>
+            <Fade in={visible[1]} timeout={timeout}>
+              <p>
+                <Typography variant="body1" textAlign="left">
                   We bring this same energy and dedication to our work, where we
                   use our diverse perspectives and experiences to create
                   innovative solutions that meet the needs of our clients and
                   their users.
-                </p>
-              </Fade>
-              <Fade in={visible[2]} timeout={timeout}>
-                <p>
+                </Typography>
+              </p>
+            </Fade>
+            <Fade in={visible[2]} timeout={timeout}>
+              <p>
+                <Typography variant="body1" textAlign="left" ref={ref}>
                   We're proud to break barriers and set new standards for
                   excellence. With our commitment to quality and our passion for
                   design, we're excited to make a difference in the digital
                   world and beyond.
-                </p>
-              </Fade>
-            </Typography>
+                </Typography>
+              </p>
+            </Fade>
           </Grid>
-          <Grid md={4} />
+          <Grid item md={4} />
         </Grid>
       </Box>
     </Box>

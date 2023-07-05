@@ -1,8 +1,7 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import VerticalCarousel from "../components/Carousel/VerticalCarousel";
 import DashTitle from "../components/DashTitle";
-import React, { useEffect, useRef, useState } from "react";
-import { useScrollBlock } from "../hooks/useScrollBlock";
+import React from "react";
 
 const OurWork: React.FC = () => {
   return (

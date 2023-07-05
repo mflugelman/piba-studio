@@ -6,7 +6,6 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 const Home = () => {
   const [backdropOpen, setBackdropOpen] = useState(true);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   useEffect(() => {
     const timer = setTimeout(() => {
       setBackdropOpen(false);
@@ -32,6 +31,7 @@ const Home = () => {
     return (
       <>
         <Backdrop
+          timeout={{ exit: 1000 }}
           open={backdropOpen}
           sx={{
             backgroundColor: "rgba(255, 255, 255,0.87)",
@@ -45,7 +45,12 @@ const Home = () => {
             width="100%"
             m={4}
           >
-            <img src={pibaStudio} alt="Piba Studio" width="100%" />
+            <img
+              src={pibaStudio}
+              alt="Piba Studio"
+              width="100%"
+              onClick={() => setBackdropOpen(false)}
+            />
           </Box>
         </Backdrop>
       </>
@@ -67,6 +72,7 @@ const Home = () => {
         m: 2,
       }}
     >
+      {/* {backDrop()} */}
       <Box />
       <Box
         sx={{
@@ -93,10 +99,6 @@ const Home = () => {
             }
             sx={{
               boxShadow: "0px 0px 10px theme.primary.main",
-              ":hover": {
-                backgroundColor: "#F7C2E5B5",
-                boxShadow: "0px 0px 10px 0px #F7C2E5B5",
-              },
             }}
           >
             <Typography variant="button" color="white.main" m={1}>

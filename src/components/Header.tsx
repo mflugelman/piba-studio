@@ -1,5 +1,6 @@
+import "../styles.css";
 import { useEffect, useState } from "react";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import logoSmall from "./../assets/logo-small.png";
 import HeaderButton from "./HeaderButton";
 import "./../App.css";
@@ -13,13 +14,14 @@ function Header(props: HeaderProps) {
   const [isBannerVisible, setIsBannerVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [activeButton, setActiveButton] = useState(props.activeButton);
+  const [hideTimeout, setHideTimeout] = useState<NodeJS.Timeout | null>(null);
 
   const handleClick = (value: string) => {
     props.onButtonClick(value);
   };
 
   useEffect(() => {
-    setActiveButton(props.activeButton); // Update activeButton state when props.activeButton changes
+    setActiveButton(props.activeButton);
   }, [props.activeButton]);
 
   const centerButtonGrid = {
@@ -32,7 +34,10 @@ function Header(props: HeaderProps) {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
 
-      if (currentScrollPos < prevScrollPos) {
+      if (currentScrollPos === 0) {
+        // Header is at the top, keep it visible
+        setIsBannerVisible(true);
+      } else if (currentScrollPos < prevScrollPos) {
         // Scrolling up
         setIsBannerVisible(true);
       } else {
@@ -41,14 +46,27 @@ function Header(props: HeaderProps) {
       }
 
       setPrevScrollPos(currentScrollPos);
+
+      if (hideTimeout) {
+        clearTimeout(hideTimeout);
+      }
+
+      setHideTimeout(
+        setTimeout(() => {
+          setIsBannerVisible(false);
+        }, 1500)
+      );
     };
 
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      if (hideTimeout) {
+        clearTimeout(hideTimeout);
+      }
     };
-  }, [prevScrollPos]);
+  }, [prevScrollPos, hideTimeout]);
 
   return (
     <Grid
@@ -66,7 +84,7 @@ function Header(props: HeaderProps) {
         width: "100%",
         transform: `translateY(${isBannerVisible ? "0" : "-100%"})`,
         transition: "transform 0.5s",
-        transitionTimingFunction: "ease-out", // Add a smooth transition timing function
+        transitionTimingFunction: "ease-out",
       }}
     >
       <Grid
@@ -81,12 +99,7 @@ function Header(props: HeaderProps) {
         <Button
           disableElevation
           disableRipple
-          sx={{
-            "&:hover": {
-              backgroundColor: "transparent", // Set the hover background color to transparent
-              boxShadow: "none", // Remove the hover box shadow
-            },
-          }}
+          className="still-button"
           onClick={() => {
             handleClick("home");
             setActiveButton("");

@@ -2,7 +2,7 @@ import { Box, Fade, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 import HighlightedButton from "../components/HighlightedButton";
 
-const wheelRadius = 300;
+const wheelRadius = 250;
 
 const deegrees = [
   (2 * Math.PI) / 11,
@@ -101,7 +101,7 @@ const Wheel = () => {
   };
 
   const ballAngle = (53 * Math.PI) / 180;
-  const innerWHeelRadius = 275; // Half of the diameter
+  const innerWHeelRadius = wheelRadius - 25; // Half of the diameter
 
   const ballCoordinates = {
     x: innerWHeelRadius * Math.cos(ballAngle),
@@ -114,6 +114,7 @@ const Wheel = () => {
         width: "100%",
         overflow: "hidden",
         t: 6,
+        pb: 10,
       }}
     >
       <Grid container>
