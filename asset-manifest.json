@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/piba-studio/static/css/main.d7af5eb0.css",
-    "main.js": "/piba-studio/static/js/main.e58261f8.js",
+    "main.css": "/piba-studio/static/css/main.c22670cd.css",
+    "main.js": "/piba-studio/static/js/main.04c05417.js",
     "static/js/787.53d0096e.chunk.js": "/piba-studio/static/js/787.53d0096e.chunk.js",
     "static/media/RealStateWebsite.png": "/piba-studio/static/media/RealStateWebsite.a0952c5f23e5079b0214.png",
     "static/media/thisispiba.png": "/piba-studio/static/media/thisispiba.8f1d9426a1a318bffbb8.png",
@@ -20,33 +20,22 @@
     "static/media/Lato-Black.ttf": "/piba-studio/static/media/Lato-Black.57dee8aface5572f9101.ttf",
     "static/media/plantfooter.png": "/piba-studio/static/media/plantfooter.8e3d4b3a8f9e198b4027.png",
     "static/media/pibastudio.png": "/piba-studio/static/media/pibastudio.dfbf03a7333d1492ba07.png",
-    "static/media/oxygen-v15-latin-300.svg": "/piba-studio/static/media/oxygen-v15-latin-300.6232f468f0b60c5bd070.svg",
-    "static/media/oxygen-v15-latin-regular.svg": "/piba-studio/static/media/oxygen-v15-latin-regular.b84dab6b4e1540ddd056.svg",
     "static/media/Lato-LightItalic.ttf": "/piba-studio/static/media/Lato-LightItalic.4310bbed01b37dfcee98.ttf",
-    "static/media/oxygen-v15-latin-700.svg": "/piba-studio/static/media/oxygen-v15-latin-700.7ed259a6bc3d55a3b3c8.svg",
-    "static/media/oxygen-v15-latin-regular.ttf": "/piba-studio/static/media/oxygen-v15-latin-regular.447e96049450f20663da.ttf",
-    "static/media/oxygen-v15-latin-700.ttf": "/piba-studio/static/media/oxygen-v15-latin-700.2f929a1c9ad809bca135.ttf",
-    "static/media/oxygen-v15-latin-300.ttf": "/piba-studio/static/media/oxygen-v15-latin-300.609e8916080a38d93417.ttf",
-    "static/media/oxygen-v15-latin-regular.woff": "/piba-studio/static/media/oxygen-v15-latin-regular.43db2f95d8afcc4e696a.woff",
-    "static/media/oxygen-v15-latin-700.woff": "/piba-studio/static/media/oxygen-v15-latin-700.50471f8399ecd80354ad.woff",
-    "static/media/oxygen-v15-latin-300.woff": "/piba-studio/static/media/oxygen-v15-latin-300.48ce06a2b150e9958ade.woff",
-    "static/media/oxygen-v15-latin-regular.eot": "/piba-studio/static/media/oxygen-v15-latin-regular.91cb5493eb255527fefa.eot",
-    "static/media/oxygen-v15-latin-700.eot": "/piba-studio/static/media/oxygen-v15-latin-700.260f63d2425780b6676a.eot",
-    "static/media/oxygen-v15-latin-300.eot": "/piba-studio/static/media/oxygen-v15-latin-300.a42c2d02300486827fe9.eot",
-    "static/media/oxygen-v15-latin-regular.woff2": "/piba-studio/static/media/oxygen-v15-latin-regular.825ad91f7f5e5c720bbd.woff2",
-    "static/media/oxygen-v15-latin-700.woff2": "/piba-studio/static/media/oxygen-v15-latin-700.f2e415d7093089b7663c.woff2",
-    "static/media/oxygen-v15-latin-300.woff2": "/piba-studio/static/media/oxygen-v15-latin-300.324b611690aa59798bb9.woff2",
+    "static/media/innovativeSolutions.png": "/piba-studio/static/media/innovativeSolutions.a1b441c76e7bdd7f5490.png",
+    "static/media/purposefulDesign.png": "/piba-studio/static/media/purposefulDesign.630f6816a45193a31580.png",
+    "static/media/exceptionalResults.png": "/piba-studio/static/media/exceptionalResults.b98704a111151d0e0955.png",
+    "static/media/collaborativePartnership.png": "/piba-studio/static/media/collaborativePartnership.6c012a6d5f9670954d07.png",
     "static/media/slick.svg": "/piba-studio/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/piba-studio/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/piba-studio/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/piba-studio/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/piba-studio/index.html",
-    "main.d7af5eb0.css.map": "/piba-studio/static/css/main.d7af5eb0.css.map",
-    "main.e58261f8.js.map": "/piba-studio/static/js/main.e58261f8.js.map",
+    "main.c22670cd.css.map": "/piba-studio/static/css/main.c22670cd.css.map",
+    "main.04c05417.js.map": "/piba-studio/static/js/main.04c05417.js.map",
     "787.53d0096e.chunk.js.map": "/piba-studio/static/js/787.53d0096e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d7af5eb0.css",
-    "static/js/main.e58261f8.js"
+    "static/css/main.c22670cd.css",
+    "static/js/main.04c05417.js"
   ]
 }
