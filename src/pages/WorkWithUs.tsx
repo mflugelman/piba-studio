@@ -42,7 +42,7 @@ const WorkWithUs = () => {
   return (
     <Box ref={containerRef}>
       <Box mt={10} mb={6} mr={4}>
-        <DashTitle dashPosition={"right"} color={"black"} variant="jumbo">
+        <DashTitle dashPosition={"right"} color={"black"}>
           Why work with us?
         </DashTitle>
       </Box>

@@ -30,7 +30,7 @@ const HighlightedButton = (props: HighlightedButtonProps) => {
           width: props.active ? "100%" : "0%",
           height: "100%",
           background: "#D1F678",
-          borderRadius: "20px",
+          borderRadius: 3,
           animation: `${props.active ? "growFromLeft" : ""} 0.6s forwards`,
         },
         "@keyframes growFromLeft": {

@@ -5,9 +5,7 @@ import React from "react";
 
 const OurWork: React.FC = () => {
   return (
-    <Box
-      sx={{ backgroundColor: "#181818", pr: 4, pl: 2, pt: 4, height: "100vh" }}
-    >
+    <Box sx={{ backgroundColor: "#181818", pr: 4, pl: 2, pt: 4 }}>
       <DashTitle dashPosition="right" color="white">
         Our Work
       </DashTitle>

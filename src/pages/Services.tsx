@@ -4,14 +4,8 @@ import DashTitle from "../components/DashTitle";
 
 const Services = () => {
   return (
-    <Box
-      sx={{
-        width: "100%",
-        // Set the height to 100% of the viewport height
-        overflow: "hidden",
-      }}
-    >
-      <Box pl={10} pt={10} pb={10}>
+    <Box>
+      <Box p={4} pt={8}>
         <DashTitle color="black" dashPosition="left">
           How we can help
         </DashTitle>
