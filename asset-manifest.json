@@ -1,14 +1,15 @@
 {
   "files": {
-    "main.css": "/piba-studio/static/css/main.c22670cd.css",
-    "main.js": "/piba-studio/static/js/main.cdf421a7.js",
+    "main.css": "/piba-studio/static/css/main.82d15cc9.css",
+    "main.js": "/piba-studio/static/js/main.bcdfa991.js",
     "static/js/787.53d0096e.chunk.js": "/piba-studio/static/js/787.53d0096e.chunk.js",
+    "static/media/illusPiba.png": "/piba-studio/static/media/illusPiba.3d943e6aa4313c45d69a.png",
     "static/media/RealStateWebsite.png": "/piba-studio/static/media/RealStateWebsite.a0952c5f23e5079b0214.png",
     "static/media/thisispiba.png": "/piba-studio/static/media/thisispiba.8f1d9426a1a318bffbb8.png",
     "static/media/CommunityWebsite.png": "/piba-studio/static/media/CommunityWebsite.34fed097883bf5b369b2.png",
     "static/media/MedicalSearchEngine.png": "/piba-studio/static/media/MedicalSearchEngine.ed11772ebe8002d856d3.png",
-    "static/media/plantRight.png": "/piba-studio/static/media/plantRight.f8bfb56068d5678e7268.png",
     "static/media/ReportFormsWebapp.png": "/piba-studio/static/media/ReportFormsWebapp.95dd555dd43d1f545858.png",
+    "static/media/thisIsPibaMobile.png": "/piba-studio/static/media/thisIsPibaMobile.23e504a5aca50b425760.png",
     "static/media/TaskManagementDashboard.png": "/piba-studio/static/media/TaskManagementDashboard.74df31bad5dc3a81968d.png",
     "static/media/Poppins-Regular.ttf": "/piba-studio/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Lato-BoldItalic.ttf": "/piba-studio/static/media/Lato-BoldItalic.fd32b4dea61508c37b78.ttf",
@@ -21,6 +22,7 @@
     "static/media/plantfooter.png": "/piba-studio/static/media/plantfooter.8e3d4b3a8f9e198b4027.png",
     "static/media/pibastudio.png": "/piba-studio/static/media/pibastudio.dfbf03a7333d1492ba07.png",
     "static/media/Lato-LightItalic.ttf": "/piba-studio/static/media/Lato-LightItalic.4310bbed01b37dfcee98.ttf",
+    "static/media/illusPibaFooterMobile.png": "/piba-studio/static/media/illusPibaFooterMobile.705842f04564c5f3a837.png",
     "static/media/innovativeSolutions.png": "/piba-studio/static/media/innovativeSolutions.a1b441c76e7bdd7f5490.png",
     "static/media/purposefulDesign.png": "/piba-studio/static/media/purposefulDesign.630f6816a45193a31580.png",
     "static/media/exceptionalResults.png": "/piba-studio/static/media/exceptionalResults.b98704a111151d0e0955.png",
@@ -30,12 +32,12 @@
     "static/media/slick.ttf": "/piba-studio/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/piba-studio/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/piba-studio/index.html",
-    "main.c22670cd.css.map": "/piba-studio/static/css/main.c22670cd.css.map",
-    "main.cdf421a7.js.map": "/piba-studio/static/js/main.cdf421a7.js.map",
+    "main.82d15cc9.css.map": "/piba-studio/static/css/main.82d15cc9.css.map",
+    "main.bcdfa991.js.map": "/piba-studio/static/js/main.bcdfa991.js.map",
     "787.53d0096e.chunk.js.map": "/piba-studio/static/js/787.53d0096e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c22670cd.css",
-    "static/js/main.cdf421a7.js"
+    "static/css/main.82d15cc9.css",
+    "static/js/main.bcdfa991.js"
   ]
 }
