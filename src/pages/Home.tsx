@@ -1,7 +1,14 @@
-import { Backdrop, Box, Button, IconButton, Typography } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import {
+  Backdrop,
+  Box,
+  Button,
+  Grid,
+  IconButton,
+  Typography,
+} from "@mui/material";
+import { useEffect, useState } from "react";
 import pibaStudio from "./../assets/pibastudio.png";
-import plantRight from "./../assets/plantRight.png";
+import illusPiba from "./../assets/illusPiba.png";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 const Home = () => {
@@ -9,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setBackdropOpen(false);
-    }, 2500);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -60,98 +67,117 @@ const Home = () => {
   return (
     <Box
       sx={{
-        backgroundImage: `url(${plantRight})`,
-        height: { xs: "80vh", md: "100vh" },
+        backgroundImage: `url(${illusPiba})`,
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "right",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        justifyContent: "space-between",
-        m: 2,
+        backgroundPositionX: "right",
       }}
     >
-      {backDrop()}
-      <Box />
+      {/* {backDrop()} */}
       <Box
         sx={{
-          pl: { xs: 4, md: 16 },
+          height: "100%",
+          pt: { xs: 12, md: 20 },
+          pl: { xs: 3, md: 24 },
+          pr: { xs: 3, md: 24 },
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-start",
-        }}
-      >
-        <Typography variant="h1" align="left">
-          Meaningfull digital <br />
-          experiences through creative, <br />
-          purpose-driven design
-        </Typography>
-        <Box mt={4}>
-          <Button
-            disableElevation
-            variant="contained"
-            onClick={() =>
-              window.scrollTo({
-                behavior: "smooth",
-                top: document.documentElement.scrollHeight,
-              })
-            }
-            sx={{
-              boxShadow: "0px 0px 10px theme.primary.main",
-            }}
-          >
-            <Typography variant="button" color="white.main" m={1}>
-              LETS GET IN TOUCH
-            </Typography>
-          </Button>
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
           justifyContent: "center",
-          alignSelf: "center",
           alignItems: "center",
-          m: 5,
         }}
       >
-        <Box
-          sx={{
-            width: "40px",
-            height: "9px",
-            backgroundColor: "secondary.main",
-            m: 2,
-          }}
-        ></Box>
-        <Button
-          disableElevation
-          disableRipple
-          sx={{
-            "&:hover": {
-              backgroundColor: "transparent", // Set the hover background color to transparent
-              boxShadow: "none", // Remove the hover box shadow
-            },
-          }}
-          onMouseEnter={handleAutoHover}
-        >
-          <Typography m={2} variant="body2">
-            Scroll to explore
-          </Typography>
-          <IconButton
-            sx={{
-              m: 2,
-              color: "black.main",
-              outline: "2px solid",
-              outlineColor: "black.main",
-              borderRadius: "46%",
-            }}
-            aria-label="upload picture"
-            component="label"
+        <Grid container spacing={4}>
+          <Grid container item>
+            <Grid item xs={12} md={10}>
+              <Typography variant="h1" align="left">
+                Meaningfull digital <br /> experiences through creative,
+                purpose-driven design
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid
+            item
+            xs={12}
+            md={3}
+            sx={{ display: "flex", mt: { xs: 10, md: 2 } }}
           >
-            <ArrowDownwardIcon />
-          </IconButton>
-        </Button>
+            <Button
+              fullWidth
+              disableElevation
+              variant="contained"
+              onClick={() =>
+                window.scrollTo({
+                  behavior: "smooth",
+                  top: document.documentElement.scrollHeight,
+                })
+              }
+              sx={{
+                width: { xs: "100%", md: "auto" },
+                boxShadow: "0px 0px 10px theme.primary.main",
+              }}
+            >
+              <Typography variant="button" color="white.main" m={1}>
+                LETS GET IN TOUCH
+              </Typography>
+            </Button>
+          </Grid>
+        </Grid>
+        <Box mt={20} mb={6}>
+          <Grid
+            container
+            sx={{
+              display: "flex",
+              alignSelf: "flex-end",
+              alignItems: "center",
+            }}
+          >
+            <Button
+              disableElevation
+              disableRipple
+              sx={{
+                "&:hover": {
+                  backgroundColor: "transparent",
+                  boxShadow: "none",
+                  width: "auto",
+                },
+              }}
+              onMouseEnter={handleAutoHover}
+            >
+              <Box
+                sx={{
+                  display: { md: "flex", xs: "block" },
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: { xs: "0px", md: "40px" },
+                    height: { xs: "0px", md: "9px" },
+                    backgroundColor: "secondary.main",
+                    alignSelf: "center",
+                  }}
+                />
+                <Typography m={2} variant="body2">
+                  Scroll to explore
+                </Typography>
+                <IconButton
+                  sx={{
+                    alignSelf: "center",
+                    color: "black.main",
+                    outline: "2px solid",
+                    outlineColor: "black.main",
+                    borderRadius: "46%",
+                    marginTop: { xs: 1, md: 0 },
+                  }}
+                  component="label"
+                >
+                  <ArrowDownwardIcon />
+                </IconButton>
+              </Box>
+            </Button>
+          </Grid>
+        </Box>
       </Box>
     </Box>
   );

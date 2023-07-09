@@ -26,8 +26,8 @@ function Header(props: HeaderProps) {
 
   const centerButtonGrid = {
     display: "flex",
-    justifyContent: "flex-start",
     alignItems: "center",
+    justifyContent: { xs: "space-between", md: "flex-end" },
   };
 
   useEffect(() => {
@@ -86,11 +86,12 @@ function Header(props: HeaderProps) {
         transition: "transform 0.5s",
         transitionTimingFunction: "ease-out",
       }}
+      rowSpacing={2}
     >
       <Grid
         item
-        xs={12}
         sm={1}
+        xs={12}
         sx={{
           display: "flex",
           justifyContent: { xs: "center", sm: "flex-start" },
@@ -108,7 +109,7 @@ function Header(props: HeaderProps) {
           <img src={logoSmall} alt="Logo" />
         </Button>
       </Grid>
-      <Grid item xs={3} sm={2} md={1} sx={centerButtonGrid}>
+      <Grid item md={4} xs={12} sx={centerButtonGrid}>
         <HeaderButton
           onClick={() => {
             handleClick("projects");
@@ -118,8 +119,6 @@ function Header(props: HeaderProps) {
         >
           Projects
         </HeaderButton>
-      </Grid>
-      <Grid item xs={3} sm={2} md={1} sx={centerButtonGrid}>
         <HeaderButton
           onClick={() => {
             handleClick("services");
@@ -129,8 +128,6 @@ function Header(props: HeaderProps) {
         >
           Services
         </HeaderButton>
-      </Grid>
-      <Grid item xs={3} sm={2} md={1} sx={centerButtonGrid}>
         <HeaderButton
           onClick={() => {
             handleClick("about-us");
@@ -140,8 +137,6 @@ function Header(props: HeaderProps) {
         >
           About us
         </HeaderButton>
-      </Grid>
-      <Grid item xs={3} sm={2} md={1} sx={centerButtonGrid}>
         <HeaderButton
           onClick={() => {
             handleClick("say-hi");
@@ -154,9 +149,8 @@ function Header(props: HeaderProps) {
       </Grid>
       <Grid
         item
-        xs={12}
-        sm={3}
         md={7}
+        xs={12}
         sx={{
           ...centerButtonGrid,
           display: "flex",

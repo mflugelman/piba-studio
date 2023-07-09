@@ -65,8 +65,10 @@ let theme = createTheme({
       fontFamily: "Lato",
     },
     h1: {
-      fontSize: 80,
+      fontSize: 100,
       fontWeight: 300,
+      lineHeight: 1.6,
+      wordSpacing: 5,
       color: palette.black.main,
       fontFamily: "Lato",
     },
@@ -81,12 +83,15 @@ let theme = createTheme({
       fontWeight: 300,
       color: palette.black.main,
       fontFamily: "Lato",
+      lineHeight: 1.6,
+      wordSpacing: 3,
     },
     h4: {
       fontWeight: 600,
       fontSize: 50,
       fontFamily: "Lato",
       color: palette.black.main,
+      letterSpacing: 1.3,
     },
     h5: {
       fontWeight: 300,
@@ -107,7 +112,7 @@ let theme = createTheme({
       color: palette.white.main,
     },
     body1: {
-      fontWeight: 400,
+      fontWeight: 300,
       fontSize: 25,
       color: palette.black.main,
       fontFamily: "Poppins",
@@ -136,18 +141,9 @@ let theme = createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
-        // root: {
-        //   textTransform: "none",
-        //   borderRadius: 12,
-        //   fontFamily: "Poppins",
-        //   borderWidth: 2,
-        //   "&:hover": {
-        //     borderWidth: 2,
-        //   },
-        // },
         root: ({ ownerState }) => ({
           textTransform: "none",
-          borderRadius: 12,
+          borderRadius: 10,
           fontFamily: "Poppins",
           borderWidth: 2,
           ...(ownerState.variant === "contained" && {

@@ -9,6 +9,7 @@ import {
 import { useState, useEffect, useRef } from "react";
 import DashTitle from "../components/DashTitle";
 import ThisIsPibaImage from "./../assets/thisispiba.png";
+import ThisIsPibaMobile from "./../assets/thisIsPibaMobile.png";
 import { useInView } from "react-intersection-observer";
 
 const ThisIsPiba: React.FC = () => {
@@ -40,26 +41,22 @@ const ThisIsPiba: React.FC = () => {
     }
   }, [inView]);
 
+  const typographyVariant = isMobile ? "body2" : "body1";
+
   return (
     <Box
       sx={{
         position: "relative",
-        overflow: "hidden",
-        width: "100%",
-        height: "110vh",
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
       }}
     >
       <img
-        src={ThisIsPibaImage}
+        src={isMobile ? ThisIsPibaMobile : ThisIsPibaImage}
         alt="This is Piba"
         style={{
           width: "100%",
           objectFit: "cover",
-          minHeight: isMobile ? "100vh" : "auto",
-          maxHeight: "100%",
+          minHeight: isMobile ? "100%" : "auto",
           margin: isMobile ? "auto" : 0,
         }}
       />
@@ -80,7 +77,7 @@ const ThisIsPiba: React.FC = () => {
           alignItems: "center",
         }}
       >
-        <Grid container p={{ xs: 2, md: 10 }}>
+        <Grid container p={{ xs: 5, md: 10 }}>
           <Grid item md={8} xs={12}>
             <Box mb={6}>
               <DashTitle dashPosition="left" color="black">
@@ -89,7 +86,11 @@ const ThisIsPiba: React.FC = () => {
             </Box>
             <Fade in={visible[0]} timeout={timeout}>
               <p>
-                <Typography variant="body1" textAlign="left" ref={ref}>
+                <Typography
+                  variant={typographyVariant}
+                  textAlign="left"
+                  ref={ref}
+                >
                   Founded by two young professional women who started their
                   lives from scratch in a different country,{" "}
                   <strong>
@@ -102,7 +103,7 @@ const ThisIsPiba: React.FC = () => {
             </Fade>
             <Fade in={visible[1]} timeout={timeout}>
               <p>
-                <Typography variant="body1" textAlign="left">
+                <Typography variant={typographyVariant} textAlign="left">
                   We bring this same energy and dedication to our work, where we
                   use our diverse perspectives and experiences to create
                   innovative solutions that meet the needs of our clients and
@@ -112,7 +113,11 @@ const ThisIsPiba: React.FC = () => {
             </Fade>
             <Fade in={visible[2]} timeout={timeout}>
               <p>
-                <Typography variant="body1" textAlign="left" ref={ref}>
+                <Typography
+                  variant={typographyVariant}
+                  textAlign="left"
+                  ref={ref}
+                >
                   We're proud to break barriers and set new standards for
                   excellence. With our commitment to quality and our passion for
                   design, we're excited to make a difference in the digital

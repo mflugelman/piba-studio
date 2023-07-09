@@ -1,6 +1,7 @@
 import "../styles.css";
 import { Box, Button, Grid, Link, Typography } from "@mui/material";
 import PlantFooter from "./../assets/plantfooter.png";
+import PlantFooterMobile from "./../assets/illusPibaFooterMobile.png";
 const Footer = () => {
   const handleButtonClick = (link: string) => {
     window.open(link, "_blank");
@@ -10,17 +11,20 @@ const Footer = () => {
     <Box
       sx={{
         backgroundColor: "black.main",
-        backgroundImage: `url(${PlantFooter})`,
+        backgroundImage: {
+          xs: `url(${PlantFooterMobile})`,
+          md: `url(${PlantFooter})`,
+        },
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "right",
+        backgroundPosition: { xs: "left", md: "right" },
         display: "flex",
         justifyContent: "space-between",
         p: { xs: 2, md: 6 },
       }}
     >
       <Grid container>
-        <Grid item xs={12} md={6} p={{ xs: 2 }}>
+        <Grid item xs={8} md={6} p={{ xs: 2 }}>
           <Typography variant="h5" color="info.main" align="left">
             Say hi!
           </Typography>
@@ -40,18 +44,17 @@ const Footer = () => {
             align="left"
             fontFamily="Lato"
             fontWeight={700}
-            sx={{ fontSize: "16px !important" }}
           >
             BASED UK & IRELAND, WORKING WORLDWIDE
           </Typography>
         </Grid>
+        <Grid item md={2} />
         <Grid
           item
           xs={12}
-          md={6}
+          md={4}
           sx={{
             display: "flex",
-            justifyContent: "flex-end",
             alignItems: "center",
           }}
         >

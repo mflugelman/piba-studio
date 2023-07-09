@@ -4,7 +4,6 @@ type DashTitleProps = {
   children: string;
   dashPosition: "left" | "right";
   color: "black" | "white";
-  variant?: "h2" | "jumbo";
 };
 
 const DashTitle = (props: DashTitleProps) => {
@@ -20,14 +19,14 @@ const DashTitle = (props: DashTitleProps) => {
       {props.dashPosition == "left" ? (
         <Box
           sx={{
-            width: "90px",
-            height: "22px",
+            width: { xs: "60px", md: "90px" },
+            height: { xs: "13px", md: "22px" },
             backgroundColor: "secondary.main",
           }}
         />
       ) : null}
       <Typography
-        variant={props.variant ? props.variant : "h2"}
+        variant={"h2"}
         textAlign={props.dashPosition}
         mr={2}
         ml={2}
@@ -38,8 +37,8 @@ const DashTitle = (props: DashTitleProps) => {
       {props.dashPosition == "right" ? (
         <Box
           sx={{
-            width: "90px",
-            height: "22px",
+            width: { xs: "60px", md: "90px" },
+            height: { xs: "13px", md: "22px" },
             backgroundColor: "secondary.main",
           }}
         />

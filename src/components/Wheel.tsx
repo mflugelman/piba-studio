@@ -1,8 +1,6 @@
 import { Box, Fade, Grid, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HighlightedButton from "../components/HighlightedButton";
-
-const wheelRadius = 250;
 
 const deegrees = [
   (2 * Math.PI) / 11,
@@ -37,59 +35,13 @@ const texts: AnglesList = {
     "We specialize in providing user experience (UX) consulting services. Our team of experts is dedicated to helping businesses create digital products that are user-friendly, engaging, and easy to use. We offer a range of services, including UX research, design, and testing, to ensure that your product meets the needs and expectations of your target audience. ",
 };
 
-const buttonCoordinates = deegrees.map((deegree) => {
-  return {
-    x: (wheelRadius + 120) * Math.cos(deegree),
-    y: (wheelRadius + 120) * Math.sin(deegree),
-  };
-});
-
-const findKeyByValue = (value: number) => {
-  for (const key in anglesList) {
-    if (anglesList[key] === value) {
-      return key;
-    }
-  }
-  return "uxDesign"; // Return null if no matching key is found
-};
-
-const buttonLocations = {
-  position: "absolute",
-  margin: "auto",
-  "&:nth-of-type(1)": {
-    transform: `translate(-${buttonCoordinates[0].x}px, -${buttonCoordinates[0].y}px)`,
-  },
-  "&:nth-of-type(2)": {
-    transform: `translate(-${buttonCoordinates[1].x}px, -${buttonCoordinates[1].y}px)`,
-  },
-  "&:nth-of-type(3)": {
-    transform: `translate(-${buttonCoordinates[2].x}px, -${buttonCoordinates[2].y}px)`,
-  },
-  "&:nth-of-type(4)": {
-    transform: `translate(-${buttonCoordinates[3].x}px, ${buttonCoordinates[3].y}px)`,
-  },
-  "&:nth-of-type(5)": {
-    transform: `translate(-${buttonCoordinates[4].x}px, ${buttonCoordinates[4].y}px)`,
-  },
-};
-
-const circleStyle = {
-  width: wheelRadius * 2,
-  height: wheelRadius * 2,
-  borderRadius: "50%",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  position: "relative",
-  right: -wheelRadius,
-};
-
 const Wheel = () => {
   const [angle, setAngle] = useState(0);
   const [fade, setFade] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
   const handleClick = (newAngle: number) => {
     setFade(false);
-
     const degrees = -newAngle;
     const transform = `rotate(${degrees}deg)`;
     const wheel = document.getElementById("wheel");
@@ -100,6 +52,21 @@ const Wheel = () => {
     }, 250);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      const isMobile = window.matchMedia("(max-width: 768px)").matches;
+      setIsMobile(isMobile);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const wheelRadius = isMobile ? 200 : 280;
+
   const ballAngle = (53 * Math.PI) / 180;
   const innerWHeelRadius = wheelRadius - 25; // Half of the diameter
 
@@ -108,32 +75,90 @@ const Wheel = () => {
     y: innerWHeelRadius * Math.sin(ballAngle),
   };
 
+  const buttonCoordinates = deegrees.map((deegree) => {
+    return {
+      x: (wheelRadius + wheelRadius * 0.4) * Math.cos(deegree),
+      y: (wheelRadius + wheelRadius * 0.4) * Math.sin(deegree),
+    };
+  });
+
+  const findKeyByValue = (value: number) => {
+    for (const key in anglesList) {
+      if (anglesList[key] === value) {
+        return key;
+      }
+    }
+    return "uxDesign"; // Return null if no matching key is found
+  };
+
+  const buttonLocations = {
+    position: "absolute",
+    margin: "auto",
+    "&:nth-of-type(1)": {
+      transform: `translate(-${buttonCoordinates[0].x}px, -${buttonCoordinates[0].y}px)`,
+    },
+    "&:nth-of-type(2)": {
+      transform: `translate(-${buttonCoordinates[1].x}px, -${buttonCoordinates[1].y}px)`,
+    },
+    "&:nth-of-type(3)": {
+      transform: `translate(-${buttonCoordinates[2].x}px, -${buttonCoordinates[2].y}px)`,
+    },
+    "&:nth-of-type(4)": {
+      transform: `translate(-${buttonCoordinates[3].x}px, ${buttonCoordinates[3].y}px)`,
+    },
+    "&:nth-of-type(5)": {
+      transform: `translate(-${buttonCoordinates[4].x}px, ${buttonCoordinates[4].y}px)`,
+    },
+  };
+
+  const circleStyle = {
+    width: wheelRadius * 2,
+    height: wheelRadius * 2,
+    borderRadius: "50%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "relative",
+    transform: `translateX(${isMobile ? wheelRadius * 0.8 : wheelRadius}px)`,
+  };
+
   return (
-    <Box
-      sx={{
-        width: "100%",
-        overflow: "hidden",
-        t: 6,
-        pb: 10,
-      }}
-    >
-      <Grid container>
+    <Box sx={{ overflowX: "hidden" }}>
+      <Grid container sx={{ pb: 10 }}>
         <Grid
           item
-          xs={6}
-          sx={{ display: "flex", alignItems: "center", pl: 10 }}
+          xs={12}
+          md={6}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            order: { xs: 1, md: 0 },
+            p: { xs: 2, md: 10 },
+          }}
         >
-          <Box>
-            <Fade in={fade} timeout={{ enter: 250, exit: 250 }}>
-              <Box m={4} pl={4} borderLeft={1}>
-                <Typography variant="body1" textAlign={"left"} fontWeight={300}>
-                  {texts[findKeyByValue(angle)]}
-                </Typography>
-              </Box>
-            </Fade>
-          </Box>
+          <Fade in={fade} timeout={{ enter: 250, exit: 250 }}>
+            <Box pl={4} borderLeft={1}>
+              <Typography
+                variant={isMobile ? "body2" : "body1"}
+                textAlign={"left"}
+                fontWeight={300}
+              >
+                {texts[findKeyByValue(angle)]}
+              </Typography>
+            </Box>
+          </Fade>
         </Grid>
-        <Grid item xs={6} sx={{ display: "flex", justifyContent: "flex-end" }}>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            display: "flex",
+            justifyContent: "flex-end",
+            order: { xs: 0, md: 2 },
+            pb: 6,
+          }}
+        >
           <Box sx={circleStyle}>
             <Box
               id="wheel"

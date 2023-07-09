@@ -92,12 +92,12 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
     return {
       borderRadius: 2,
       transform: selected
-        ? `scale(1) translateY(-${selectedSlide * 5}%)`
+        ? `scale(1) translateY(-${isMobile ? 0 : 5 * selectedSlide}%)`
         : "scale(0.8)",
       transition: "transform 0.2s ease-in-out", // Add transition property
       boxShadow: selected ? "0px 0px 30px rgba(255, 255, 255, 0.64)" : "none",
-      width: "80%",
       m: "0 auto",
+      width: { xs: "100%", md: "80%" },
     };
   };
 
@@ -192,16 +192,10 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
 
   return (
     <Box ref={ref}>
-      <Grid
-        container
-        sx={{
-          pt: 2,
-          pb: 6,
-        }}
-      >
+      <Grid container>
         <Grid item xs={12} md={7}>
-          <Box sx={{ translateY: 20 }}>
-            <Carousel {...settings} className="carousel" ref={carouselRef}>
+          <Box p={0}>
+            <Carousel {...settings} ref={carouselRef}>
               {carrouselData.map((carrouselComponent, index) => (
                 <div
                   key={index}
@@ -228,16 +222,21 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
             display: "flex",
             justifyContent: "space-evenly",
             flexDirection: "column",
+            p: 4,
           }}
         >
-          <Box>
-            <Typography color="white.main" variant="h6" textAlign="left">
-              {carrouselData[selectedSlide].title}
-            </Typography>
-            <Typography variant="body1" color="white.main" textAlign="left">
-              {carrouselData[selectedSlide].description}
-            </Typography>
-          </Box>
+          <Typography
+            color="white.main"
+            variant="h6"
+            textAlign="left"
+            fontWeight="bold"
+          >
+            {carrouselData[selectedSlide].title}
+          </Typography>
+          <Typography variant="body2" color="white.main" textAlign="left">
+            {carrouselData[selectedSlide].description}
+          </Typography>
+
           <Box sx={{ display: "flex" }}>
             {carrouselData[selectedSlide].tags.map((tag, index) => (
               <Tag key={"tag" + index}>{tag}</Tag>
