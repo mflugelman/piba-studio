@@ -119,11 +119,11 @@ const Wheel = () => {
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    right: isMobile ? -wheelRadius * 0.8 : -wheelRadius,
+    transform: `translateX(${isMobile ? wheelRadius * 0.8 : wheelRadius}px)`,
   };
 
   return (
-    <Box>
+    <Box sx={{ overflowX: "hidden" }}>
       <Grid container sx={{ pb: 10 }}>
         <Grid
           item
