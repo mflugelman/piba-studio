@@ -1,13 +1,15 @@
 import { Box } from "@mui/material";
 import Wheel from "../components/Wheel";
 import DashTitle from "../components/DashTitle";
+import { useTranslation } from "react-i18next";
 
 const Services = () => {
+  const { t } = useTranslation("Services");
   return (
     <Box>
-      <Box p={4} pt={8}>
+      <Box pl={{ xs: 4, md: 10 }} pt={8}>
         <DashTitle color="black" dashPosition="left">
-          How we can help
+          {t("HowWeCanHelp")}
         </DashTitle>
       </Box>
       <Wheel />

@@ -4,6 +4,7 @@ import { Button, Grid, Typography } from "@mui/material";
 import logoSmall from "./../assets/logo-small.png";
 import HeaderButton from "./HeaderButton";
 import "./../App.css";
+import { useTranslation } from "react-i18next";
 
 type HeaderProps = {
   onButtonClick: (value: string) => void;
@@ -11,6 +12,8 @@ type HeaderProps = {
 };
 
 function Header(props: HeaderProps) {
+  const { t } = useTranslation("Header");
+
   const [isBannerVisible, setIsBannerVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [activeButton, setActiveButton] = useState(props.activeButton);
@@ -27,14 +30,14 @@ function Header(props: HeaderProps) {
   const centerButtonGrid = {
     display: "flex",
     alignItems: "center",
-    justifyContent: { xs: "space-between", md: "flex-end" },
+    justifyContent: { xs: "space-between", md: "center" },
   };
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
 
-      if (currentScrollPos === 0) {
+      if (currentScrollPos < 100) {
         // Header is at the top, keep it visible
         setIsBannerVisible(true);
       } else if (currentScrollPos < prevScrollPos) {
@@ -53,8 +56,8 @@ function Header(props: HeaderProps) {
 
       setHideTimeout(
         setTimeout(() => {
-          setIsBannerVisible(false);
-        }, 1500)
+          if (currentScrollPos > 100) setIsBannerVisible(false);
+        }, 2000)
       );
     };
 
@@ -117,7 +120,7 @@ function Header(props: HeaderProps) {
           }}
           active={activeButton == "projects"}
         >
-          Projects
+          {t("Projects")}
         </HeaderButton>
         <HeaderButton
           onClick={() => {
@@ -126,7 +129,7 @@ function Header(props: HeaderProps) {
           }}
           active={activeButton == "services"}
         >
-          Services
+          {t("Services")}
         </HeaderButton>
         <HeaderButton
           onClick={() => {
@@ -135,7 +138,7 @@ function Header(props: HeaderProps) {
           }}
           active={activeButton == "about-us"}
         >
-          About us
+          {t("AboutUs")}
         </HeaderButton>
         <HeaderButton
           onClick={() => {
@@ -144,7 +147,7 @@ function Header(props: HeaderProps) {
           }}
           active={activeButton == "say-hi"}
         >
-          Say hi!
+          {t("SayHi")}
         </HeaderButton>
       </Grid>
       <Grid
@@ -164,7 +167,7 @@ function Header(props: HeaderProps) {
           }
         >
           <Typography variant="button" fontWeight={600} color={"primary"}>
-            BOOK A CALL
+            {t("BookCall")}
           </Typography>
         </Button>
       </Grid>

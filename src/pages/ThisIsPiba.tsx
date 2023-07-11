@@ -6,14 +6,17 @@ import {
   Theme,
   Fade,
 } from "@mui/material";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import DashTitle from "../components/DashTitle";
 import ThisIsPibaImage from "./../assets/thisispiba.png";
 import ThisIsPibaMobile from "./../assets/thisIsPibaMobile.png";
 import { useInView } from "react-intersection-observer";
+import { Trans, useTranslation } from "react-i18next";
 
 const ThisIsPiba: React.FC = () => {
-  const timeout = 800;
+  const { t } = useTranslation("ThisIsPiba");
+
+  const timeout = 400;
   const isMobile = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("sm")
   );
@@ -27,17 +30,17 @@ const ThisIsPiba: React.FC = () => {
     if (inView) {
       setTimeout(() => {
         setVisible([true, visible[1], visible[2]]);
-      }, 500);
+      }, timeout);
     }
     if (inView) {
       setTimeout(() => {
         setVisible([true, true, visible[2]]);
-      }, 1000);
+      }, timeout * 2);
     }
     if (inView) {
       setTimeout(() => {
         setVisible([true, true, true]);
-      }, 1500);
+      }, timeout * 3);
     }
   }, [inView]);
 
@@ -81,7 +84,7 @@ const ThisIsPiba: React.FC = () => {
           <Grid item md={8} xs={12}>
             <Box mb={6}>
               <DashTitle dashPosition="left" color="black">
-                This is Piba
+                {t("ThisIsPiba")}
               </DashTitle>
             </Box>
             <Fade in={visible[0]} timeout={timeout}>
@@ -91,23 +94,14 @@ const ThisIsPiba: React.FC = () => {
                   textAlign="left"
                   ref={ref}
                 >
-                  Founded by two young professional women who started their
-                  lives from scratch in a different country,{" "}
-                  <strong>
-                    our studio is fueled by the passion, creativity, and
-                    resilience that come from overcoming obstacles and embracing
-                    new challenges.
-                  </strong>
+                  <Trans i18nKey="ThisIsPiba.Founded">{t("Founded")}</Trans>
                 </Typography>
               </p>
             </Fade>
             <Fade in={visible[1]} timeout={timeout}>
               <p>
                 <Typography variant={typographyVariant} textAlign="left">
-                  We bring this same energy and dedication to our work, where we
-                  use our diverse perspectives and experiences to create
-                  innovative solutions that meet the needs of our clients and
-                  their users.
+                  {t("EnergyAndDedication")}
                 </Typography>
               </p>
             </Fade>
@@ -118,10 +112,7 @@ const ThisIsPiba: React.FC = () => {
                   textAlign="left"
                   ref={ref}
                 >
-                  We're proud to break barriers and set new standards for
-                  excellence. With our commitment to quality and our passion for
-                  design, we're excited to make a difference in the digital
-                  world and beyond.
+                  {t("BreakingBarriers")}
                 </Typography>
               </p>
             </Fade>

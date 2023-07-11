@@ -1,6 +1,7 @@
 import { Box, Fade, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import HighlightedButton from "../components/HighlightedButton";
+import { useTranslation } from "react-i18next";
 
 const deegrees = [
   (2 * Math.PI) / 11,
@@ -11,10 +12,10 @@ const deegrees = [
 ];
 
 interface AnglesList {
-  [key: string]: any;
+  [key: string]: { title: string; text: string };
 }
 
-const anglesList: AnglesList = {
+const anglesList: { [key: string]: number } = {
   uxDesign: 0,
   uiDesign: 30,
   appDesign: 53,
@@ -22,23 +23,34 @@ const anglesList: AnglesList = {
   uxConsulting: 108,
 };
 
-const texts: AnglesList = {
-  uxDesign:
-    "Our team is dedicated to creating intuitive and enjoyable experiences for your customers. Our UX design process begins with extensive research to understand your users' needs and behaviors. We then create wireframes and prototypes to test and refine our ideas before moving on to full design and development.",
-  uiDesign:
-    "Our team of experts is dedicated to creating visually appealing and user-friendly interfaces for websites and mobile applications. We believe that a great design not only enhances the user experience but also improves the overall functionality of the product.",
-  appDesign:
-    "We specialize in designing high-quality mobile applications that are user-friendly and visually appealing. Our team of experienced designers will work closely with you to understand your vision and create a custom design that meets your needs.",
-  webDesign:
-    "We specialize in creating impactful web designs that elevate your online presence. Our team combines creativity, technical expertise, and industry best practices to design responsive and visually appealing websites. From wireframing to prototyping, we ensure that your website not only looks stunning but also performs flawlessly across various devices and browsers.",
-  uxConsulting:
-    "We specialize in providing user experience (UX) consulting services. Our team of experts is dedicated to helping businesses create digital products that are user-friendly, engaging, and easy to use. We offer a range of services, including UX research, design, and testing, to ensure that your product meets the needs and expectations of your target audience. ",
-};
-
 const Wheel = () => {
+  const { t } = useTranslation("Wheel");
   const [angle, setAngle] = useState(0);
   const [fade, setFade] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+
+  const texts: AnglesList = {
+    uxDesign: {
+      title: t("UXDesign"),
+      text: t("UXDesignText"),
+    },
+    uiDesign: {
+      title: t("UIDesign"),
+      text: t("UIDesignText"),
+    },
+    appDesign: {
+      title: t("AppDesign"),
+      text: t("AppDesignText"),
+    },
+    webDesign: {
+      title: t("WebDesign"),
+      text: t("WebDesignText"),
+    },
+    uxConsulting: {
+      title: t("UXConsulting"),
+      text: t("UXConsultingText"),
+    },
+  };
 
   const handleClick = (newAngle: number) => {
     setFade(false);
@@ -124,7 +136,7 @@ const Wheel = () => {
 
   return (
     <Box sx={{ overflowX: "hidden" }}>
-      <Grid container sx={{ pb: 10 }}>
+      <Grid container sx={{ pb: 10, pt: 10 }}>
         <Grid
           item
           xs={12}
@@ -143,7 +155,7 @@ const Wheel = () => {
                 textAlign={"left"}
                 fontWeight={300}
               >
-                {texts[findKeyByValue(angle)]}
+                {texts[findKeyByValue(angle)].text}
               </Typography>
             </Box>
           </Fade>
@@ -194,35 +206,35 @@ const Wheel = () => {
               onClick={() => handleClick(anglesList.uxDesign)}
               active={angle == anglesList.uxDesign}
             >
-              UX Design
+              {texts["uxDesign"].title}
             </HighlightedButton>
             <HighlightedButton
               circleLocationProps={buttonLocations}
               onClick={() => handleClick(anglesList.uiDesign)}
               active={angle == anglesList.uiDesign}
             >
-              UI Design
+              {texts["uiDesign"].title}
             </HighlightedButton>
             <HighlightedButton
               circleLocationProps={buttonLocations}
               onClick={() => handleClick(anglesList.appDesign)}
               active={angle == anglesList.appDesign}
             >
-              App Design
+              {texts["appDesign"].title}
             </HighlightedButton>
             <HighlightedButton
               circleLocationProps={buttonLocations}
               onClick={() => handleClick(anglesList.webDesign)}
               active={angle == anglesList.webDesign}
             >
-              Web Design
+              {texts["webDesign"].title}
             </HighlightedButton>
             <HighlightedButton
               circleLocationProps={buttonLocations}
               onClick={() => handleClick(anglesList.uxConsulting)}
               active={angle == anglesList.uxConsulting}
             >
-              UX Consulting
+              {texts["uxConsulting"].title}
             </HighlightedButton>
           </Box>
         </Grid>

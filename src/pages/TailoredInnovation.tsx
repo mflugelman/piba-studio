@@ -1,5 +1,8 @@
 import { Box, Grid, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 const TailoredInnovation = () => {
+  const { t } = useTranslation("TailoredInnovation");
+
   return (
     <Box
       sx={{
@@ -27,7 +30,7 @@ const TailoredInnovation = () => {
             fontWeight={"bold"}
             fontSize={{ xs: "32px", md: "42px" }}
           >
-            Tailored innovation for your success
+            {t("TailoredInnovation")}
           </Typography>
         </Grid>
         <Grid item md={2} />
@@ -41,10 +44,7 @@ const TailoredInnovation = () => {
           }}
         >
           <Typography variant="body1" color={"white.main"} textAlign={"left"}>
-            We bring together creativity, technical expertise, and strategic
-            thinking to develop innovative solutions that exceed our clients'
-            expectations. We believe that every project is unique and requires a
-            tailored approach to achieve the desired outcomes.
+            {t("CreativityAndExpertise")}
           </Typography>
         </Grid>
       </Grid>

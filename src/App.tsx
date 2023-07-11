@@ -45,7 +45,7 @@ function App() {
       setCurrentSection("about-us");
     } else if (inViewSayHi) {
       setCurrentSection("say-hi");
-    } else if (inViewProjects) {
+    } else if (inViewHome) {
       setCurrentSection("");
     }
   }, [inViewHome, inViewProjects, inViewServices, inViewAboutUs, inViewSayHi]);

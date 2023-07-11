@@ -4,7 +4,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./VerticalCarousel.css";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import CommunityWebsite from "./../../assets/carrouselImages/CommunityWebsite.png";
 import MedicalSearchEngine from "./../../assets/carrouselImages/MedicalSearchEngine.png";
 import RealStateWebsite from "./../../assets/carrouselImages/RealStateWebsite.png";
@@ -14,6 +14,8 @@ import { SxProps } from "@mui/system";
 import { useInView } from "react-intersection-observer";
 import { useScrollBlock } from "../../hooks/useScrollBlock";
 import Tag from "../Tag";
+import { useTranslation } from "react-i18next";
+import RightIconButton from "../RightIconButton";
 
 type CarrouselContent = {
   title: string;
@@ -23,63 +25,13 @@ type CarrouselContent = {
   link: string;
 };
 
-const content = [
-  TaskManagementDashboard,
-  MedicalSearchEngine,
-  CommunityWebsite,
-  RealStateWebsite,
-  ReportFormsWebapp,
-];
-
-const carrouselData: CarrouselContent[] = [
-  {
-    title: "Task Management Dashboard",
-    description:
-      "Through our collaborative design process, we revolutionized task management by crafting an intuitive platform that boosts productivity and coordination.",
-    image: TaskManagementDashboard,
-    tags: ["Web App", "UX Design", "UI Design"],
-    link: "https://www.behance.net/gallery/147246767/Surer",
-  },
-  {
-    title: "Medical Search Engine",
-    description:
-      "Our end-to-end process involved collaborative design with the El Toco team, from research to the final product, including testing and quality assurance (QA).",
-    image: MedicalSearchEngine,
-    tags: ["Web App", "UX Design", "UI Design"],
-    link: "https://www.behance.net/gallery/159357091/El-Toco-Search-Engine",
-  },
-  {
-    title: "PRO180 Community Website",
-    description:
-      "Enhanced the PRO180 experience through collaborative UX/UI design, facilitating seamless resource sharing, updates, and fostering meaningful connections.",
-    image: CommunityWebsite,
-    tags: ["Web App", "UX Design", "UI Design"],
-    link: "https://www.behance.net/gallery/146358393/PRO180",
-  },
-  {
-    title: "Real State Website",
-    description:
-      "Provided full web design fully responsive for desktop, tablet and mobile. We worked closely with client to highlight the most important projects and ",
-    image: RealStateWebsite,
-    tags: ["Web App", "UX Design", "UI Design"],
-    link: "https://www.behance.net/gallery/145429161/CB-desarrollos-inmobiliarios",
-  },
-  {
-    title: "Report forms webapp",
-    description:
-      "Designed end-to-end product. Customer side to input reports, and back-end side for client to review reports, analyze metrics and information",
-    image: ReportFormsWebapp,
-    tags: ["Web App", "UX Design", "UI Design"],
-    link: "https://www.behance.net/gallery/161498095/Report-Forms",
-  },
-];
-
 const debounceDelay = 40;
 
 type VerticalCarouselProps = {};
 
 const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
-  const { ref, inView, entry } = useInView({
+  const { t } = useTranslation("VerticalCarousel");
+  const { ref, inView } = useInView({
     threshold: 1,
   });
   const carouselRef = useRef<Carousel>(null);
@@ -88,13 +40,51 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
   const [scrollEventAllowed, setScrollEventAllowed] = useState(true);
   const [firstBlock, setFirstBlock] = useState(false);
 
+  const carrouselData: CarrouselContent[] = [
+    {
+      title: t("TaskManagementDashboard"),
+      description: t("TaskManagementDashboardDescription"),
+      image: TaskManagementDashboard,
+      tags: [t("WebApp"), t("UXDesign"), t("UIDesign")],
+      link: "https://www.behance.net/gallery/147246767/Surer",
+    },
+    {
+      title: t("MedicalSearchEngine"),
+      description: t("MedicalSearchEngineDescription"),
+      image: MedicalSearchEngine,
+      tags: [t("WebApp"), t("UXDesign"), t("UIDesign")],
+      link: "https://www.behance.net/gallery/159357091/El-Toco-Search-Engine",
+    },
+    {
+      title: t("PRO180CommunityWebsite"),
+      description: t("PRO180CommunityWebsiteDescription"),
+      image: CommunityWebsite,
+      tags: [t("WebApp"), t("UXDesign"), t("UIDesign")],
+      link: "https://www.behance.net/gallery/146358393/PRO180",
+    },
+    {
+      title: t("RealStateWebsite"),
+      description: t("RealStateWebsiteDescription"),
+      image: RealStateWebsite,
+      tags: [t("WebApp"), t("UXDesign"), t("UIDesign")],
+      link: "https://www.behance.net/gallery/145429161/CB-desarrollos-inmobiliarios",
+    },
+    {
+      title: t("ReportFormsWebapp"),
+      description: t("ReportFormsWebappDescription"),
+      image: ReportFormsWebapp,
+      tags: [t("WebApp"), t("UXDesign"), t("UIDesign")],
+      link: "https://www.behance.net/gallery/161498095/Report-Forms",
+    },
+  ];
+
   const getBoxStyles = (selected: boolean): SxProps => {
     return {
       borderRadius: 2,
       transform: selected
         ? `scale(1) translateY(-${isMobile ? 0 : 5 * selectedSlide}%)`
         : "scale(0.8)",
-      transition: "transform 0.2s ease-in-out", // Add transition property
+      transition: "transform 0.2s ease-in-out",
       boxShadow: selected ? "0px 0px 30px rgba(255, 255, 255, 0.64)" : "none",
       m: "0 auto",
       width: { xs: "100%", md: "80%" },
@@ -181,14 +171,14 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
       setScrollEventAllowed(true);
     };
 
-    if (selectedSlide == carrouselData.length - 1) allowScroll();
+    if (selectedSlide === carrouselData.length - 1) allowScroll();
 
     const timeoutId = setTimeout(enableScrollEvent, debounceDelay);
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [selectedSlide]);
+  }, [selectedSlide, allowScroll]);
 
   return (
     <Box ref={ref}>
@@ -242,37 +232,14 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
               <Tag key={"tag" + index}>{tag}</Tag>
             ))}
           </Box>
-          <Button
+
+          <RightIconButton
+            icon={ArrowForwardIcon}
+            color={"white"}
             onClick={() => handleSlideClick(selectedSlide)}
-            disableRipple
-            sx={{
-              alignSelf: "flex-start",
-              "&:hover": {
-                backgroundColor: "transparent",
-                color: "#9747FF",
-                "& .MuiTypography-root": {
-                  color: "#9747FF",
-                },
-                "& .MuiSvgIcon-root": {
-                  color: "#9747FF",
-                },
-              },
-            }}
           >
-            <Typography variant="body2" color="white.main">
-              Learn more
-            </Typography>
-            <ArrowForwardIcon
-              sx={{
-                m: 2,
-                color: "white.main",
-                outline: "2px solid",
-                outlineColor: "white.main",
-                borderRadius: "46%",
-                p: 1,
-              }}
-            />
-          </Button>
+            {t("LearnMore")}
+          </RightIconButton>
         </Grid>
       </Grid>
     </Box>
