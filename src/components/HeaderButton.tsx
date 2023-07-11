@@ -14,8 +14,8 @@ const HeaderButton = (props: HeaderButtonButtonProps) => {
       disableRipple
       variant="text"
       sx={{
-        mr: { xs: 0, md: 2 },
-        ml: { xs: 0, md: 2 },
+        mr: { xs: 0, md: 1 },
+        ml: { xs: 0, md: 1 },
         textTransform: "none",
         "&:hover": {
           backgroundColor: "transparent",

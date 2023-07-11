@@ -1,18 +1,15 @@
-import {
-  Backdrop,
-  Box,
-  Button,
-  Grid,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Backdrop, Box, Button, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import pibaStudio from "./../assets/pibastudio.png";
 import illusPiba from "./../assets/illusPiba.png";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import { useTranslation } from "react-i18next";
+import RightIconButton from "../components/RightIconButton";
 
 const Home = () => {
+  const { t } = useTranslation("HomeScreen");
   const [backdropOpen, setBackdropOpen] = useState(true);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setBackdropOpen(false);
@@ -21,24 +18,32 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleAutoHover = () => {
-    const scrollStep = window.innerHeight / 50; // Adjust the scroll step to control the smoothness
-
-    const scroll = () => {
-      if (window.pageYOffset < window.innerHeight) {
-        window.scrollBy(0, scrollStep);
-        requestAnimationFrame(scroll);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 0) {
+        setBackdropOpen(false);
+        window.removeEventListener("scroll", handleScroll);
       }
     };
 
-    scroll();
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleAutoScroll = () => {
+    document.documentElement.style.scrollBehavior = "smooth";
+    const scrollStep = window.innerHeight;
+    window.scrollBy(0, scrollStep);
   };
 
   const backDrop = () => {
     return (
       <>
         <Backdrop
-          timeout={{ exit: 1000 }}
+          timeout={{ exit: 800 }}
           open={backdropOpen}
           sx={{
             backgroundColor: "rgba(255, 255, 255,0.87)",
@@ -73,25 +78,23 @@ const Home = () => {
         backgroundPositionX: "right",
       }}
     >
-      {/* {backDrop()} */}
+      {backDrop()}
       <Box
         sx={{
-          height: "100%",
-          pt: { xs: 12, md: 20 },
+          height: "100vh",
+          pt: { xs: 20, md: 20 },
           pl: { xs: 3, md: 24 },
           pr: { xs: 3, md: 24 },
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          justifyContent: "space-around",
         }}
       >
-        <Grid container spacing={4}>
+        <Grid container spacing={2}>
           <Grid container item>
             <Grid item xs={12} md={10}>
               <Typography variant="h1" align="left">
-                Meaningfull digital <br /> experiences through creative,
-                purpose-driven design
+                {t("MeaningfulExperiences")}
               </Typography>
             </Grid>
           </Grid>
@@ -117,66 +120,42 @@ const Home = () => {
               }}
             >
               <Typography variant="button" color="white.main" m={1}>
-                LETS GET IN TOUCH
+                {t("GetInTouch")}
               </Typography>
             </Button>
           </Grid>
         </Grid>
-        <Box mt={20} mb={6}>
-          <Grid
-            container
+        <Box
+          mb={6}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            alignSelf: "center",
+          }}
+        >
+          <Box
             sx={{
-              display: "flex",
-              alignSelf: "flex-end",
+              display: { md: "flex", xs: "block" },
               alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            <Button
-              disableElevation
-              disableRipple
+            <Box
               sx={{
-                "&:hover": {
-                  backgroundColor: "transparent",
-                  boxShadow: "none",
-                  width: "auto",
-                },
+                width: { xs: "0px", md: "40px" },
+                height: { xs: "0px", md: "9px" },
+                backgroundColor: "secondary.main",
+                alignSelf: "center",
               }}
-              onMouseEnter={handleAutoHover}
+            />
+            <RightIconButton
+              onClick={handleAutoScroll}
+              icon={ArrowDownwardIcon}
+              color="black"
             >
-              <Box
-                sx={{
-                  display: { md: "flex", xs: "block" },
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Box
-                  sx={{
-                    width: { xs: "0px", md: "40px" },
-                    height: { xs: "0px", md: "9px" },
-                    backgroundColor: "secondary.main",
-                    alignSelf: "center",
-                  }}
-                />
-                <Typography m={2} variant="body2">
-                  Scroll to explore
-                </Typography>
-                <IconButton
-                  sx={{
-                    alignSelf: "center",
-                    color: "black.main",
-                    outline: "2px solid",
-                    outlineColor: "black.main",
-                    borderRadius: "46%",
-                    marginTop: { xs: 1, md: 0 },
-                  }}
-                  component="label"
-                >
-                  <ArrowDownwardIcon />
-                </IconButton>
-              </Box>
-            </Button>
-          </Grid>
+              {t("ScrollToExplore")}
+            </RightIconButton>
+          </Box>
         </Box>
       </Box>
     </Box>

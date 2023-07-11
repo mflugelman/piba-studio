@@ -1,0 +1,78 @@
+{
+  "Header": {
+    "Projects": "Projects",
+    "Services": "Services",
+    "AboutUs": "About us",
+    "SayHi": "Say hi!",
+    "BookCall": "BOOK A CALL"
+  },
+  "HomeScreen": {
+    "MeaningfulExperiences": "Meaningful digital \n experiences through creative,purpose-driven design.",
+    "GetInTouch": "LET'S GET IN TOUCH",
+    "ScrollToExplore": "Scroll to explore"
+  },
+  "OurWork": {
+    "OurWork": "Our Work"
+  },
+  "VerticalCarousel": {
+    "TaskManagementDashboard": "Task Management Dashboard",
+    "TaskManagementDashboardDescription": "Through our collaborative design process, we revolutionized task management by crafting an intuitive platform that boosts productivity and coordination.",
+    "MedicalSearchEngine": "Medical Search Engine",
+    "MedicalSearchEngineDescription": "Our end-to-end process involved collaborative design with the El Toco team, from research to the final product, including testing and quality assurance (QA).",
+    "PRO180CommunityWebsite": "PRO180 Community Website",
+    "PRO180CommunityWebsiteDescription": "Enhanced the PRO180 experience through collaborative UX/UI design, facilitating seamless resource sharing, updates, and fostering meaningful connections.",
+    "RealStateWebsite": "Real State Website",
+    "RealStateWebsiteDescription": "Provided full web design fully responsive for desktop, tablet and mobile. We worked closely with client to highlight the most important projects and",
+    "ReportFormsWebapp": "Report forms webapp",
+    "ReportFormsWebappDescription": "Designed end-to-end product. Customer side to input reports, and back-end side for client to review reports, analyze metrics and information",
+    "WebApp": "Web App",
+    "UXDesign": "UX Design",
+    "UIDesign": "UI Design",
+    "LearnMore": "Learn More"
+  },
+  "Services": {
+    "HowWeCanHelp": "How we can help"
+  },
+  "Wheel": {
+    "UXDesign": "UX Design",
+    "UXDesignText": "Our team is dedicated to creating intuitive and enjoyable experiences for your customers. Our UX design process begins with extensive research to understand your users' needs and behaviors. We then create wireframes and prototypes to test and refine our ideas before moving on to full design and development.",
+    "UIDesign": "UI Design",
+    "UIDesignText": "Our team of experts is dedicated to creating visually appealing and user-friendly interfaces for websites and mobile applications. We believe that a great design not only enhances the user experience but also improves the overall functionality of the product.",
+    "AppDesign": "App Design",
+    "AppDesignText": "We specialize in designing high-quality mobile applications that are user-friendly and visually appealing. Our team of experienced designers will work closely with you to understand your vision and create a custom design that meets your needs.",
+    "WebDesign": "Web Design",
+    "WebDesignText": "We specialize in creating impactful web designs that elevate your online presence. Our team combines creativity, technical expertise, and industry best practices to design responsive and visually appealing websites. From wireframing to prototyping, we ensure that your website not only looks stunning but also performs flawlessly across various devices and browsers.",
+    "UXConsulting": "UX Consulting",
+    "UXConsultingText": "We specialize in providing user experience (UX) consulting services. Our team of experts is dedicated to helping businesses create digital products that are user-friendly, engaging, and easy to use. We offer a range of services, including UX research, design, and testing, to ensure that your product meets the needs and expectations of your target audience."
+  },
+  "ThisIsPiba": {
+    "ThisIsPiba": "This is Piba",
+    "Founded": " Founded by two young professional women who started their lives from scratch in a different country, <strong style={{ fontWeight: 'bold' }}> our studio is fueled by the passion, creativity, and resilience that come from overcoming obstacles and embracing new challenges. </strong>",
+    "EnergyAndDedication": "We bring this same energy and dedication to our work, where we use our diverse perspectives and experiences to create innovative solutions that meet the needs of our clients and their users.",
+    "BreakingBarriers": "We're proud to break barriers and set new standards for excellence. With our commitment to quality and our passion for design, we're excited to make a difference in the digital world and beyond."
+  },
+  "TailoredInnovation": {
+    "TailoredInnovation": "Tailored innovation for your success",
+    "CreativityAndExpertise": "We bring together creativity, technical expertise, and strategic thinking to develop innovative solutions that exceed our clients' expectations. We believe that every project is unique and requires a tailored approach to achieve the desired outcomes."
+  },
+  "WorkWithUs": {
+    "WhyWorkWithUs": "Why work with us?",
+    "InnovativeSolutions": "Innovative solutions",
+    "InnovativeSolutionsText": "We pride ourselves on delivering innovative solutions that push boundaries and exceed expectations. With our forward-thinking approach and dedication to staying at the forefront of design trends and technologies, we can provide clients with fresh and cutting-edge solutions that set them apart from the competition.",
+    "CollaborativePartnership": "Collaborative Partnership",
+    "CollaborativePartnershipText": "We believe in fostering strong and collaborative partnerships with our clients. By actively involving our clients in the creative process, we ensure that their unique vision and goals are fully realized. Our open communication, attentive listening, and seamless teamwork make the journey enjoyable and result in solutions that truly reflect their brand identity.",
+    "PurposefulDesign": "Purposeful Design",
+    "PurposefulDesignText": "Our design philosophy is centered around purpose. We go beyond aesthetics to create designs that are strategically aligned with our clients' objectives and values. By understanding their target audience, we can craft meaningful and engaging experiences that resonate deeply, leaving a lasting impact on their customers.",
+    "ExceptionalResults": "Exceptional Results",
+    "ExceptionalResultsText": "Our design philosophy is centered around purpose. We go beyond aesthetics to create designs that are strategically aligned with our clients' objectives and values. By understanding their target audience, we can craft meaningful and engaging experiences that resonate deeply, leaving a lasting impact on their customers."
+  },
+  "LetsTalk": {
+    "ThisWasUs": "This was us. <br/> We are excited to hear about you, let’s explore <br /> your project",
+    "LetsTalk": "Let's talk",
+    "BookCall": "BOOK A CALL"
+  },
+  "Footer": {
+    "SayHi": "Say hi!",
+    "Based": "BASED UK & IRELAND, WORKING WORLDWIDE"
+  }
+}

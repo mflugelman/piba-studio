@@ -1,5 +1,8 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
+import { Trans, useTranslation } from "react-i18next";
 const LetsTalk = () => {
+  const { t } = useTranslation("LetsTalk");
+
   return (
     <Box
       sx={{
@@ -18,9 +21,7 @@ const LetsTalk = () => {
           sx={{ display: "flex", alignItems: "center" }}
         >
           <Typography variant="h3" textAlign={"left"}>
-            This was us. <br />
-            We are excited to hear <br /> about you, let’s explore <br /> your
-            project
+            <Trans i18nKey="LetsTalk.ThisWasUs">{t("ThisWasUs")}</Trans>
           </Typography>
         </Grid>
         <Grid md={2} />
@@ -36,7 +37,7 @@ const LetsTalk = () => {
           }}
         >
           <Typography variant="h4" textAlign="center" m={4}>
-            Let's Talk!
+            {t("LetsTalk")}
           </Typography>
           <Button
             sx={{ width: { xs: "50%", md: "auto" } }}
@@ -46,7 +47,7 @@ const LetsTalk = () => {
             }
           >
             <Typography variant="button" color="white.main">
-              BOOK A CALL
+              {t("BookCall")}
             </Typography>
           </Button>
         </Grid>

@@ -1,14 +1,20 @@
 import { Box } from "@mui/material";
 import VerticalCarousel from "../components/Carousel/VerticalCarousel";
 import DashTitle from "../components/DashTitle";
-import React from "react";
+import { useTranslation } from "react-i18next";
 
-const OurWork: React.FC = () => {
+const OurWork = () => {
+  const { t } = useTranslation("OurWork");
+
   return (
-    <Box sx={{ backgroundColor: "#181818", pr: 4, pl: 2, pt: 4 }}>
-      <DashTitle dashPosition="right" color="white">
-        Our Work
-      </DashTitle>
+    <Box
+      sx={{ backgroundColor: "black.main", height: "100vh", pt: 10, pb: 10 }}
+    >
+      <Box mr={4}>
+        <DashTitle dashPosition="right" color="white">
+          {t("OurWork")}
+        </DashTitle>
+      </Box>
       <VerticalCarousel />
     </Box>
   );

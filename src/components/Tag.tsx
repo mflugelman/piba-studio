@@ -11,7 +11,7 @@ const Tag = (props: TagProps) => {
         border: 1,
         borderColor: "secondary.main",
         borderRadius: 2,
-        mr: 2,
+        mr: 1,
         mt: 2,
         p: 1,
       }}

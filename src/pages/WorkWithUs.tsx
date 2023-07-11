@@ -7,14 +7,43 @@ import exceptionalResults from "../assets/cardsImages/exceptionalResults.png";
 import DashTitle from "../components/DashTitle";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useTranslation } from "react-i18next";
 
-const timeout = 800;
+const timeout = 1000;
 
 const WorkWithUs = () => {
+  const { t } = useTranslation("WorkWithUs");
+
   const [visible, setVisible] = useState([false, false, false, false]);
   const { ref, inView } = useInView();
-
   const containerRef = useRef(null);
+
+  const information = [
+    {
+      title: t("InnovativeSolutions"),
+      text: t("InnovativeSolutionsText"),
+      color: "#CDDFF8",
+      imageUrl: innovativeSolutions,
+    },
+    {
+      title: t("CollaborativePartnership"),
+      text: t("CollaborativePartnershipText"),
+      color: "#F7C2E5",
+      imageUrl: collaborativePartnership,
+    },
+    {
+      title: t("PurposefulDesign"),
+      text: t("PurposefulDesignText"),
+      color: "#F7C7C2",
+      imageUrl: purposefulDesign,
+    },
+    {
+      title: t("ExceptionalResults"),
+      text: t("ExceptionalResultsText"),
+      color: "#EBE7DA",
+      imageUrl: exceptionalResults,
+    },
+  ];
 
   useEffect(() => {
     if (inView) {
@@ -43,14 +72,14 @@ const WorkWithUs = () => {
     <Box ref={containerRef}>
       <Box mt={10} mb={6} mr={4}>
         <DashTitle dashPosition={"right"} color={"black"}>
-          Why work with us?
+          {t("WhyWorkWithUs")}
         </DashTitle>
       </Box>
       <Box ref={ref}>
         <Grid container spacing={6} p={{ xs: 4, md: 16 }}>
           <Grid item sm={12} md={6}>
-            <Grid container direction="column" spacing={4}>
-              <Grid item ref={containerRef}>
+            <Grid container direction="column" spacing={4} ref={containerRef}>
+              <Grid item>
                 <Slide
                   direction="right"
                   in={visible[0]}
@@ -60,12 +89,10 @@ const WorkWithUs = () => {
                 >
                   <Box>
                     <InfoCard
-                      title={"Innovative Solutions"}
-                      body={
-                        "We pride ourselves on delivering innovative solutions that push boundaries and exceed expectations. With our forward-thinking approach and dedication to staying at the forefront of design trends and technologies, we can provide clients with fresh and cutting-edge solutions that set them apart from the competition."
-                      }
+                      title={information[0].title}
+                      body={information[0].text}
                       color={"#CDDFF8"}
-                      imageUrl={innovativeSolutions}
+                      imageUrl={information[0].imageUrl}
                       backgroundPosition="right"
                       backgroundPositionY={"bottom"}
                     />
@@ -82,12 +109,10 @@ const WorkWithUs = () => {
                 >
                   <Box>
                     <InfoCard
-                      title={"Purposeful Design"}
-                      body={
-                        "Our design philosophy is centered around purpose. We go beyond aesthetics to create designs that are strategically aligned with our clients' objectives and values. By understanding their target audience, we can craft meaningful and engaging experiences that resonate deeply, leaving a lasting impact on their customers."
-                      }
-                      color={"#F7C7C2"}
-                      imageUrl={purposefulDesign}
+                      title={information[2].title}
+                      body={information[2].text}
+                      color={information[2].color}
+                      imageUrl={information[2].imageUrl}
                       backgroundPosition="right"
                       backgroundPositionY="top"
                     />
@@ -109,12 +134,10 @@ const WorkWithUs = () => {
                   >
                     <Box>
                       <InfoCard
-                        color="#F7C2E5"
-                        title={"Collaborative Partnership"}
-                        body={
-                          "We believe in fostering strong and collaborative partnerships with our clients. By actively involving our clients in the creative process, we ensure that their unique vision and goals are fully realized. Our open communication, attentive listening, and seamless teamwork make the journey enjoyable and result in solutions that truly reflect their brand identity."
-                        }
-                        imageUrl={collaborativePartnership}
+                        color={information[1].color}
+                        title={information[1].title}
+                        body={information[1].text}
+                        imageUrl={information[1].imageUrl}
                         backgroundPosition="left"
                         backgroundPositionY={"top"}
                       />
@@ -131,12 +154,10 @@ const WorkWithUs = () => {
                   >
                     <Box>
                       <InfoCard
-                        color="#EBE7DA"
-                        title={"Exceptional Results"}
-                        body={
-                          "We are committed to delivering exceptional results that drive tangible business outcomes for our clients. Through our meticulous attention to detail, meticulous quality control, and relentless pursuit of excellence, we ensure that every project is executed to the highest standards. Our goal is to help our clients achieve measurable success and realize the full potential of their brand in the digital realm."
-                        }
-                        imageUrl={exceptionalResults}
+                        color={information[3].color}
+                        title={information[3].title}
+                        body={information[3].text}
+                        imageUrl={information[3].imageUrl}
                         backgroundPosition="left"
                         backgroundPositionY={"bottom"}
                       />

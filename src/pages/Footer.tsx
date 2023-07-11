@@ -1,8 +1,11 @@
-import "../styles.css";
+import "./../styles.css";
 import { Box, Button, Grid, Link, Typography } from "@mui/material";
 import PlantFooter from "./../assets/plantfooter.png";
 import PlantFooterMobile from "./../assets/illusPibaFooterMobile.png";
+import { useTranslation } from "react-i18next";
 const Footer = () => {
+  const { t } = useTranslation("Footer");
+
   const handleButtonClick = (link: string) => {
     window.open(link, "_blank");
   };
@@ -26,7 +29,7 @@ const Footer = () => {
       <Grid container>
         <Grid item xs={8} md={6} p={{ xs: 2 }}>
           <Typography variant="h5" color="info.main" align="left">
-            Say hi!
+            {t("SayHi")}
           </Typography>
           <Link
             href="#"
@@ -45,7 +48,7 @@ const Footer = () => {
             fontFamily="Lato"
             fontWeight={700}
           >
-            BASED UK & IRELAND, WORKING WORLDWIDE
+            {t("Based")}
           </Typography>
         </Grid>
         <Grid item md={2} />
@@ -72,7 +75,9 @@ const Footer = () => {
           <Button
             className="still-button"
             onClick={() =>
-              handleButtonClick("https://dribbble.com/piba-studio")
+              handleButtonClick(
+                "https://www.behance.net/pibastudio?locale=en_US"
+              )
             }
           >
             <Typography variant="buttonLinks">Behance</Typography>
@@ -80,9 +85,7 @@ const Footer = () => {
           <Button
             className="StillButton"
             onClick={() =>
-              handleButtonClick(
-                "https://www.behance.net/pibastudio?locale=en_US"
-              )
+              handleButtonClick("https://dribbble.com/piba-studio")
             }
           >
             <Typography variant="buttonLinks">Dribble</Typography>

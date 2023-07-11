@@ -15,8 +15,10 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "gh-pages": "^5.0.0",
+    "i18next": "^23.2.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^13.0.1",
     "react-intersection-observer": "^9.5.1",
     "react-scripts": "5.0.1",
     "react-slick": "^0.29.0",
@@ -25,6 +27,8 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -51,13 +55,5 @@
   "devDependencies": {
     "@types/react-slick": "^0.23.10"
   },
-  "homepage": "https://mflugelman.github.io/piba-studio",
-  "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  }
+  "homepage": "https://mflugelman.github.io/piba-studio"
 }
