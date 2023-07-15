@@ -8,8 +8,7 @@ const LetsTalk = () => {
       sx={{
         background:
           "radial-gradient(126.38% 242.21% at 83.4% 91.45%, rgba(123, 159, 246, 0.27) 54.17%, rgba(207, 207, 207, 0.13) 94.42%, rgba(207, 207, 207, 0.42) 100%);",
-        p: { xs: 4, md: 14 },
-        height: "40vh",
+        p: { xs: 4, lg: 10 },
         display: "flex",
       }}
     >
@@ -17,14 +16,17 @@ const LetsTalk = () => {
         <Grid
           item
           xs={12}
-          md={4}
-          sx={{ display: "flex", alignItems: "center" }}
+          md={6}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-start",
+          }}
         >
           <Typography variant="h3" textAlign={"left"}>
             <Trans i18nKey="LetsTalk.ThisWasUs">{t("ThisWasUs")}</Trans>
           </Typography>
         </Grid>
-        <Grid md={2} />
         <Grid
           item
           xs={12}
@@ -33,7 +35,7 @@ const LetsTalk = () => {
             display: "flex",
             alignItems: "center",
             flexDirection: { xs: "column", md: "row" },
-            justifyContent: "center",
+            justifyContent: { xs: "center", md: "flex-end" },
           }}
         >
           <Typography variant="h4" textAlign="center" m={4}>

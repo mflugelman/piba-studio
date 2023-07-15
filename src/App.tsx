@@ -13,9 +13,9 @@ import Footer from "./pages/Footer";
 import WorkWithUs from "./pages/WorkWithUs";
 
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
-import Header from "./components/Header";
 import { useInView } from "react-intersection-observer";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import NavBar from "./components/NavBar";
 
 let theme = responsiveFontSizes(themes.theme);
 
@@ -54,7 +54,7 @@ function App() {
     <div className="App">
       <ThemeProvider theme={theme}>
         <Layout>
-          <Header
+          <NavBar
             onButtonClick={handleClickScroll}
             activeButton={currentSection}
           />
