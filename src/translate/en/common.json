@@ -7,7 +7,7 @@
     "BookCall": "BOOK A CALL"
   },
   "HomeScreen": {
-    "MeaningfulExperiences": "Meaningful digital \n experiences through creative,purpose-driven design.",
+    "MeaningfulExperiences": "Meaningful digital <br/> experiences through creative, purpose-driven design.",
     "GetInTouch": "LET'S GET IN TOUCH",
     "ScrollToExplore": "Scroll to explore"
   },
@@ -47,13 +47,14 @@
   },
   "ThisIsPiba": {
     "ThisIsPiba": "This is Piba",
-    "Founded": " Founded by two young professional women who started their lives from scratch in a different country, <strong style={{ fontWeight: 'bold' }}> our studio is fueled by the passion, creativity, and resilience that come from overcoming obstacles and embracing new challenges. </strong>",
+    "Founded": " Founded by two young professional women who started their lives from scratch in a different country,",
+    "Fueled": "<strong> our studio is fueled by the passion, creativity, and resilience that come from overcoming obstacles and embracing new challenges. </strong>",
     "EnergyAndDedication": "We bring this same energy and dedication to our work, where we use our diverse perspectives and experiences to create innovative solutions that meet the needs of our clients and their users.",
     "BreakingBarriers": "We're proud to break barriers and set new standards for excellence. With our commitment to quality and our passion for design, we're excited to make a difference in the digital world and beyond."
   },
   "TailoredInnovation": {
-    "TailoredInnovation": "Tailored innovation for your success",
-    "CreativityAndExpertise": "We bring together creativity, technical expertise, and strategic thinking to develop innovative solutions that exceed our clients' expectations. We believe that every project is unique and requires a tailored approach to achieve the desired outcomes."
+    "TailoredInnovation": "Tailored innovation for <br/> your success",
+    "CreativityAndExpertise": "We bring together creativity, technical expertise, and strategic thinking to develop innovative solutions that exceed our clients expectations. We believe that every project is unique and requires a tailored approach to achieve the desired outcomes."
   },
   "WorkWithUs": {
     "WhyWorkWithUs": "Why work with us?",
@@ -67,12 +68,12 @@
     "ExceptionalResultsText": "Our design philosophy is centered around purpose. We go beyond aesthetics to create designs that are strategically aligned with our clients' objectives and values. By understanding their target audience, we can craft meaningful and engaging experiences that resonate deeply, leaving a lasting impact on their customers."
   },
   "LetsTalk": {
-    "ThisWasUs": "This was us. <br/> We are excited to hear <br /> about you, let’s explore <br /> your project",
+    "ThisWasUs": "This was us. <br/> We are excited to hear <br/>  about you, let’s explore <br /> your project",
     "LetsTalk": "Let's talk",
     "BookCall": "BOOK A CALL"
   },
   "Footer": {
     "SayHi": "Say hi!",
-    "Based": "BASED UK & IRELAND, WORKING WORLDWIDE"
+    "Based": "BASED IN UK & IRELAND, WORKING WORLDWIDE"
   }
 }

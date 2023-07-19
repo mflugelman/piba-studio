@@ -4,7 +4,6 @@ import {
   AppBar,
   Box,
   Button,
-  Container,
   Grid,
   IconButton,
   Menu,
@@ -83,7 +82,7 @@ function NavBar(props: NavBarProps) {
               setActiveButton("");
             }}
           >
-            <img src={logoSmall} alt="Logo" />
+            <img src={logoSmall} alt="Logo" width={32} />
           </Button>
           <IconButton onClick={handleOpenUserMenu}>
             <FilterListIcon />
@@ -141,68 +140,73 @@ function NavBar(props: NavBarProps) {
           boxShadow: "0px 4px 40px rgba(0, 0, 0, 0.14);",
           width: "100%",
           p: 1,
+          pl: 2,
+          pr: 2,
         }}
       >
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            {isMobile ? (
-              mobileNavBar()
-            ) : (
-              <Box
-                sx={{
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <Box>
-                  <Button
-                    disableElevation
-                    disableRipple
+        <Toolbar disableGutters>
+          {isMobile ? (
+            mobileNavBar()
+          ) : (
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <Box>
+                <Button
+                  disableElevation
+                  disableRipple
+                  onClick={() => {
+                    handleClick("home");
+                    setActiveButton("");
+                  }}
+                  sx={{
+                    mr: 4,
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                    },
+                  }}
+                >
+                  <img src={logoSmall} width={32} />
+                </Button>
+                {sections.map((section) => (
+                  <HeaderButton
                     onClick={() => {
-                      handleClick("home");
-                      setActiveButton("");
+                      handleClick(section.action);
+                      setActiveButton(section.action);
                     }}
-                    sx={{ mr: 4 }}
+                    active={activeButton == section.action}
                   >
-                    <img src={logoSmall} alt="Logo" />
-                  </Button>
-                  {sections.map((section) => (
-                    <HeaderButton
-                      onClick={() => {
-                        handleClick(section.action);
-                        setActiveButton(section.action);
-                      }}
-                      active={activeButton == section.action}
-                    >
-                      {section.text}
-                    </HeaderButton>
-                  ))}
-                </Box>
-                <Box>
-                  <Button
-                    variant="outlined"
-                    onClick={() =>
-                      window.open(
-                        "https://calendly.com/hellopibastudio",
-                        "_blank"
-                      )
-                    }
-                  >
-                    <Typography
-                      variant="button"
-                      fontWeight={600}
-                      color={"primary"}
-                    >
-                      {t("BookCall")}
-                    </Typography>
-                  </Button>
-                </Box>
+                    {section.text}
+                  </HeaderButton>
+                ))}
               </Box>
-            )}
-          </Toolbar>
-        </Container>
+              <Box>
+                <Button
+                  variant="outlined"
+                  onClick={() =>
+                    window.open(
+                      "https://calendly.com/hellopibastudio",
+                      "_blank"
+                    )
+                  }
+                >
+                  <Typography
+                    variant="button"
+                    fontWeight={600}
+                    color={"primary"}
+                  >
+                    {t("BookCall")}
+                  </Typography>
+                </Button>
+              </Box>
+            </Box>
+          )}
+        </Toolbar>
       </AppBar>
     </Slide>
   );

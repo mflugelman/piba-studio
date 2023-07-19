@@ -1,5 +1,12 @@
-import { Box, Fade, Grid, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import {
+  Box,
+  Fade,
+  Grid,
+  Theme,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import { useState } from "react";
 import HighlightedButton from "../components/HighlightedButton";
 import { useTranslation } from "react-i18next";
 
@@ -27,7 +34,6 @@ const Wheel = () => {
   const { t } = useTranslation("Wheel");
   const [angle, setAngle] = useState(0);
   const [fade, setFade] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
 
   const texts: AnglesList = {
     uxDesign: {
@@ -64,20 +70,15 @@ const Wheel = () => {
     }, 250);
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      setIsMobile(isMobile);
-    };
+  const isMobile = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("sm")
+  );
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const isMedium = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("md")
+  );
 
-  const wheelRadius = isMobile ? 200 : 280;
+  const wheelRadius = isMobile || isMedium ? 200 : 280;
 
   const ballAngle = (53 * Math.PI) / 180;
   const innerWHeelRadius = wheelRadius - 25; // Half of the diameter
@@ -131,12 +132,14 @@ const Wheel = () => {
     justifyContent: "center",
     alignItems: "center",
     position: "relative",
-    transform: `translateX(${isMobile ? wheelRadius * 0.8 : wheelRadius}px)`,
+    transform: `translateX(${
+      isMobile ? wheelRadius * 0.8 : isMedium ? wheelRadius * 0.5 : wheelRadius
+    }px)`,
   };
 
   return (
-    <Box sx={{ overflowX: "hidden" }}>
-      <Grid container sx={{ pb: 10, pt: 10 }}>
+    <Box sx={{ overflowX: { lg: "hidden", xl: "visible" } }}>
+      <Grid container>
         <Grid
           item
           xs={12}
@@ -145,7 +148,8 @@ const Wheel = () => {
             display: "flex",
             alignItems: "center",
             order: { xs: 1, md: 0 },
-            p: { xs: 2, md: 10 },
+            pr: { xs: 5, md: 10 },
+            pb: { xs: 2, sm: 4, md: 18 },
           }}
         >
           <Fade in={fade} timeout={{ enter: 250, exit: 250 }}>
@@ -166,9 +170,10 @@ const Wheel = () => {
           md={6}
           sx={{
             display: "flex",
-            justifyContent: "flex-end",
+            justifyContent: { sm: "center", lg: "flex-end" },
             order: { xs: 0, md: 2 },
-            pb: 6,
+            pb: { xs: 2, sm: 4, md: 18 },
+            pt: { sm: 4, md: 0 },
           }}
         >
           <Box sx={circleStyle}>

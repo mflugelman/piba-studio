@@ -24,7 +24,7 @@ const InfoCard = (props: InfoCardProps) => (
       mt: 1,
       mb: 1,
       p: { xs: 2, md: 6 },
-      height: { xs: "100%", md: "60vh" },
+      height: { xs: "100%" },
       borderRadius: "36px",
       backgroundImage: `url(${props.imageUrl})`,
       backgroundRepeat: "no-repeat",

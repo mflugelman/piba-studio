@@ -2,9 +2,11 @@ import { Backdrop, Box, Button, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import pibaStudio from "./../assets/pibastudio.png";
 import illusPiba from "./../assets/illusPiba.png";
+import illusPibaRegular from "./../assets/illusPibaRegular.png";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import RightIconButton from "../components/RightIconButton";
+import ContentBox from "../components/ContentBox";
 
 const Home = () => {
   const { t } = useTranslation("HomeScreen");
@@ -70,95 +72,85 @@ const Home = () => {
   };
 
   return (
-    <Box
-      sx={{
-        backgroundImage: `url(${illusPiba})`,
-        backgroundSize: "contain",
-        backgroundRepeat: "no-repeat",
-        backgroundPositionX: "right",
-      }}
-    >
+    <ContentBox>
       {backDrop()}
       <Box
         sx={{
-          height: "100vh",
+          backgroundImage: {
+            xl: `url(${illusPiba})`,
+            xs: `url(${illusPibaRegular})`,
+          },
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          backgroundPositionX: "right",
+          height: "100%",
           pt: { xs: 20, md: 20 },
-          pl: { xs: 3, md: 24 },
-          pr: { xs: 3, md: 24 },
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-around",
+          pl: { xs: 4, md: 8 },
+          pr: { xs: 4, md: 8 },
         }}
       >
-        <Grid container spacing={2}>
-          <Grid container item>
-            <Grid item xs={12} md={10}>
+        <Grid container>
+          <Grid item>
+            <Grid item xs={12} sm={11} md={10} lg={9}>
               <Typography variant="h1" align="left">
-                {t("MeaningfulExperiences")}
+                <Trans i18nKey="HomeScreen.MeaningfulExperiences">
+                  {t("MeaningfulExperiences")}
+                </Trans>
               </Typography>
             </Grid>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            md={3}
-            sx={{ display: "flex", mt: { xs: 10, md: 2 } }}
-          >
-            <Button
-              fullWidth
-              disableElevation
-              variant="contained"
-              onClick={() =>
-                window.scrollTo({
-                  behavior: "smooth",
-                  top: document.documentElement.scrollHeight,
-                })
-              }
-              sx={{
-                width: { xs: "100%", md: "auto" },
-                boxShadow: "0px 0px 10px theme.primary.main",
-              }}
-            >
-              <Typography variant="button" color="white.main" m={1}>
-                {t("GetInTouch")}
-              </Typography>
-            </Button>
-          </Grid>
         </Grid>
         <Box
-          mb={6}
           sx={{
             display: "flex",
+            justifyContent: { xs: "center", sm: "flex-start" },
+          }}
+        >
+          <Button
+            disableElevation
+            variant="contained"
+            onClick={() =>
+              window.scrollTo({
+                behavior: "smooth",
+                top: document.documentElement.scrollHeight,
+              })
+            }
+            sx={{
+              width: { xs: "80%", sm: "auto" },
+              boxShadow: "0px 0px 10px theme.primary.main",
+            }}
+          >
+            <Typography variant="button" color="white.main" m={1}>
+              {t("GetInTouch")}
+            </Typography>
+          </Button>
+        </Box>
+        <Box
+          sx={{
+            display: { md: "flex", xs: "block" },
             alignItems: "center",
-            alignSelf: "center",
+            justifyContent: "center",
+            pt: { xs: 20, md: 20 },
           }}
         >
           <Box
             sx={{
-              display: { md: "flex", xs: "block" },
-              alignItems: "center",
-              justifyContent: "center",
+              width: { xs: "0px", md: "40px" },
+              height: { xs: "0px", md: "9px" },
+              backgroundColor: "secondary.main",
+              alignSelf: "center",
             }}
+          />
+          <RightIconButton
+            onClick={handleAutoScroll}
+            icon={ArrowDownwardIcon}
+            color="black"
           >
-            <Box
-              sx={{
-                width: { xs: "0px", md: "40px" },
-                height: { xs: "0px", md: "9px" },
-                backgroundColor: "secondary.main",
-                alignSelf: "center",
-              }}
-            />
-            <RightIconButton
-              onClick={handleAutoScroll}
-              icon={ArrowDownwardIcon}
-              color="black"
-            >
-              {t("ScrollToExplore")}
-            </RightIconButton>
-          </Box>
+            {t("ScrollToExplore")}
+          </RightIconButton>
         </Box>
       </Box>
-    </Box>
+    </ContentBox>
   );
 };
 

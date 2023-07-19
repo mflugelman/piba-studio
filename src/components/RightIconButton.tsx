@@ -18,12 +18,12 @@ const RightIconButton = (props: RightIconButtonProps) => {
         alignSelf: "flex-start",
         "&:hover": {
           backgroundColor: "transparent",
-          color: "#9747FF",
+          color: "#F7C2E5",
           "& .MuiTypography-root": {
-            color: "#9747FF",
+            color: "#F7C2E5",
           },
           "& .MuiSvgIcon-root": {
-            color: "#9747FF",
+            color: "#F7C2E5",
           },
         },
       }}

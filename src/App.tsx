@@ -4,7 +4,6 @@ import Home from "./pages/Home";
 
 import { ThemeProvider } from "@mui/material/styles";
 import { themes } from "./theme/theme";
-import OurWork from "./pages/OurWork";
 import Services from "./pages/Services";
 import ThisIsPiba from "./pages/ThisIsPiba";
 import TailoredInnovation from "./pages/TailoredInnovation";
@@ -62,20 +61,23 @@ function App() {
             <Home />
           </div>
           <div ref={projectsRef} id="projects">
-            <OurWork />
+            {/* <OurWork /> */}
           </div>
           <div ref={servicesRef} id="services">
             <Services />
           </div>
-          <div ref={aboutUsRef} id="about-us">
+          <div>
             <ThisIsPiba />
+          </div>
+          <div ref={aboutUsRef} id="about-us">
             <TailoredInnovation />
           </div>
           <WorkWithUs />
           <div ref={sayHiRef} id="say-hi">
+            {/* <TailoredInnovation /> */}
             <LetsTalk />
-            <Footer />
           </div>
+          <Footer />
         </Layout>
       </ThemeProvider>
     </div>

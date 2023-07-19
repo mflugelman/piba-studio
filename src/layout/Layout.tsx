@@ -1,3 +1,4 @@
+import { Box, Theme, useMediaQuery } from "@mui/material";
 import { ReactNode } from "react";
 
 type LayoutProps = {
@@ -5,6 +6,10 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
+  const isBigScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.up("xl")
+  );
+
   return (
     <div
       style={{
@@ -12,7 +17,17 @@ const Layout = ({ children }: LayoutProps) => {
         width: "100%",
       }}
     >
-      <main>{children}</main>
+      <main>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {children}
+        </Box>
+      </main>
     </div>
   );
 };
