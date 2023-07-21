@@ -174,9 +174,13 @@ let theme = createTheme({
             (ownerState.variant === "text" && {
               ":hover": {
                 borderWidth: 2,
-                backgroundColor: `${palette.secondary.main}33`,
+
+                backgroundColor: "transparent",
                 borderColor: palette.secondary.main,
                 transition: "none",
+                "& .MuiTypography-root": {
+                  color: palette.secondary.main,
+                },
               },
               ":not(:hover)": {
                 transition: "none",

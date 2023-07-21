@@ -11,10 +11,11 @@ import LetsTalk from "./pages/LetsTalk";
 import Footer from "./pages/Footer";
 import WorkWithUs from "./pages/WorkWithUs";
 
-import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { responsiveFontSizes } from "@mui/material/styles";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
+import OurWork from "./pages/OurWork";
 
 let theme = responsiveFontSizes(themes.theme);
 
@@ -61,7 +62,7 @@ function App() {
             <Home />
           </div>
           <div ref={projectsRef} id="projects">
-            {/* <OurWork /> */}
+            <OurWork />
           </div>
           <div ref={servicesRef} id="services">
             <Services />
@@ -74,7 +75,6 @@ function App() {
           </div>
           <WorkWithUs />
           <div ref={sayHiRef} id="say-hi">
-            {/* <TailoredInnovation /> */}
             <LetsTalk />
           </div>
           <Footer />

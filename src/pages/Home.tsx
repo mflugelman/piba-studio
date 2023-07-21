@@ -102,6 +102,7 @@ const Home = () => {
         </Grid>
         <Box
           sx={{
+            mt: 8,
             display: "flex",
             justifyContent: { xs: "center", sm: "flex-start" },
           }}
@@ -131,6 +132,7 @@ const Home = () => {
             alignItems: "center",
             justifyContent: "center",
             pt: { xs: 20, md: 20 },
+            mb: 8,
           }}
         >
           <Box
