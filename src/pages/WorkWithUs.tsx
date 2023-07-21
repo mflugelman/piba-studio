@@ -8,6 +8,7 @@ import DashTitle from "../components/DashTitle";
 import { useEffect, useRef, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useTranslation } from "react-i18next";
+import ContentBox from "../components/ContentBox";
 
 const timeout = 1000;
 
@@ -69,107 +70,109 @@ const WorkWithUs = () => {
   }, [inView]);
 
   return (
-    <Box ref={containerRef}>
-      <Box mt={10} mb={6} mr={4}>
-        <DashTitle dashPosition={"right"} color={"black"}>
-          {t("WhyWorkWithUs")}
-        </DashTitle>
-      </Box>
-      <Box ref={ref}>
-        <Grid container spacing={6} p={{ xs: 4, md: 16 }}>
-          <Grid item sm={12} md={6}>
-            <Grid container direction="column" spacing={4} ref={containerRef}>
-              <Grid item>
-                <Slide
-                  direction="right"
-                  in={visible[0]}
-                  timeout={timeout}
-                  container={containerRef.current}
-                  mountOnEnter
-                >
-                  <Box>
-                    <InfoCard
-                      title={information[0].title}
-                      body={information[0].text}
-                      color={"#CDDFF8"}
-                      imageUrl={information[0].imageUrl}
-                      backgroundPosition="right"
-                      backgroundPositionY={"bottom"}
-                    />
-                  </Box>
-                </Slide>
-              </Grid>
-              <Grid item>
-                <Slide
-                  direction="right"
-                  in={visible[2]}
-                  timeout={timeout}
-                  container={containerRef.current}
-                  mountOnEnter
-                >
-                  <Box>
-                    <InfoCard
-                      title={information[2].title}
-                      body={information[2].text}
-                      color={information[2].color}
-                      imageUrl={information[2].imageUrl}
-                      backgroundPosition="right"
-                      backgroundPositionY="top"
-                    />
-                  </Box>
-                </Slide>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item sm={12} md={6}>
-            <Box marginTop={{ xs: 0, md: 16 }}>
-              <Grid container direction="column" spacing={4}>
+    <ContentBox>
+      <Box ref={containerRef}>
+        <Box mt={10} mb={6} mr={4}>
+          <DashTitle dashPosition={"right"} color={"black"}>
+            {t("WhyWorkWithUs")}
+          </DashTitle>
+        </Box>
+        <Box ref={ref}>
+          <Grid container spacing={6} p={{ xs: 4, md: 16 }}>
+            <Grid item sm={12} md={6}>
+              <Grid container direction="column" spacing={4} ref={containerRef}>
                 <Grid item>
                   <Slide
-                    direction="left"
-                    in={visible[1]}
+                    direction="right"
+                    in={visible[0]}
                     timeout={timeout}
                     container={containerRef.current}
                     mountOnEnter
                   >
                     <Box>
                       <InfoCard
-                        color={information[1].color}
-                        title={information[1].title}
-                        body={information[1].text}
-                        imageUrl={information[1].imageUrl}
-                        backgroundPosition="left"
-                        backgroundPositionY={"top"}
-                      />
-                    </Box>
-                  </Slide>
-                </Grid>
-                <Grid item>
-                  <Slide
-                    direction="left"
-                    in={visible[3]}
-                    timeout={timeout}
-                    container={containerRef.current}
-                    mountOnEnter
-                  >
-                    <Box>
-                      <InfoCard
-                        color={information[3].color}
-                        title={information[3].title}
-                        body={information[3].text}
-                        imageUrl={information[3].imageUrl}
-                        backgroundPosition="left"
+                        title={information[0].title}
+                        body={information[0].text}
+                        color={"#CDDFF8"}
+                        imageUrl={information[0].imageUrl}
+                        backgroundPosition="right"
                         backgroundPositionY={"bottom"}
                       />
                     </Box>
                   </Slide>
                 </Grid>
+                <Grid item>
+                  <Slide
+                    direction="right"
+                    in={visible[2]}
+                    timeout={timeout}
+                    container={containerRef.current}
+                    mountOnEnter
+                  >
+                    <Box>
+                      <InfoCard
+                        title={information[2].title}
+                        body={information[2].text}
+                        color={information[2].color}
+                        imageUrl={information[2].imageUrl}
+                        backgroundPosition="right"
+                        backgroundPositionY="top"
+                      />
+                    </Box>
+                  </Slide>
+                </Grid>
               </Grid>
-            </Box>
+            </Grid>
+            <Grid item sm={12} md={6}>
+              <Box marginTop={{ xs: 0, md: 16 }}>
+                <Grid container direction="column" spacing={4}>
+                  <Grid item>
+                    <Slide
+                      direction="left"
+                      in={visible[1]}
+                      timeout={timeout}
+                      container={containerRef.current}
+                      mountOnEnter
+                    >
+                      <Box>
+                        <InfoCard
+                          color={information[1].color}
+                          title={information[1].title}
+                          body={information[1].text}
+                          imageUrl={information[1].imageUrl}
+                          backgroundPosition="left"
+                          backgroundPositionY={"top"}
+                        />
+                      </Box>
+                    </Slide>
+                  </Grid>
+                  <Grid item>
+                    <Slide
+                      direction="left"
+                      in={visible[3]}
+                      timeout={timeout}
+                      container={containerRef.current}
+                      mountOnEnter
+                    >
+                      <Box>
+                        <InfoCard
+                          color={information[3].color}
+                          title={information[3].title}
+                          body={information[3].text}
+                          imageUrl={information[3].imageUrl}
+                          backgroundPosition="left"
+                          backgroundPositionY={"bottom"}
+                        />
+                      </Box>
+                    </Slide>
+                  </Grid>
+                </Grid>
+              </Box>
+            </Grid>
           </Grid>
-        </Grid>
+        </Box>
       </Box>
-    </Box>
+    </ContentBox>
   );
 };
 

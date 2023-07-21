@@ -45,6 +45,9 @@ let palette = {
   secondary: {
     main: "#D1F678",
   },
+  tertiary: {
+    main: "#F7C2E5",
+  },
   black: {
     main: "#181818",
   },
@@ -112,11 +115,12 @@ let theme = createTheme({
       color: palette.white.main,
     },
     body1: {
-      fontWeight: 300,
+      fontWeight: 400,
       fontSize: 25,
       color: palette.black.main,
       fontFamily: "Poppins",
       lineHeight: 1.8,
+      letterSpacing: 1.05,
     },
     body2: {
       fontWeight: 400,
@@ -146,13 +150,42 @@ let theme = createTheme({
           borderRadius: 10,
           fontFamily: "Poppins",
           borderWidth: 2,
-          ...(ownerState.variant === "contained" && {
+          ...((ownerState.variant === "contained" && {
             backgroundColor: "primary.main",
             boxShadow: `0px 0px 10px 0px ${palette.primary.main}`,
             ":hover": {
-              boxShadow: `0px 0px 10px 0px ${palette.primary.main}`,
+              boxShadow: `0px 0px 10px 0px ${palette.tertiary.main}`,
+              backgroundColor: "#F7C2E5",
             },
-          }),
+          }) ||
+            (ownerState.variant === "outlined" && {
+              ":hover": {
+                borderWidth: 2,
+                borderColor: palette.tertiary.main,
+                "& .MuiTypography-root": {
+                  color: palette.tertiary.main,
+                },
+                transition: "none",
+              },
+              ":not(:hover)": {
+                transition: "none",
+              },
+            }) ||
+            (ownerState.variant === "text" && {
+              ":hover": {
+                borderWidth: 2,
+
+                backgroundColor: "transparent",
+                borderColor: palette.secondary.main,
+                transition: "none",
+                "& .MuiTypography-root": {
+                  color: palette.secondary.main,
+                },
+              },
+              ":not(:hover)": {
+                transition: "none",
+              },
+            })),
         }),
       },
     },
