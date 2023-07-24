@@ -1,7 +1,7 @@
 import { Box, Typography, useMediaQuery, Theme, Fade } from "@mui/material";
 import { useState, useEffect } from "react";
 import DashTitle from "../components/DashTitle";
-import ThisIsPibaImage from "./../assets/thisIsPiba.png";
+import ThisIsPibaImage from "./../assets/thisispiba.png";
 import ThisIsPibaMedium from "./../assets/thisIsPibaMd.png";
 import ThisIsPibaMobile from "./../assets/thisIsPibaMobile.png";
 import ThisIsPibaHuge from "./../assets/thisIsPibaHuge.png";

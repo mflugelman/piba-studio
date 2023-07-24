@@ -107,6 +107,7 @@ let theme = createTheme({
       fontSize: 32,
       fontFamily: "Lato",
       color: palette.black.main,
+      lineHeight: 2,
     },
     title: {
       fontWeight: 500,
@@ -125,6 +126,7 @@ let theme = createTheme({
     body2: {
       fontWeight: 400,
       fontSize: 18,
+      lineHeight: 1.8,
       color: palette.black.main,
       fontFamily: "Poppins",
     },
