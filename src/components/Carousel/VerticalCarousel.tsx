@@ -87,17 +87,24 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
     },
   ];
 
-  const settings: Settings = {
-    vertical: !isMobile,
-    slidesToShow: isMobile ? 1 : 1.5,
-    arrows: false,
-    verticalSwiping: !isMobile,
+  // const settings: Settings = {
+  //   vertical: !isMobile,
+  //   slidesToShow: isMobile ? 1 : 1.5,
+  //   arrows: false,
+  //   verticalSwiping: !isMobile,
+  //   infinite: true,
+  //   // dots: true,
+  //   // dotsClass: "vertical-dots",
+  //   speed: 500,
+  //   afterChange: (current) => setSelectedSlide(current),
+  // };
+
+  const settings = {
+    dots: true,
     infinite: true,
-    // dots: true,
-    // dotsClass: "vertical-dots",
     speed: 500,
-    centerPadding: "0",
-    afterChange: (current) => setSelectedSlide(current),
+    slidesToShow: 3, // Number of slides to show at a time
+    slidesToScroll: 1, // Number of slides to scroll at a time
   };
 
   // useEffect(() => {
@@ -126,22 +133,16 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
   const getBoxStyles = (selected: boolean): SxProps => {
     return {
       borderRadius: 5,
-      transform: selected
-        ? `scale(0.8) translateY(-${isMobile ? 0 : 5 * selectedSlide}%)`
-        : "scale(0.75)",
+      transform: selected ? `scale(0.8)` : `scale(0.8)`,
       transition: "transform 0.5s ease-in-out",
       boxShadow: selected ? "0px 0px 30px rgba(255, 255, 255, 0.64)" : "none",
       m: "0 auto",
       "&:hover": {
-        transform: selected
-          ? `scale(0.82) translateY(-${isMobile ? 0 : 5 * selectedSlide}%)`
-          : "scale(0.75)",
+        transform: selected ? `scale(0.82)` : "scale(0.75)",
         transition: "transform 0.3s ease-in-out",
       },
     };
   };
-
-  console.log(isMobile);
 
   return (
     <Box ref={ref} sx={{ mt: 10 }}>
@@ -157,17 +158,26 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
         >
           <Carousel {...settings} ref={carouselRef}>
             {carrouselData.map((carrouselComponent, index) => (
-              <Box key={index} sx={getBoxStyles(index === selectedSlide)}>
-                <Box
-                  key={"image" + index}
-                  component="img"
-                  src={carrouselComponent.image}
-                  sx={{
-                    width: "100%",
-                    height: "100%",
-                    borderRadius: 5,
-                  }}
-                />
+              <Box
+                key={"slide" + index}
+                sx={{
+                  transform: isMobile
+                    ? null
+                    : `translateY(${50 - selectedSlide * 5}%)`,
+                }}
+              >
+                <Box key={index} sx={getBoxStyles(index === selectedSlide)}>
+                  <Box
+                    key={"image" + index}
+                    component="img"
+                    src={carrouselComponent.image}
+                    sx={{
+                      width: "100%",
+                      height: "100%",
+                      borderRadius: 5,
+                    }}
+                  />
+                </Box>
               </Box>
             ))}
           </Carousel>
