@@ -87,24 +87,17 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
     },
   ];
 
-  // const settings: Settings = {
-  //   vertical: !isMobile,
-  //   slidesToShow: isMobile ? 1 : 1.5,
-  //   arrows: false,
-  //   verticalSwiping: !isMobile,
-  //   infinite: true,
-  //   // dots: true,
-  //   // dotsClass: "vertical-dots",
-  //   speed: 500,
-  //   afterChange: (current) => setSelectedSlide(current),
-  // };
-
-  const settings = {
-    dots: true,
+  const settings: Settings = {
+    vertical: !isMobile,
+    slidesToShow: isMobile ? 1 : 1.5,
+    arrows: false,
+    verticalSwiping: !isMobile,
     infinite: true,
+    // dots: true,
+    // dotsClass: "vertical-dots",
     speed: 500,
-    slidesToShow: 3, // Number of slides to show at a time
-    slidesToScroll: 1, // Number of slides to scroll at a time
+    centerPadding: "0",
+    afterChange: (current) => setSelectedSlide(current),
   };
 
   // useEffect(() => {
@@ -130,15 +123,35 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
     // window.open(link, "_blank");
   };
 
+  // const getBoxStyles = (selected: boolean): SxProps => {
+  //   return {
+  //     borderRadius: 5,
+  //     transform: selected
+  //       ? `scale(0.8) translateY(-${isMobile ? 0 : 5 * selectedSlide}%)`
+  //       : "scale(0.75)",
+  //     transition: "transform 0.5s ease-in-out",
+  //     boxShadow: selected ? "0px 0px 30px rgba(255, 255, 255, 0.64)" : "none",
+  //     m: "0 auto",
+  //     "&:hover": {
+  //       transform: selected
+  //         ? `scale(0.82) translateY(-${isMobile ? 0 : 5 * selectedSlide}%)`
+  //         : "scale(0.75)",
+  //       transition: "transform 0.3s ease-in-out",
+  //     },
+  //   };
+  // };
+
   const getBoxStyles = (selected: boolean): SxProps => {
     return {
       borderRadius: 5,
-      transform: selected ? `scale(0.8)` : `scale(0.8)`,
+      transform: `scale(0.8)`,
       transition: "transform 0.5s ease-in-out",
       boxShadow: selected ? "0px 0px 30px rgba(255, 255, 255, 0.64)" : "none",
       m: "0 auto",
       "&:hover": {
-        transform: selected ? `scale(0.82)` : "scale(0.75)",
+        transform: selected
+          ? `scale(0.82) translateY(-${isMobile ? 0 : 5 * selectedSlide}%)`
+          : "scale(0.75)",
         transition: "transform 0.3s ease-in-out",
       },
     };
@@ -160,11 +173,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
             {carrouselData.map((carrouselComponent, index) => (
               <Box
                 key={"slide" + index}
-                sx={{
-                  transform: isMobile
-                    ? null
-                    : `translateY(${50 - selectedSlide * 5}%)`,
-                }}
+                sx={{ transform: `translateY(${50 + selectedSlide}%)` }}
               >
                 <Box key={index} sx={getBoxStyles(index === selectedSlide)}>
                   <Box
