@@ -10,7 +10,7 @@ const OurWork = () => {
   return (
     <Box sx={{ backgroundColor: "black.main", pt: 10 }}>
       <ContentBox>
-        <Box sx={{ pr: { xs: 4, md: 8 } }}>
+        <Box sx={{ pr: { xs: 4, md: 8 }, pl: { xs: 4, md: 8 } }}>
           <DashTitle dashPosition="right" color="white">
             {t("OurWork")}
           </DashTitle>

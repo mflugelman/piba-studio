@@ -17,7 +17,6 @@ const ContentBox = (props: ContentBoxProps) => {
       <Box
         sx={{
           width: { xs: "100%", xl: 1200 },
-          display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}

@@ -141,17 +141,21 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
   //   };
   // };
 
+  const scale = isMobile ? 0.9 : 0.8;
+
   const getBoxStyles = (selected: boolean): SxProps => {
     return {
       borderRadius: 5,
-      transform: `scale(0.8)`,
+      transform: `scale(${scale})`,
       transition: "transform 0.5s ease-in-out",
       boxShadow: selected ? "0px 0px 30px rgba(255, 255, 255, 0.64)" : "none",
       m: "0 auto",
       "&:hover": {
         transform: selected
-          ? `scale(0.82) translateY(-${isMobile ? 0 : 5 * selectedSlide}%)`
-          : "scale(0.75)",
+          ? `scale(${scale * 1.05}) translateY(-${
+              isMobile ? 0 : 5 * selectedSlide
+            }%)`
+          : `scale(${scale * 0.8})`,
         transition: "transform 0.3s ease-in-out",
       },
     };
@@ -173,7 +177,11 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
             {carrouselData.map((carrouselComponent, index) => (
               <Box
                 key={"slide" + index}
-                sx={{ transform: `translateY(${50 + selectedSlide}%)` }}
+                sx={{
+                  transform: isMobile
+                    ? null
+                    : `translateY(${50 + selectedSlide}%)`,
+                }}
               >
                 <Box key={index} sx={getBoxStyles(index === selectedSlide)}>
                   <Box

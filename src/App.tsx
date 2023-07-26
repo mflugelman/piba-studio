@@ -16,6 +16,7 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
 import OurWork from "./pages/OurWork";
+import { Box } from "@mui/material";
 
 let theme = responsiveFontSizes(themes.theme);
 
@@ -67,15 +68,13 @@ function App() {
           <div ref={servicesRef} id="services">
             <Services />
           </div>
-          <div>
-            <ThisIsPiba />
-          </div>
+          <div>{/* <ThisIsPiba /> */}</div>
           <div ref={aboutUsRef} id="about-us">
-            <TailoredInnovation />
+            {/* <TailoredInnovation /> */}
           </div>
-          <WorkWithUs />
+          {/* <WorkWithUs /> */}
           <div ref={sayHiRef} id="say-hi">
-            <LetsTalk />
+            {/* <LetsTalk /> */}
           </div>
           <Footer />
         </Layout>
