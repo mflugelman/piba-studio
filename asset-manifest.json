@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/piba-studio/static/css/main.bb42aa6a.css",
-    "main.js": "/piba-studio/static/js/main.21e6bce0.js",
+    "main.css": "/piba-studio/static/css/main.e7dfed69.css",
+    "main.js": "/piba-studio/static/js/main.b63d27f2.js",
     "static/js/787.53d0096e.chunk.js": "/piba-studio/static/js/787.53d0096e.chunk.js",
     "static/media/illusPiba.png": "/piba-studio/static/media/illusPiba.8825e454cae22c063473.png",
     "static/media/thisIsPibaHuge.png": "/piba-studio/static/media/thisIsPibaHuge.0462233f41cc64d2a8ee.png",
-    "static/media/RealStateWebsite.png": "/piba-studio/static/media/RealStateWebsite.a0952c5f23e5079b0214.png",
     "static/media/CommunityWebsite.png": "/piba-studio/static/media/CommunityWebsite.34fed097883bf5b369b2.png",
-    "static/media/thisIsPiba.png": "/piba-studio/static/media/thisIsPiba.398e85636529b53b4901.png",
+    "static/media/thisispiba.png": "/piba-studio/static/media/thisispiba.398e85636529b53b4901.png",
     "static/media/thisIsPibaMd.png": "/piba-studio/static/media/thisIsPibaMd.c0500be47c4f59598619.png",
     "static/media/MedicalSearchEngine.png": "/piba-studio/static/media/MedicalSearchEngine.ed11772ebe8002d856d3.png",
     "static/media/illusPibaRegular.png": "/piba-studio/static/media/illusPibaRegular.1ae1cde8fdd58a1c29ae.png",
     "static/media/ReportFormsWebapp.png": "/piba-studio/static/media/ReportFormsWebapp.95dd555dd43d1f545858.png",
     "static/media/thisIsPibaMobile.png": "/piba-studio/static/media/thisIsPibaMobile.23e504a5aca50b425760.png",
     "static/media/TaskManagementDashboard.png": "/piba-studio/static/media/TaskManagementDashboard.74df31bad5dc3a81968d.png",
+    "static/media/RealStateWebsite.jpeg": "/piba-studio/static/media/RealStateWebsite.d7fdbaf0057fa8f24877.jpeg",
     "static/media/Poppins-Regular.ttf": "/piba-studio/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Lato-BoldItalic.ttf": "/piba-studio/static/media/Lato-BoldItalic.fd32b4dea61508c37b78.ttf",
     "static/media/Lato-Light.ttf": "/piba-studio/static/media/Lato-Light.c7400fcad9e48ca9043f.ttf",
@@ -35,12 +35,12 @@
     "static/media/slick.ttf": "/piba-studio/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/piba-studio/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/piba-studio/index.html",
-    "main.bb42aa6a.css.map": "/piba-studio/static/css/main.bb42aa6a.css.map",
-    "main.21e6bce0.js.map": "/piba-studio/static/js/main.21e6bce0.js.map",
+    "main.e7dfed69.css.map": "/piba-studio/static/css/main.e7dfed69.css.map",
+    "main.b63d27f2.js.map": "/piba-studio/static/js/main.b63d27f2.js.map",
     "787.53d0096e.chunk.js.map": "/piba-studio/static/js/787.53d0096e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb42aa6a.css",
-    "static/js/main.21e6bce0.js"
+    "static/css/main.e7dfed69.css",
+    "static/js/main.b63d27f2.js"
   ]
 }
