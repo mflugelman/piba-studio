@@ -10,13 +10,16 @@ const Services = () => {
     <ContentBox>
       <Box
         sx={{
-          pt: { xs: 5, md: 18 },
+          pt: { xs: 8, md: 10 },
           pl: { xs: 4, md: 8 },
+          pb: { xs: 8, md: 0 },
         }}
       >
-        <DashTitle color="black" dashPosition="left">
-          {t("HowWeCanHelp")}
-        </DashTitle>
+        <Box pb={4}>
+          <DashTitle color="black" dashPosition="left">
+            {t("HowWeCanHelp")}
+          </DashTitle>
+        </Box>
         <Wheel />
       </Box>
     </ContentBox>

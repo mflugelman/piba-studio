@@ -40,7 +40,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
 
   const { t } = useTranslation("VerticalCarousel");
   const { ref, inView } = useInView({
-    threshold: isMobile ? 1 : 0.65,
+    threshold: 1,
   });
   const carouselRef = useRef<Carousel>(null);
   const [selectedSlide, setSelectedSlide] = useState(0);
@@ -91,30 +91,23 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
     arrows: false,
     verticalSwiping: !isMobile,
     infinite: true,
-    dots: true,
-    dotsClass: isMobile ? "horizontal-dots" : "vertical-dots",
+    dots: !isMobile,
+    dotsClass: "vertical-dots",
     speed: 500,
     centerMode: true,
     afterChange: (current) => setSelectedSlide(current),
   };
 
   useEffect(() => {
-    if (inView && allowBlock) {
-      blockScroll();
-    }
-  }, [inView]);
-
-  useEffect(() => {
-    if (selectedSlide == carrouselData.length - 1) {
+    if (selectedSlide === carrouselData.length - 1) {
       allowScroll();
-      setAllowBlock(false);
     }
   }, [selectedSlide]);
 
   const handleSlideClick = (index: number) => {
-    // const slide = carrouselData[index];
-    // const link = slide.link;
-    // window.open(link, "_blank");
+    const slide = carrouselData[index];
+    const link = slide.link;
+    window.open(link, "_blank");
   };
 
   const scale = isMobile ? 0.9 : 0.75;
@@ -136,17 +129,20 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
   };
 
   const handleScroll = (event: React.WheelEvent<HTMLDivElement>) => {
-    if (allowBlock) {
-      if (event.deltaY > 100) {
-        carouselRef.current?.slickNext();
-      } else if (event.deltaY < -100) {
-        carouselRef.current?.slickPrev();
-      }
+    if (event.deltaY > 1 && inView && allowBlock) {
+      setAllowBlock(false);
+      blockScroll();
+    }
+
+    if (event.deltaY > 60) {
+      carouselRef.current?.slickNext();
+    } else if (event.deltaY < -60) {
+      carouselRef.current?.slickPrev();
     }
   };
 
   return (
-    <Box sx={{ mt: { xs: 2, md: 4 } }} onWheel={handleScroll} ref={ref}>
+    <Box sx={{ mt: { xs: 2, md: 4 } }} onWheel={handleScroll}>
       <Grid container>
         <Grid
           item
@@ -167,6 +163,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
                       ? null
                       : `translateY(${-selectedSlide * 3.5}%)`,
                   }}
+                  onClick={() => handleSlideClick(selectedSlide)}
                 >
                   <Box key={index} sx={getBoxStyles(index === selectedSlide)}>
                     <Box
@@ -229,6 +226,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
           >
             {t("LearnMore")}
           </RightIconButton>
+          <Box sx={{ height: 10 }} ref={ref}></Box>
         </Grid>
       </Grid>
     </Box>

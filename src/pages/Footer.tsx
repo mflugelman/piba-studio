@@ -40,7 +40,7 @@ const Footer = () => {
               {t("SayHi")}
             </Typography>
             <Link
-              href="#"
+              href="#!"
               onClick={() => {
                 window.location.href = `mailto: hellopibastudio@gmail.com`;
               }}
@@ -65,7 +65,7 @@ const Footer = () => {
             md={6}
             sx={{
               display: "flex",
-              justifyContent: "flex-end",
+              justifyContent: { xs: "center", md: "flex-end" },
               alignItems: "center",
             }}
           >

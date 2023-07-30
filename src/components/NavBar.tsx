@@ -171,15 +171,16 @@ function NavBar(props: NavBarProps) {
                     },
                   }}
                 >
-                  <img src={logoSmall} width={32} />
+                  <img src={logoSmall} width={32} alt="Logo" />
                 </Button>
-                {sections.map((section) => (
+                {sections.map((section, index) => (
                   <HeaderButton
+                    key={index}
                     onClick={() => {
                       handleClick(section.action);
                       setActiveButton(section.action);
                     }}
-                    active={activeButton == section.action}
+                    active={activeButton === section.action}
                   >
                     {section.text}
                   </HeaderButton>
