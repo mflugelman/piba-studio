@@ -128,8 +128,11 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
     };
   };
 
+  const carousel = document.getElementById("carousel");
+
   const handleScroll = (event: React.WheelEvent<HTMLDivElement>) => {
     if (event.deltaY > 1 && inView && allowBlock) {
+      carousel?.scrollIntoView({ behavior: "smooth" });
       setAllowBlock(false);
       blockScroll();
     }
@@ -143,7 +146,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
 
   return (
     <Box sx={{ mt: { xs: 2, md: 4 } }} onWheel={handleScroll}>
-      <Grid container>
+      <Grid container id="carousel">
         <Grid
           item
           xs={12}
