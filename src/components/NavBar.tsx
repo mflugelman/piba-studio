@@ -124,7 +124,7 @@ function NavBar(props: NavBarProps) {
             }
           >
             <Typography textAlign="left" variant="button">
-              {t("BookCall")}
+              {t("BookCallMobile")}
             </Typography>
           </MenuItem>
         </Menu>

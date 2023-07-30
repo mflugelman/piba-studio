@@ -1,4 +1,11 @@
-import { Box, Grid, Slide, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Slide,
+  Theme,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import InfoCard from "../components/InfoCard";
 import innovativeSolutions from "../assets/cardsImages/innovativeSolutions.png";
 import purposefulDesign from "../assets/cardsImages/purposefulDesign.png";
@@ -13,10 +20,18 @@ import ContentBox from "../components/ContentBox";
 const timeout = 1000;
 
 const WorkWithUs = () => {
+  const isMobile = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("sm")
+  );
   const { t } = useTranslation("WorkWithUs");
 
-  const [visible, setVisible] = useState([false, false, false, false]);
-  const { ref, inView } = useInView();
+  const [visible, setVisible] = useState([
+    isMobile,
+    isMobile,
+    isMobile,
+    isMobile,
+  ]);
+  const { ref, inView } = useInView({ threshold: 0.5 });
   const containerRef = useRef(null);
 
   const information = [
@@ -78,7 +93,11 @@ const WorkWithUs = () => {
           </DashTitle>
         </Box>
         <Box ref={ref}>
-          <Grid container spacing={6} p={{ xs: 4, md: 16 }}>
+          <Grid
+            container
+            spacing={6}
+            sx={{ pr: { xs: 4, md: 16 }, pl: { xs: 4, md: 16 } }}
+          >
             <Grid item sm={12} md={6}>
               <Grid container direction="column" spacing={4} ref={containerRef}>
                 <Grid item>

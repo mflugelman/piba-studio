@@ -16,7 +16,7 @@ const ThisIsPiba: React.FC = () => {
 
   const [visible, setVisible] = useState([false, false, false]);
   const { ref, inView } = useInView({
-    threshold: 1,
+    threshold: 0.5,
   });
 
   useEffect(() => {

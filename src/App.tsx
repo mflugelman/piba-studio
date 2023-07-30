@@ -16,6 +16,7 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
 import OurWork from "./pages/OurWork";
+import { Box } from "@mui/material";
 
 let theme = responsiveFontSizes(themes.theme);
 

@@ -12,12 +12,12 @@ const ContentBox = (props: ContentBoxProps) => {
         justifyContent: "center",
         alignItems: "center",
         width: "100vw",
+        overflow: "hidden",
       }}
     >
       <Box
         sx={{
           width: { xs: "100%", xl: 1200 },
-          display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}

@@ -1,9 +1,124 @@
-.slide {
+.vertical-dots {
+  list-style: none;
+  display: block;
+  position: absolute;
+  top: 22%;
+  text-align: left;
+}
+.vertical-dots li {
   position: relative;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
+.vertical-dots li button {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  cursor: pointer;
+  color: transparent;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+.vertical-dots li button:hover,
+.vertical-dots li button:focus {
+  outline: none;
+}
+.vertical-dots li button:hover:before,
+.vertical-dots li button:focus:before {
+  color: #f7c2e5;
+  font-size: 10px;
+}
+.vertical-dots li button:before {
+  font-family: "slick";
+  font-size: 6px;
+  line-height: 20px;
 
-.slide:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 20px;
+  height: 20px;
+
+  content: "•";
+  text-align: center;
+
+  color: white;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.vertical-dots li.slick-active button:before {
+  color: #7b9ff6;
+  font-size: 10px;
+}
+
+/* Horizontal dots */
+.horizontal-dots {
+  bottom: -15%;
+  list-style: none;
+  display: block;
+  position: absolute;
+  align-items: center; /* Center the dots vertically */
+  left: 20%;
+}
+
+.horizontal-dots li {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.horizontal-dots li button {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  cursor: pointer;
+  color: transparent;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+
+.horizontal-dots li button:hover,
+.horizontal-dots li button:focus {
+  outline: none;
+}
+
+.horizontal-dots li button:hover:before,
+.horizontal-dots li button:focus:before {
+  color: #f7c2e5;
+  font-size: 10px;
+}
+
+.horizontal-dots li button:before {
+  font-family: "slick";
+  font-size: 6px;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  content: "•";
+  text-align: center;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.horizontal-dots li.slick-active button:before {
+  color: #7b9ff6;
+  font-size: 10px;
 }

@@ -4,7 +4,8 @@
     "Services": "Services",
     "AboutUs": "About us",
     "SayHi": "Say hi!",
-    "BookCall": "BOOK A CALL"
+    "BookCall": "BOOK A CALL",
+    "BookCallMobile": "Book a call"
   },
   "HomeScreen": {
     "MeaningfulExperiences": "Meaningful digital <br/> experiences through creative, purpose-driven design.",

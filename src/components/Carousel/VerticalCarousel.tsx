@@ -4,13 +4,19 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./VerticalCarousel.css";
-import { Box, Grid, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  SxProps,
+  Theme,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import CommunityWebsite from "./../../assets/carrouselImages/CommunityWebsite.png";
 import MedicalSearchEngine from "./../../assets/carrouselImages/MedicalSearchEngine.png";
-import RealStateWebsite from "./../../assets/carrouselImages/RealStateWebsite.png";
+import RealStateWebsite from "./../../assets/carrouselImages/RealStateWebsite.jpeg";
 import ReportFormsWebapp from "./../../assets/carrouselImages/ReportFormsWebapp.png";
 import TaskManagementDashboard from "./../../assets/carrouselImages/TaskManagementDashboard.png";
-import { SxProps } from "@mui/system";
 import { useInView } from "react-intersection-observer";
 import { useScrollBlock } from "../../hooks/useScrollBlock";
 import Tag from "../Tag";
@@ -25,20 +31,21 @@ type CarrouselContent = {
   link: string;
 };
 
-const debounceDelay = 40;
-
 type VerticalCarouselProps = {};
 
 const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
+  const isMobile = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("md")
+  );
+
   const { t } = useTranslation("VerticalCarousel");
   const { ref, inView } = useInView({
-    threshold: 1,
+    threshold: isMobile ? 1 : 0.65,
   });
   const carouselRef = useRef<Carousel>(null);
   const [selectedSlide, setSelectedSlide] = useState(0);
   const [blockScroll, allowScroll] = useScrollBlock();
-  const [scrollEventAllowed, setScrollEventAllowed] = useState(true);
-  const [firstBlock, setFirstBlock] = useState(false);
+  const [allowBlock, setAllowBlock] = useState(true);
 
   const carrouselData: CarrouselContent[] = [
     {
@@ -78,128 +85,102 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
     },
   ];
 
-  const getBoxStyles = (selected: boolean): SxProps => {
-    return {
-      borderRadius: 2,
-      transform: selected
-        ? `scale(1) translateY(-${isMobile ? 0 : 5 * selectedSlide}%)`
-        : "scale(0.8)",
-      transition: "transform 0.2s ease-in-out",
-      boxShadow: selected ? "0px 0px 30px rgba(255, 255, 255, 0.64)" : "none",
-      m: "0 auto",
-      width: { xs: "100%", md: "80%" },
-    };
-  };
-
-  const [isMobile, setIsMobile] = useState(false);
-
   const settings: Settings = {
-    infinite: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
     vertical: !isMobile,
-    verticalSwiping: !isMobile,
+    slidesToShow: isMobile ? 1 : 1.25,
     arrows: false,
-    swipeToSlide: true,
+    verticalSwiping: !isMobile,
+    infinite: true,
+    dots: true,
+    dotsClass: isMobile ? "horizontal-dots" : "vertical-dots",
+    speed: 500,
+    centerMode: true,
     afterChange: (current) => setSelectedSlide(current),
   };
 
   useEffect(() => {
-    const handleResize = () => {
-      const isMobile = window.matchMedia("(max-width: 768px)").matches;
-      setIsMobile(isMobile);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (inView) {
-      if (!firstBlock) {
-        blockScroll();
-        setFirstBlock(true);
-      }
-      document.addEventListener("wheel", handleMouseScroll);
-    } else {
-      allowScroll();
-      document.removeEventListener("wheel", handleMouseScroll);
+    if (inView && allowBlock) {
+      blockScroll();
     }
-
-    return () => {
-      document.removeEventListener("wheel", handleMouseScroll);
-    };
   }, [inView]);
 
-  const debounce = (fn: Function, delay: number) => {
-    let timeoutId: ReturnType<typeof setTimeout> | null = null;
-
-    return (...args: any[]) => {
-      if (timeoutId) {
-        clearTimeout(timeoutId);
-      }
-
-      timeoutId = setTimeout(() => {
-        fn(...args);
-      }, delay);
-    };
-  };
-
-  const handleMouseScroll = debounce((event: WheelEvent) => {
-    if (!scrollEventAllowed || firstBlock) return;
-
-    setScrollEventAllowed(false);
-
-    if (event && event.deltaY > 0) {
-      carouselRef.current?.slickNext(); // Scroll down, go to the next slide
-    } else {
-      carouselRef.current?.slickPrev(); // Scroll up, go to the previous slide
+  useEffect(() => {
+    if (selectedSlide == carrouselData.length - 1) {
+      allowScroll();
+      setAllowBlock(false);
     }
-  }, debounceDelay); // Adjust the delay time as needed
+  }, [selectedSlide]);
 
   const handleSlideClick = (index: number) => {
-    const slide = carrouselData[index];
-    const link = slide.link;
-    window.open(link, "_blank");
+    // const slide = carrouselData[index];
+    // const link = slide.link;
+    // window.open(link, "_blank");
   };
 
-  useEffect(() => {
-    const enableScrollEvent = () => {
-      setScrollEventAllowed(true);
+  const scale = isMobile ? 0.9 : 0.75;
+  const shadowRadius = isMobile ? 10 : 20;
+  const getBoxStyles = (selected: boolean): SxProps => {
+    return {
+      borderRadius: 5,
+      transform: `scale(${(selected ? 1 : 0.9) * scale})`,
+      boxShadow: selected
+        ? `0px 0px ${shadowRadius}px rgba(255, 255, 255, 0.64)`
+        : "none",
+      m: "0 auto",
+      transition: "transform 0.3s ease-in-out", // Add the transition to the default state
+      "&:hover": {
+        transform: selected ? `scale(${scale * 1.05})` : null,
+        transition: "transform 0.3s ease-in-out",
+      },
     };
+  };
 
-    if (selectedSlide === carrouselData.length - 1) allowScroll();
-
-    const timeoutId = setTimeout(enableScrollEvent, debounceDelay);
-
-    return () => {
-      clearTimeout(timeoutId);
-    };
-  }, [selectedSlide, allowScroll]);
+  const handleScroll = (event: React.WheelEvent<HTMLDivElement>) => {
+    if (allowBlock) {
+      if (event.deltaY > 100) {
+        carouselRef.current?.slickNext();
+      } else if (event.deltaY < -100) {
+        carouselRef.current?.slickPrev();
+      }
+    }
+  };
 
   return (
-    <Box ref={ref}>
+    <Box sx={{ mt: { xs: 2, md: 4 } }} onWheel={handleScroll} ref={ref}>
       <Grid container>
-        <Grid item xs={12} md={7}>
-          <Box p={0}>
+        <Grid
+          item
+          xs={12}
+          md={7}
+          sx={{
+            pl: { xs: 0, md: 1 },
+            pr: { xs: 0, md: 1 },
+          }}
+        >
+          <Box onWheel={handleScroll}>
             <Carousel {...settings} ref={carouselRef}>
               {carrouselData.map((carrouselComponent, index) => (
-                <div
-                  key={index}
-                  className="slide"
-                  onClick={() => handleSlideClick(index)}
+                <Box
+                  key={"slide" + index}
+                  sx={{
+                    transform: isMobile
+                      ? null
+                      : `translateY(${-selectedSlide * 3.5}%)`,
+                  }}
                 >
-                  <Box p={5} key={"image" + index}>
+                  <Box key={index} sx={getBoxStyles(index === selectedSlide)}>
                     <Box
+                      key={"image" + index}
                       component="img"
                       src={carrouselComponent.image}
-                      sx={getBoxStyles(index === selectedSlide)}
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                        borderRadius: 5,
+                      }}
                     />
                   </Box>
-                </div>
+                </Box>
               ))}
             </Carousel>
           </Box>
@@ -210,9 +191,10 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
           md={5}
           sx={{
             display: "flex",
-            justifyContent: "space-evenly",
             flexDirection: "column",
-            p: 4,
+            pt: 4,
+            pr: { xs: 4, md: 8 },
+            pl: { xs: 4, md: 8 },
           }}
         >
           <Typography
@@ -220,6 +202,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
             variant="h6"
             textAlign="left"
             fontWeight="bold"
+            mt={{ md: 4, lg: 4 }}
           >
             {carrouselData[selectedSlide].title}
           </Typography>
@@ -227,7 +210,13 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
             {carrouselData[selectedSlide].description}
           </Typography>
 
-          <Box sx={{ display: "flex" }}>
+          <Box
+            sx={{
+              display: "flex",
+              mt: { md: 2, lg: 4 },
+              mb: { md: 2, lg: 4 },
+            }}
+          >
             {carrouselData[selectedSlide].tags.map((tag, index) => (
               <Tag key={"tag" + index}>{tag}</Tag>
             ))}
