@@ -12,6 +12,7 @@ const ContentBox = (props: ContentBoxProps) => {
         justifyContent: "center",
         alignItems: "center",
         width: "100vw",
+        overflow: "hidden",
       }}
     >
       <Box

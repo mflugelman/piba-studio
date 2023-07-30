@@ -10,7 +10,7 @@ const TailoredInnovation = () => {
 
   const [visible, setVisible] = useState(false);
   const { ref, inView } = useInView({
-    threshold: 1,
+    threshold: 0.5,
   });
 
   const containerRef = useRef(null);

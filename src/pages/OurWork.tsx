@@ -8,14 +8,14 @@ const OurWork = () => {
   const { t } = useTranslation("OurWork");
 
   return (
-    <Box sx={{ backgroundColor: "black.main", pt: 10 }}>
+    <Box sx={{ backgroundColor: "black.main", pt: { xs: 2, md: 10 } }}>
       <ContentBox>
-        <Box sx={{ pr: { xs: 4, md: 8 }, pl: { xs: 4, md: 8 } }}>
+        <Box mt={{ xs: 2, md: 10 }} mr={4}>
           <DashTitle dashPosition="right" color="white">
             {t("OurWork")}
           </DashTitle>
-          <VerticalCarousel />
         </Box>
+        <VerticalCarousel />
       </ContentBox>
     </Box>
   );

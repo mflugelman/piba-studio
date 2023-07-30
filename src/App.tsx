@@ -68,13 +68,15 @@ function App() {
           <div ref={servicesRef} id="services">
             <Services />
           </div>
-          <div>{/* <ThisIsPiba /> */}</div>
-          <div ref={aboutUsRef} id="about-us">
-            {/* <TailoredInnovation /> */}
+          <div>
+            <ThisIsPiba />
           </div>
-          {/* <WorkWithUs /> */}
+          <div ref={aboutUsRef} id="about-us">
+            <TailoredInnovation />
+          </div>
+          <WorkWithUs />
           <div ref={sayHiRef} id="say-hi">
-            {/* <LetsTalk /> */}
+            <LetsTalk />
           </div>
           <Footer />
         </Layout>

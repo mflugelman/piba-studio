@@ -59,13 +59,13 @@ const Footer = () => {
               {t("Based")}
             </Typography>
           </Grid>
-          <Grid item md={2} />
           <Grid
             item
             xs={12}
-            md={4}
+            md={6}
             sx={{
               display: "flex",
+              justifyContent: "flex-end",
               alignItems: "center",
             }}
           >
