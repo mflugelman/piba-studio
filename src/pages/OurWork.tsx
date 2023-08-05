@@ -8,9 +8,9 @@ const OurWork = () => {
   const { t } = useTranslation("OurWork");
 
   return (
-    <Box sx={{ backgroundColor: "black.main", pt: { xs: 2, md: 10 } }}>
+    <Box sx={{ backgroundColor: "black.main" }} pb={{ xs: 4, md: 0 }}>
       <ContentBox>
-        <Box mt={{ xs: 2, md: 10 }} mr={4}>
+        <Box mt={{ xs: 4, md: 10 }}>
           <DashTitle dashPosition="right" color="white">
             {t("OurWork")}
           </DashTitle>

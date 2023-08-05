@@ -12,11 +12,11 @@ const DashTitle = (props: DashTitleProps) => {
       sx={{
         display: "flex",
         justifyContent:
-          props.dashPosition == "left" ? "flex-start" : "flex-end",
+          props.dashPosition === "left" ? "flex-start" : "flex-end",
         alignItems: "center",
       }}
     >
-      {props.dashPosition == "left" ? (
+      {props.dashPosition === "left" ? (
         <Box
           sx={{
             width: { xs: "60px", md: "90px" },
@@ -30,13 +30,14 @@ const DashTitle = (props: DashTitleProps) => {
         textAlign={props.dashPosition}
         mr={2}
         ml={2}
-        color={props.color == "white" ? "white.main" : "black.main"}
+        color={props.color === "white" ? "white.main" : "black.main"}
       >
         {props.children}
       </Typography>
-      {props.dashPosition == "right" ? (
+      {props.dashPosition === "right" ? (
         <Box
           sx={{
+            mr: 4,
             width: { xs: "60px", md: "90px" },
             height: { xs: "13px", md: "22px" },
             backgroundColor: "secondary.main",

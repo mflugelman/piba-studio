@@ -1,4 +1,4 @@
-import { Box, Typography, useMediaQuery, Theme, Fade } from "@mui/material";
+import { Box, Typography, Fade } from "@mui/material";
 import { useState, useEffect } from "react";
 import DashTitle from "../components/DashTitle";
 import ThisIsPibaImage from "./../assets/thisispiba.png";
@@ -62,7 +62,10 @@ const ThisIsPiba: React.FC = () => {
       <ContentBox>
         <Box
           sx={{
-            p: { xs: 4, md: 8 },
+            pt: { xs: 8, md: 0 },
+            pb: { xs: 8, md: 0 },
+            pr: { xs: 4, md: 8 },
+            pl: { xs: 4, md: 8 },
             height: "100%",
             display: "flex",
             flexDirection: "column",
@@ -72,7 +75,7 @@ const ThisIsPiba: React.FC = () => {
           <DashTitle dashPosition="left" color="black">
             {t("ThisIsPiba")}
           </DashTitle>
-          <Box mt={4}>
+          <Box mt={6}>
             <Fade in={visible[0]} timeout={timeout}>
               <Typography variant={"body1"} textAlign="left" ref={ref}>
                 <Trans i18nKey="ThisIsPiba.Founded">
@@ -81,23 +84,19 @@ const ThisIsPiba: React.FC = () => {
               </Typography>
             </Fade>
             <Fade in={visible[1]} timeout={timeout}>
-              <p>
-                <Typography
-                  variant={"body1"}
-                  textAlign="left"
-                  mt={4}
-                  mr={{ xs: 0, md: 4 }}
-                >
-                  {t("EnergyAndDedication")}
-                </Typography>
-              </p>
+              <Typography
+                variant={"body1"}
+                textAlign="left"
+                mt={6}
+                mr={{ xs: 0, md: 4 }}
+              >
+                {t("EnergyAndDedication")}
+              </Typography>
             </Fade>
             <Fade in={visible[2]} timeout={timeout}>
-              <p>
-                <Typography variant={"body1"} textAlign="left" ref={ref} mt={4}>
-                  {t("BreakingBarriers")}
-                </Typography>
-              </p>
+              <Typography variant={"body1"} textAlign="left" mt={6}>
+                {t("BreakingBarriers")}
+              </Typography>
             </Fade>
           </Box>
         </Box>

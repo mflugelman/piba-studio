@@ -1,5 +1,4 @@
 import { Button, SxProps, Theme, Typography } from "@mui/material";
-import { useState } from "react";
 
 type HighlightedButtonProps = {
   children: string;
@@ -9,8 +8,6 @@ type HighlightedButtonProps = {
 };
 
 const HighlightedButton = (props: HighlightedButtonProps) => {
-  const [isClicked, setIsClicked] = useState(props.active);
-
   return (
     <Button
       disableRipple
@@ -19,8 +16,14 @@ const HighlightedButton = (props: HighlightedButtonProps) => {
         textTransform: "none",
         "&:hover": {
           backgroundColor: "transparent",
+          color: "black !important",
+
+          ".MuiTypography-root": {
+            fontWeight: props.active ? null : "bold",
+            color: "black !important",
+          },
         },
-        color: "black",
+        color: "black !important",
         ...props.circleLocationProps,
         "&::after": {
           content: '""',
@@ -52,9 +55,6 @@ const HighlightedButton = (props: HighlightedButtonProps) => {
           zIndex: 1,
           marginRight: 2,
           marginLeft: 2,
-          "&:hover": {
-            fontWeight: "bold",
-          },
         }}
       >
         {props.children}

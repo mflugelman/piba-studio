@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Box, Card, CardContent, Grid, Typography } from "@mui/material";
 
 type InfoCardProps = {
   title: string;
