@@ -1,8 +1,12 @@
 {
   "files": {
     "main.css": "/piba-studio/static/css/main.00ca09ab.css",
-    "main.js": "/piba-studio/static/js/main.c5452908.js",
+    "main.js": "/piba-studio/static/js/main.fa6df061.js",
     "static/js/787.53d0096e.chunk.js": "/piba-studio/static/js/787.53d0096e.chunk.js",
+    "static/media/thisIsPibaHuge.png": "/piba-studio/static/media/thisIsPibaHuge.0462233f41cc64d2a8ee.png",
+    "static/media/thisispiba.png": "/piba-studio/static/media/thisispiba.398e85636529b53b4901.png",
+    "static/media/thisIsPibaMd.png": "/piba-studio/static/media/thisIsPibaMd.c0500be47c4f59598619.png",
+    "static/media/thisIsPibaMobile.png": "/piba-studio/static/media/thisIsPibaMobile.23e504a5aca50b425760.png",
     "static/media/Poppins-Regular.ttf": "/piba-studio/static/media/Poppins-Regular.35d26b781dc5fda684cc.ttf",
     "static/media/Lato-BoldItalic.ttf": "/piba-studio/static/media/Lato-BoldItalic.fd32b4dea61508c37b78.ttf",
     "static/media/Lato-Light.ttf": "/piba-studio/static/media/Lato-Light.c7400fcad9e48ca9043f.ttf",
@@ -12,13 +16,17 @@
     "static/media/Lato-BlackItalic.ttf": "/piba-studio/static/media/Lato-BlackItalic.09fc285661e54addb1fd.ttf",
     "static/media/Lato-Black.ttf": "/piba-studio/static/media/Lato-Black.57dee8aface5572f9101.ttf",
     "static/media/Lato-LightItalic.ttf": "/piba-studio/static/media/Lato-LightItalic.4310bbed01b37dfcee98.ttf",
+    "static/media/innovativeSolutions.png": "/piba-studio/static/media/innovativeSolutions.a1b441c76e7bdd7f5490.png",
+    "static/media/purposefulDesign.png": "/piba-studio/static/media/purposefulDesign.630f6816a45193a31580.png",
+    "static/media/exceptionalResults.png": "/piba-studio/static/media/exceptionalResults.b98704a111151d0e0955.png",
+    "static/media/collaborativePartnership.png": "/piba-studio/static/media/collaborativePartnership.6c012a6d5f9670954d07.png",
     "index.html": "/piba-studio/index.html",
     "main.00ca09ab.css.map": "/piba-studio/static/css/main.00ca09ab.css.map",
-    "main.c5452908.js.map": "/piba-studio/static/js/main.c5452908.js.map",
+    "main.fa6df061.js.map": "/piba-studio/static/js/main.fa6df061.js.map",
     "787.53d0096e.chunk.js.map": "/piba-studio/static/js/787.53d0096e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.00ca09ab.css",
-    "static/js/main.c5452908.js"
+    "static/js/main.fa6df061.js"
   ]
 }
