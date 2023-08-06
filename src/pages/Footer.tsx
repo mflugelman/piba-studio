@@ -14,9 +14,10 @@ const Footer = () => {
     <Box
       sx={{
         backgroundColor: "black.main",
-        width: "100vw",
+        width: "100%",
         display: "flex",
         justifyContent: "center",
+        overflowX: "hidden",
       }}
     >
       <Box

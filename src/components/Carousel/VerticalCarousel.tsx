@@ -145,17 +145,8 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
 
   useEffect(() => {
     if (bottomInView && topInView && allowBlock) {
-      const carousel = document.getElementById("carousel");
-      if (carousel) {
-        carousel.scrollIntoView({
-          behavior: "smooth",
-          block: "center",
-          inline: "nearest",
-        });
-
-        setAllowBlock(false);
-        blockScroll();
-      }
+      setAllowBlock(false);
+      blockScroll();
     } else {
       allowScroll();
     }
