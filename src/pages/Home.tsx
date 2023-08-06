@@ -72,87 +72,94 @@ const Home = () => {
   };
 
   return (
-    <ContentBox>
-      {backDrop()}
-      <Box
-        sx={{
-          backgroundImage: {
-            xl: `url(${illusPiba})`,
-            xs: `url(${illusPibaRegular})`,
-          },
-          backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
-          backgroundPositionX: "right",
-          height: "100%",
-          pt: { xs: 20, md: 20 },
-          pl: { xs: 4, md: 8 },
-          pr: { xs: 4, md: 8 },
-        }}
-      >
-        <Grid container>
-          <Grid item>
-            <Grid item xs={12} sm={11} md={10} lg={9}>
-              <Typography variant="h1" align="left">
-                <Trans i18nKey="HomeScreen.MeaningfulExperiences">
-                  {t("MeaningfulExperiences")}
-                </Trans>
-              </Typography>
+    <Box
+      sx={{
+        backgroundImage: {
+          xl: `url(${illusPiba})`,
+          xs: `url(${illusPibaRegular})`,
+        },
+        backgroundSize: "contain",
+        backgroundRepeat: "no-repeat",
+        backgroundPositionX: { xl: "right 30%", xs: "right" },
+        height: "80%",
+      }}
+    >
+      <ContentBox>
+        {backDrop()}
+        <Box
+          sx={{
+            height: "100%",
+
+            pt: { xs: 20, md: 20 },
+            pl: { xs: 4, md: 8 },
+            pr: { xs: 4, md: 8 },
+          }}
+        >
+          <Grid container>
+            <Grid item>
+              <Grid item xs={12} sm={11} md={10} lg={9}>
+                <Typography variant="h1" align="left">
+                  <Trans i18nKey="HomeScreen.MeaningfulExperiences">
+                    {t("MeaningfulExperiences")}
+                  </Trans>
+                </Typography>
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
-        <Box
-          sx={{
-            mt: 8,
-            display: "flex",
-            justifyContent: { xs: "center", sm: "flex-start" },
-          }}
-        >
-          <Button
-            disableElevation
-            variant="contained"
-            onClick={() =>
-              window.scrollTo({
-                behavior: "smooth",
-                top: document.documentElement.scrollHeight,
-              })
-            }
-            sx={{
-              width: { xs: "80%", sm: "auto" },
-              boxShadow: "0px 0px 10px theme.primary.main",
-            }}
-          >
-            <Typography variant="button" color="white.main" m={1}>
-              {t("GetInTouch")}
-            </Typography>
-          </Button>
-        </Box>
-        <Box
-          sx={{
-            display: { md: "flex", xs: "block" },
-            alignItems: "center",
-            justifyContent: "center",
-            pt: { xs: 20, md: 20 },
-            mb: 8,
-          }}
-        >
           <Box
             sx={{
-              width: { xs: "0px", md: "40px" },
-              height: { xs: "0px", md: "9px" },
-              backgroundColor: "secondary.main",
-              alignSelf: "center",
+              mt: 8,
+              display: "flex",
+              justifyContent: { xs: "center", sm: "flex-start" },
             }}
-          />
-          <RightIconButton
-            onClick={handleAutoScroll}
-            icon={ArrowDownwardIcon}
-            color="black"
           >
-            {t("ScrollToExplore")}
-          </RightIconButton>
+            <Button
+              disableElevation
+              variant="contained"
+              onClick={() =>
+                window.scrollTo({
+                  behavior: "smooth",
+                  top: document.documentElement.scrollHeight,
+                })
+              }
+              sx={{
+                width: { xs: "80%", sm: "auto" },
+                boxShadow: "0px 0px 10px theme.primary.main",
+              }}
+            >
+              <Typography variant="button" color="white.main" m={1}>
+                {t("GetInTouch")}
+              </Typography>
+            </Button>
+          </Box>
+          <Box
+            sx={{
+              display: { md: "flex", xs: "block" },
+              alignItems: "center",
+              justifyContent: "center",
+              pt: { xs: 20, md: 20 },
+              mb: 8,
+            }}
+          >
+            <Box
+              sx={{
+                width: { xs: "0px", md: "40px" },
+                height: { xs: "0px", md: "9px" },
+                backgroundColor: "secondary.main",
+                alignSelf: "center",
+              }}
+            />
+            <RightIconButton
+              onClick={handleAutoScroll}
+              icon={ArrowDownwardIcon}
+              color="black"
+            >
+              {t("ScrollToExplore")}
+            </RightIconButton>
+          </Box>
         </Box>
-      </Box>
-    </ContentBox>
+      </ContentBox>
+    </Box>
   );
 };
 
