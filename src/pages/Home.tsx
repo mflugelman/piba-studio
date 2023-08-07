@@ -75,12 +75,16 @@ const Home = () => {
     <Box
       sx={{
         backgroundImage: {
-          xl: `url(${illusPiba})`,
+          md: `url(${illusPiba})`,
           xs: `url(${illusPibaRegular})`,
         },
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
-        backgroundPositionX: { xl: "right 30%", xs: "right" },
+        backgroundPositionX: {
+          xl: "right 30%",
+          md: "right -100%",
+          xs: "right",
+        },
         height: "80%",
       }}
     >

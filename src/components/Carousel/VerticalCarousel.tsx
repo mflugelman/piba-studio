@@ -17,6 +17,7 @@ import MedicalSearchEngine from "./../../assets/carrouselImages/MedicalSearchEng
 import RealStateWebsite from "./../../assets/carrouselImages/RealStateWebsite.jpeg";
 import ReportFormsWebapp from "./../../assets/carrouselImages/ReportFormsWebapp.png";
 import TaskManagementDashboard from "./../../assets/carrouselImages/TaskManagementDashboard.png";
+import ElToco from "./../../assets/carrouselImages/elToco.png";
 import { useInView } from "react-intersection-observer";
 import { useScrollBlock } from "../../hooks/useScrollBlock";
 import Tag from "../Tag";
@@ -87,6 +88,13 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
       image: ReportFormsWebapp,
       tags: [t("WebApp"), t("UXDesign"), t("UIDesign")],
       link: "https://www.behance.net/gallery/161498095/Report-Forms",
+    },
+    {
+      title: t("AdvertsApp"),
+      description: t("AdvertsAppDescription"),
+      image: ElToco,
+      tags: [t("Research"), t("WebApp"), t("UXDesign"), t("UIDesign")],
+      link: "https://www.behance.net/gallery/176918611/Advertising-El-Toco",
     },
   ];
 
@@ -202,8 +210,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
             display: "flex",
             flexDirection: "column",
             pt: 4,
-            pr: { xs: 4, md: 8 },
-            pl: { xs: 4, md: 8 },
+            pr: { xs: 4, md: 4 },
           }}
         >
           <Box sx={{ height: 10 }} ref={refTop}></Box>
