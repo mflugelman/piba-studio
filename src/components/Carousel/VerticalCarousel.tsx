@@ -211,6 +211,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
             flexDirection: "column",
             pt: 4,
             pr: { xs: 4, md: 4 },
+            pl: { xs: 4, md: 0 },
           }}
         >
           <Box sx={{ height: 10 }} ref={refTop}></Box>
