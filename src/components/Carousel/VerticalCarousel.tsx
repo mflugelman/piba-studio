@@ -47,11 +47,15 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
   const [refTop, topInView] = useInView({
     threshold: 1,
   });
+
+  const elementRef = useRef<HTMLDivElement | null>(null);
   const carouselRef = useRef<Carousel>(null);
   const [selectedSlide, setSelectedSlide] = useState(0);
   const [blockScroll, allowScroll] = useScrollBlock();
   const [allowBlock, setAllowBlock] = useState(true);
-  const [blockSwipe, setBlockSwipe] = useState(false);
+  const [blockSwipe, setBlockSwipe] = useState(true);
+  const [isInCenter, setIsInCenter] = useState(false);
+  const [blockDirection, setBlockDirection] = useState(false); //false is down
 
   const carrouselData: CarrouselContent[] = [
     {
@@ -103,7 +107,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
     slidesToShow: isMobile ? 1 : 1.25,
     arrows: false,
     verticalSwiping: !isMobile,
-    infinite: true,
+    // infinite: true,
     dots: !isMobile,
     centerMode: true,
     dotsClass: "vertical-dots",
@@ -112,8 +116,15 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
   };
 
   useEffect(() => {
-    if (selectedSlide === carrouselData.length - 1) {
+    if (!blockDirection && selectedSlide === carrouselData.length - 1) {
       setBlockSwipe(true);
+      setAllowBlock(true);
+      allowScroll();
+    }
+
+    if (blockDirection && selectedSlide === 0) {
+      setBlockSwipe(true);
+      setAllowBlock(true);
       allowScroll();
     }
   }, [selectedSlide]);
@@ -144,24 +155,62 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
   };
 
   const handleScroll = (event: React.WheelEvent<HTMLDivElement>) => {
-    if (event.deltaY > 40 && !blockSwipe) {
+    if (
+      event.deltaY > 40 &&
+      !blockSwipe &&
+      selectedSlide < carrouselData.length - 1
+    ) {
       carouselRef.current?.slickNext();
-    } else if (event.deltaY < -40 && !blockSwipe) {
+    } else if (event.deltaY < -40 && !blockSwipe && selectedSlide > 0) {
       carouselRef.current?.slickPrev();
     }
   };
 
+  const handleGlobalScroll = (event: Event) => {
+    const element = elementRef.current;
+    if (element) {
+      const elementRect = element.getBoundingClientRect();
+      const viewportHeight =
+        window.innerHeight || document.documentElement.clientHeight;
+
+      const centered = isInPosition(
+        elementRect,
+        viewportHeight,
+        blockDirection
+      );
+      setIsInCenter(centered);
+    }
+  };
+
   useEffect(() => {
-    if (bottomInView && topInView && allowBlock) {
+    if (isInCenter && allowBlock) {
       setAllowBlock(false);
+      setBlockSwipe(false);
       blockScroll();
+
+      if (selectedSlide < carrouselData.length / 2) setBlockDirection(false);
+      else setBlockDirection(true);
     } else {
       allowScroll();
+      setBlockSwipe(true);
     }
-  }, [bottomInView, topInView]);
+  }, [isInCenter]);
+
+  useEffect(() => {
+    if (topInView) window.addEventListener("scroll", handleGlobalScroll);
+    else {
+      allowScroll();
+      setAllowBlock(true);
+      window.removeEventListener("scroll", handleGlobalScroll);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", handleGlobalScroll);
+    };
+  }, [topInView]);
 
   return (
-    <Box sx={{ mt: { xs: 2, md: 4 } }} onWheel={handleScroll}>
+    <Box sx={{ mt: { xs: 2, md: 4 } }} onWheel={handleScroll} ref={elementRef}>
       <Grid container>
         <Grid
           item
@@ -260,3 +309,22 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
 };
 
 export default VerticalCarousel;
+
+interface ElementProps {
+  top: number;
+  height: number;
+}
+
+function isInPosition(
+  elementRect: ElementProps,
+  viewportHeight: number,
+  blockDirection: boolean
+): boolean {
+  const elementCenterY = elementRect.top + elementRect.height / 10;
+
+  const viewportCenterY = viewportHeight / 4;
+
+  const threshold = 20;
+
+  return Math.abs(elementCenterY - viewportCenterY) <= threshold;
+}
