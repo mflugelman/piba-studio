@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/piba-studio/static/css/main.34834abf.css",
-    "main.js": "/piba-studio/static/js/main.643258ef.js",
+    "main.js": "/piba-studio/static/js/main.1f4652c3.js",
     "static/js/787.53d0096e.chunk.js": "/piba-studio/static/js/787.53d0096e.chunk.js",
     "static/media/elToco.png": "/piba-studio/static/media/elToco.6e516aa386ec1a878413.png",
     "static/media/illusPiba.png": "/piba-studio/static/media/illusPiba.8825e454cae22c063473.png",
@@ -37,11 +37,11 @@
     "static/media/slick.woff": "/piba-studio/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/piba-studio/index.html",
     "main.34834abf.css.map": "/piba-studio/static/css/main.34834abf.css.map",
-    "main.643258ef.js.map": "/piba-studio/static/js/main.643258ef.js.map",
+    "main.1f4652c3.js.map": "/piba-studio/static/js/main.1f4652c3.js.map",
     "787.53d0096e.chunk.js.map": "/piba-studio/static/js/787.53d0096e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.34834abf.css",
-    "static/js/main.643258ef.js"
+    "static/js/main.1f4652c3.js"
   ]
 }
