@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/piba-studio/static/css/main.00ca09ab.css",
-    "main.js": "/piba-studio/static/js/main.95ff73b0.js",
+    "main.js": "/piba-studio/static/js/main.6db55f51.js",
     "static/js/787.53d0096e.chunk.js": "/piba-studio/static/js/787.53d0096e.chunk.js",
     "static/media/illusPiba.png": "/piba-studio/static/media/illusPiba.8825e454cae22c063473.png",
     "static/media/illusPibaRegular.png": "/piba-studio/static/media/illusPibaRegular.1ae1cde8fdd58a1c29ae.png",
@@ -19,11 +19,11 @@
     "static/media/illusPibaFooterMobile.png": "/piba-studio/static/media/illusPibaFooterMobile.705842f04564c5f3a837.png",
     "index.html": "/piba-studio/index.html",
     "main.00ca09ab.css.map": "/piba-studio/static/css/main.00ca09ab.css.map",
-    "main.95ff73b0.js.map": "/piba-studio/static/js/main.95ff73b0.js.map",
+    "main.6db55f51.js.map": "/piba-studio/static/js/main.6db55f51.js.map",
     "787.53d0096e.chunk.js.map": "/piba-studio/static/js/787.53d0096e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.00ca09ab.css",
-    "static/js/main.95ff73b0.js"
+    "static/js/main.6db55f51.js"
   ]
 }
