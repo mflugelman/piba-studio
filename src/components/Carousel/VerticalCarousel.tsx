@@ -285,8 +285,10 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
           <Box
             sx={{
               display: "flex",
-              mt: { md: 2, lg: 4 },
-              mb: { md: 2, lg: 4 },
+              mt: { xs: 0, md: 2, lg: 4 },
+              mb: { xs: 0, md: 2, lg: 4 },
+              width: { xs: "120%", sm: "100%" },
+              position: "relative",
             }}
           >
             {carrouselData[selectedSlide].tags.map((tag, index) => (
@@ -320,7 +322,7 @@ function isInPosition(
   viewportHeight: number,
   blockDirection: boolean
 ): boolean {
-  const elementCenterY = elementRect.top + elementRect.height / 10;
+  const elementCenterY = elementRect.top + elementRect.height / 11;
 
   const viewportCenterY = viewportHeight / 4;
 

@@ -37,7 +37,7 @@ const Home = () => {
 
   const handleAutoScroll = () => {
     document.documentElement.style.scrollBehavior = "smooth";
-    const scrollStep = window.innerHeight;
+    const scrollStep = window.innerHeight * 0.9;
     window.scrollBy(0, scrollStep);
   };
 
@@ -81,7 +81,7 @@ const Home = () => {
         backgroundSize: "contain",
         backgroundRepeat: "no-repeat",
         backgroundPositionX: {
-          xl: "right 30%",
+          xl: "right 3  0%",
           md: "right -100%",
           xs: "right",
         },
