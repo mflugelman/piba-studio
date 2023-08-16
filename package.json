@@ -2,6 +2,7 @@
   "name": "piba-studio",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://studiopiba.com",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
@@ -54,6 +55,5 @@
   },
   "devDependencies": {
     "@types/react-slick": "^0.23.10"
-  },
-  "homepage": "https://mflugelman.github.io/piba-studio"
+  }
 }

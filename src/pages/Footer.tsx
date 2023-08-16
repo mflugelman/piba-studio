@@ -76,7 +76,7 @@ const Footer = () => {
                 handleButtonClick("https://www.instagram.com/studiopiba/")
               }
             >
-              <Typography variant="buttonLinks">Instragram</Typography>
+              <Typography variant="buttonLinks">Instagram</Typography>
             </Button>
             <Button
               className="still-button"

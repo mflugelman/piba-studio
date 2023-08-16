@@ -1,6 +1,4 @@
-import { Backdrop, Box, Button, Grid, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
-import pibaStudio from "./../assets/pibastudio.png";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import illusPiba from "./../assets/illusPiba.png";
 import illusPibaRegular from "./../assets/illusPibaRegular.png";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
@@ -10,65 +8,11 @@ import ContentBox from "../components/ContentBox";
 
 const Home = () => {
   const { t } = useTranslation("HomeScreen");
-  const [backdropOpen, setBackdropOpen] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setBackdropOpen(false);
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.pageYOffset > 0) {
-        setBackdropOpen(false);
-        window.removeEventListener("scroll", handleScroll);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   const handleAutoScroll = () => {
     document.documentElement.style.scrollBehavior = "smooth";
     const scrollStep = window.innerHeight * 0.9;
     window.scrollBy(0, scrollStep);
-  };
-
-  const backDrop = () => {
-    return (
-      <>
-        <Backdrop
-          timeout={{ exit: 800 }}
-          open={backdropOpen}
-          sx={{
-            backgroundColor: "rgba(255, 255, 255,0.87)",
-            zIndex: 1000,
-          }}
-        >
-          <Box
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            width="100%"
-            m={4}
-          >
-            <img
-              src={pibaStudio}
-              alt="Piba Studio"
-              width="100%"
-              onClick={() => setBackdropOpen(false)}
-            />
-          </Box>
-        </Backdrop>
-      </>
-    );
   };
 
   return (
@@ -89,7 +33,6 @@ const Home = () => {
       }}
     >
       <ContentBox>
-        {backDrop()}
         <Box
           sx={{
             height: "100%",

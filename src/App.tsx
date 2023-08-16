@@ -16,6 +16,9 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
 import OurWork from "./pages/OurWork";
+import { Backdrop, Box } from "@mui/material";
+
+import pibaStudio from "./assets/pibastudio.png";
 
 let theme = responsiveFontSizes(themes.theme);
 
@@ -50,6 +53,61 @@ function App() {
     }
   }, [inViewHome, inViewProjects, inViewServices, inViewAboutUs, inViewSayHi]);
 
+  const [backdropOpen, setBackdropOpen] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setBackdropOpen(false);
+    }, 1500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 0) {
+        setBackdropOpen(false);
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const backDrop = () => {
+    return (
+      <>
+        <Backdrop
+          timeout={{ exit: 800 }}
+          open={backdropOpen}
+          sx={{
+            backgroundColor: "rgba(255, 255, 255,0.87)",
+            zIndex: 1000,
+          }}
+        >
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            width="100%"
+            m={4}
+          >
+            <img
+              src={pibaStudio}
+              alt="Piba Studio"
+              width="100%"
+              onClick={() => setBackdropOpen(false)}
+            />
+          </Box>
+        </Backdrop>
+      </>
+    );
+  };
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
@@ -60,6 +118,7 @@ function App() {
           />
           <div ref={homeRef} id="home">
             <Home />
+            {backDrop()}
           </div>
           <div ref={projectsRef} id="projects">
             <OurWork />
