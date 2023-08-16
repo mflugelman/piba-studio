@@ -156,12 +156,12 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
 
   const handleScroll = (event: React.WheelEvent<HTMLDivElement>) => {
     if (
-      event.deltaY > 40 &&
+      event.deltaY > 60 &&
       !blockSwipe &&
       selectedSlide < carrouselData.length - 1
     ) {
       carouselRef.current?.slickNext();
-    } else if (event.deltaY < -40 && !blockSwipe && selectedSlide > 0) {
+    } else if (event.deltaY < -60 && !blockSwipe && selectedSlide > 0) {
       carouselRef.current?.slickPrev();
     }
   };
@@ -285,8 +285,10 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
           <Box
             sx={{
               display: "flex",
-              mt: { md: 2, lg: 4 },
-              mb: { md: 2, lg: 4 },
+              mt: { xs: 0, md: 2, lg: 4 },
+              mb: { xs: 0, md: 2, lg: 4 },
+              width: { xs: "120%", sm: "100%" },
+              position: "relative",
             }}
           >
             {carrouselData[selectedSlide].tags.map((tag, index) => (
@@ -320,7 +322,7 @@ function isInPosition(
   viewportHeight: number,
   blockDirection: boolean
 ): boolean {
-  const elementCenterY = elementRect.top + elementRect.height / 10;
+  const elementCenterY = elementRect.top + elementRect.height / 11;
 
   const viewportCenterY = viewportHeight / 4;
 

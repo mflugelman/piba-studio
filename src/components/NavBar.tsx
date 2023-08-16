@@ -65,6 +65,34 @@ function NavBar(props: NavBarProps) {
     setAnchorElUser(null);
   };
 
+  const [scrolling, setScrolling] = useState(true);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout | null = null;
+    const isAtTop = window.scrollY === 0;
+
+    const handleScroll = () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+      setScrolling(true);
+      timeout = setTimeout(() => {
+        if (!isAtTop) {
+          setScrolling(false);
+        }
+      }, 3000); // 3000 milliseconds = 3 seconds
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      if (timeout) {
+        clearTimeout(timeout);
+      }
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const mobileNavBar = () => {
     return (
       <Grid container>
@@ -133,7 +161,12 @@ function NavBar(props: NavBarProps) {
   };
 
   return (
-    <Slide appear={false} direction="down" in={!trigger} timeout={400}>
+    <Slide
+      appear={false}
+      direction="down"
+      in={!trigger && scrolling}
+      timeout={400}
+    >
       <AppBar
         sx={{
           background: "linear-gradient(90deg, #FFFFFF 0%, #EDECEC 100%);",
