@@ -15,7 +15,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setBackdropOpen(false);
-    }, 1000);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);

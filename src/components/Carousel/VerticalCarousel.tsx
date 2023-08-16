@@ -156,12 +156,12 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
 
   const handleScroll = (event: React.WheelEvent<HTMLDivElement>) => {
     if (
-      event.deltaY > 40 &&
+      event.deltaY > 60 &&
       !blockSwipe &&
       selectedSlide < carrouselData.length - 1
     ) {
       carouselRef.current?.slickNext();
-    } else if (event.deltaY < -40 && !blockSwipe && selectedSlide > 0) {
+    } else if (event.deltaY < -60 && !blockSwipe && selectedSlide > 0) {
       carouselRef.current?.slickPrev();
     }
   };

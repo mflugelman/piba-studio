@@ -6,11 +6,11 @@ import { useInView } from "react-intersection-observer";
 const TailoredInnovation = () => {
   const { t } = useTranslation("TailoredInnovation");
 
-  const timeout = 400;
+  const timeout = 600;
 
   const [visible, setVisible] = useState(false);
   const { ref, inView } = useInView({
-    threshold: 0.5,
+    threshold: 0.7,
   });
 
   const containerRef = useRef(null);
