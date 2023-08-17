@@ -19,7 +19,7 @@ import OurWork from "./pages/OurWork";
 import { Backdrop, Box, CircularProgress } from "@mui/material";
 import illusPibaRegular from "./assets/illusPibaRegular.png";
 import pibaStudio from "./assets/pibastudio.png";
-import illusPiba from "./assets/illusPiba.jpg";
+import illusPiba from "./assets/illusPiba.png";
 
 let theme = responsiveFontSizes(themes.theme);
 
@@ -57,7 +57,10 @@ function App() {
 
   useEffect(() => {
     const imgs = [illusPiba, illusPibaRegular, pibaStudio];
-
+    const fonts = [
+      "./fonts/Lato/Lato-Regular.ttf",
+      "./fonts/Lato/Lato-Light.ttf",
+    ];
     cacheImages(imgs);
   }, []);
 
@@ -88,7 +91,7 @@ function App() {
     }, 1500);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [backdropOpen]);
 
   useEffect(() => {
     const handleScroll = () => {

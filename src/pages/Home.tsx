@@ -4,7 +4,8 @@ import { Trans, useTranslation } from "react-i18next";
 import RightIconButton from "../components/RightIconButton";
 import ContentBox from "../components/ContentBox";
 import illusPibaRegular from "./../assets/illusPibaRegular.png";
-import illusPiba from "./../assets/illusPiba.jpg";
+import illusPiba from "./../assets/illusPiba.png";
+import { useEffect, useState } from "react";
 
 const Home = () => {
   const { t } = useTranslation("HomeScreen");
@@ -15,21 +16,44 @@ const Home = () => {
     window.scrollBy(0, scrollStep);
   };
 
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  // Define a function to update the window size state
+  const updateWindowSize = () => {
+    setWindowSize({
+      width: window.innerWidth,
+      height: window.innerHeight,
+    });
+  };
+
+  // Attach the window resize listener when the component mounts
+  useEffect(() => {
+    window.addEventListener("resize", updateWindowSize);
+
+    // Remove the listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", updateWindowSize);
+    };
+  }, []);
+
   return (
     <Box
       sx={{
         backgroundImage: {
           md: `url(${illusPiba})`,
-          xs: `url(${illusPibaRegular})`,
+          xs: `url(${illusPiba})`,
         },
-        backgroundSize: "contain",
+        backgroundSize: { xs: "160%", md: "90%", xl: "70%" },
         backgroundRepeat: "no-repeat",
         backgroundPositionX: {
-          xl: "right 3  0%",
-          md: "right -100%",
-          xs: "right",
+          xs: `${windowSize.width * 0.2}px`,
+          md: `${windowSize.width * 0.28}px`,
+          xl: `${windowSize.width * 0.35}px`,
         },
-        height: "80%",
+        backgroundPositionY: { xs: "-50%", md: "120%", xl: "120%" },
       }}
     >
       <ContentBox>
