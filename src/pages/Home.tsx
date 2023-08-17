@@ -3,7 +3,6 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { Trans, useTranslation } from "react-i18next";
 import RightIconButton from "../components/RightIconButton";
 import ContentBox from "../components/ContentBox";
-import illusPibaRegular from "./../assets/illusPibaRegular.png";
 import illusPiba from "./../assets/illusPiba.png";
 import { useEffect, useState } from "react";
 
