@@ -1,10 +1,10 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
-import illusPiba from "./../assets/illusPiba.png";
-import illusPibaRegular from "./../assets/illusPibaRegular.png";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { Trans, useTranslation } from "react-i18next";
 import RightIconButton from "../components/RightIconButton";
 import ContentBox from "../components/ContentBox";
+import illusPibaRegular from "./../assets/illusPibaRegular.png";
+import illusPiba from "./../assets/illusPiba.jpg";
 
 const Home = () => {
   const { t } = useTranslation("HomeScreen");

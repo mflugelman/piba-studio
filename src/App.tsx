@@ -16,9 +16,10 @@ import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar";
 import OurWork from "./pages/OurWork";
-import { Backdrop, Box } from "@mui/material";
-
+import { Backdrop, Box, CircularProgress } from "@mui/material";
+import illusPibaRegular from "./assets/illusPibaRegular.png";
 import pibaStudio from "./assets/pibastudio.png";
+import illusPiba from "./assets/illusPiba.jpg";
 
 let theme = responsiveFontSizes(themes.theme);
 
@@ -34,7 +35,6 @@ function App() {
   const handleClickScroll = (elementId: string) => {
     const element = document.getElementById(elementId);
     if (element) {
-      // 👇 Will scroll smoothly to the top of the next section
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
@@ -53,7 +53,34 @@ function App() {
     }
   }, [inViewHome, inViewProjects, inViewServices, inViewAboutUs, inViewSayHi]);
 
-  const [backdropOpen, setBackdropOpen] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const imgs = [illusPiba, illusPibaRegular, pibaStudio];
+
+    cacheImages(imgs);
+  }, []);
+
+  const cacheImages = async (images: string[]) => {
+    const promises: Promise<void>[] = images.map((src) => {
+      return new Promise<void>((resolve, reject) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => resolve();
+        img.onerror = () => reject();
+      });
+    });
+
+    try {
+      await Promise.all(promises);
+      setIsLoading(false);
+      setBackdropOpen(true);
+    } catch (error) {
+      console.error("An error occurred while caching images:", error);
+    }
+  };
+
+  const [backdropOpen, setBackdropOpen] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -108,9 +135,25 @@ function App() {
     );
   };
 
+  if (isLoading)
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          width: "100vw",
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <CircularProgress color="primary" />
+      </Box>
+    );
+
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
+        {backDrop()}
         <Layout>
           <NavBar
             onButtonClick={handleClickScroll}
@@ -118,7 +161,6 @@ function App() {
           />
           <div ref={homeRef} id="home">
             <Home />
-            {backDrop()}
           </div>
           <div ref={projectsRef} id="projects">
             <OurWork />
