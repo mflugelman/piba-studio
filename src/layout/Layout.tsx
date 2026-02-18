@@ -1,4 +1,4 @@
-import { Box, Theme, useMediaQuery } from "@mui/material";
+import { Box } from "@mui/material";
 import { ReactNode } from "react";
 
 type LayoutProps = {

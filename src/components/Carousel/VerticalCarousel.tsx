@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Carousel, { Settings } from "react-slick";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import "slick-carousel/slick/slick.css";
@@ -157,10 +157,9 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
       carouselRef.current?.slickNext();
     } else if (event.deltaY < -60 && !blockSwipe && selectedSlide > 0) {
       carouselRef.current?.slickPrev();
-    }
-  };
+    }  };
 
-  const handleGlobalScroll = (event: Event) => {
+  const handleGlobalScroll = useCallback((event: Event) => {
     const element = elementRef.current;
     if (element) {
       const elementRect = element.getBoundingClientRect();
@@ -174,7 +173,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
       );
       setIsInCenter(centered);
     }
-  };
+  }, [blockDirection]);
   useEffect(() => {
     if (isInCenter && allowBlock) {
       setAllowBlock(false);
