@@ -10,10 +10,9 @@ export const useScrollBlock = (): [() => void, () => void] => {
   const scrollBlocked = useRef(false);
   const html = safeDocument.documentElement;
   const { body } = safeDocument;
-
   const blockScroll = (): void => {
     if (!body || !body.style || scrollBlocked.current) return;
-    if (document == undefined) return;
+    if (document === undefined) return;
 
     const scrollBarWidth = window.innerWidth - html.clientWidth;
     const bodyPaddingRight =

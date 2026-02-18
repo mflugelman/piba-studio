@@ -1,7 +1,5 @@
 import { Button, Typography } from "@mui/material";
 
-import { useState } from "react";
-
 type HeaderButtonButtonProps = {
   children: string;
   onClick: () => void;

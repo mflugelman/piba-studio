@@ -38,12 +38,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
   const isMobile = useMediaQuery((theme: Theme) =>
     theme.breakpoints.down("md")
   );
-
   const { t } = useTranslation("VerticalCarousel");
-  const [refBottom, bottomInView] = useInView({
-    threshold: 1,
-  });
-
   const [refTop, topInView] = useInView({
     threshold: 1,
   });
@@ -114,7 +109,6 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
     speed: 400,
     afterChange: (current) => setSelectedSlide(current),
   };
-
   useEffect(() => {
     if (!blockDirection && selectedSlide === carrouselData.length - 1) {
       setBlockSwipe(true);
@@ -127,7 +121,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
       setAllowBlock(true);
       allowScroll();
     }
-  }, [selectedSlide]);
+  }, [selectedSlide, blockDirection, carrouselData.length, allowScroll]);
 
   const handleSlideClick = (index: number) => {
     const slide = carrouselData[index];
@@ -181,7 +175,6 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
       setIsInCenter(centered);
     }
   };
-
   useEffect(() => {
     if (isInCenter && allowBlock) {
       setAllowBlock(false);
@@ -194,8 +187,14 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
       allowScroll();
       setBlockSwipe(true);
     }
-  }, [isInCenter]);
-
+  }, [
+    isInCenter,
+    allowBlock,
+    allowScroll,
+    blockScroll,
+    carrouselData.length,
+    selectedSlide,
+  ]);
   useEffect(() => {
     if (topInView) window.addEventListener("scroll", handleGlobalScroll);
     else {
@@ -207,7 +206,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
     return () => {
       window.removeEventListener("scroll", handleGlobalScroll);
     };
-  }, [topInView]);
+  }, [topInView, allowScroll, handleGlobalScroll]);
 
   return (
     <Box sx={{ mt: { xs: 2, md: 4 } }} onWheel={handleScroll} ref={elementRef}>
@@ -281,7 +280,6 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
           >
             {carrouselData[selectedSlide].description}
           </Typography>
-
           <Box
             sx={{
               display: "flex",
@@ -294,8 +292,7 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
             {carrouselData[selectedSlide].tags.map((tag, index) => (
               <Tag key={"tag" + index}>{tag}</Tag>
             ))}
-          </Box>
-
+          </Box>{" "}
           <RightIconButton
             icon={ArrowForwardIcon}
             color={"white"}
@@ -303,7 +300,6 @@ const VerticalCarousel: React.FC<VerticalCarouselProps> = () => {
           >
             {t("LearnMore")}
           </RightIconButton>
-          <Box sx={{ height: 10 }} ref={refBottom}></Box>
         </Grid>
       </Grid>
     </Box>

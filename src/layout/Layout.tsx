@@ -6,10 +6,6 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  const isBigScreen = useMediaQuery((theme: Theme) =>
-    theme.breakpoints.up("xl")
-  );
-
   return (
     <div
       style={{

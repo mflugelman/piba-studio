@@ -204,40 +204,39 @@ const Wheel = () => {
                   left: -ballCoordinates.x + innerWHeelRadius - 20,
                 }}
               />
-            </Box>
-
+            </Box>{" "}
             <HighlightedButton
               circleLocationProps={buttonLocations}
               onClick={() => handleClick(anglesList.uxDesign)}
-              active={angle == anglesList.uxDesign}
+              active={angle === anglesList.uxDesign}
             >
               {texts["uxDesign"].title}
             </HighlightedButton>
             <HighlightedButton
               circleLocationProps={buttonLocations}
               onClick={() => handleClick(anglesList.uiDesign)}
-              active={angle == anglesList.uiDesign}
+              active={angle === anglesList.uiDesign}
             >
               {texts["uiDesign"].title}
             </HighlightedButton>
             <HighlightedButton
               circleLocationProps={buttonLocations}
               onClick={() => handleClick(anglesList.appDesign)}
-              active={angle == anglesList.appDesign}
+              active={angle === anglesList.appDesign}
             >
               {texts["appDesign"].title}
             </HighlightedButton>
             <HighlightedButton
               circleLocationProps={buttonLocations}
               onClick={() => handleClick(anglesList.webDesign)}
-              active={angle == anglesList.webDesign}
+              active={angle === anglesList.webDesign}
             >
               {texts["webDesign"].title}
             </HighlightedButton>
             <HighlightedButton
               circleLocationProps={buttonLocations}
               onClick={() => handleClick(anglesList.uxConsulting)}
-              active={angle == anglesList.uxConsulting}
+              active={angle === anglesList.uxConsulting}
             >
               {texts["uxConsulting"].title}
             </HighlightedButton>

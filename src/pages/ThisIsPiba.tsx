@@ -18,16 +18,15 @@ const ThisIsPiba: React.FC = () => {
   const { ref, inView } = useInView({
     threshold: 0.5,
   });
-
   useEffect(() => {
     if (inView) {
       setTimeout(() => {
-        setVisible([true, visible[1], visible[2]]);
+        setVisible((prev) => [true, prev[1], prev[2]]);
       }, timeout);
     }
     if (inView) {
       setTimeout(() => {
-        setVisible([true, true, visible[2]]);
+        setVisible((prev) => [true, true, prev[2]]);
       }, timeout * 2);
     }
     if (inView) {

@@ -54,13 +54,8 @@ function App() {
   }, [inViewHome, inViewProjects, inViewServices, inViewAboutUs, inViewSayHi]);
 
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     const imgs = [illusPiba, illusPibaRegular, pibaStudio];
-    const fonts = [
-      "./fonts/Lato/Lato-Regular.ttf",
-      "./fonts/Lato/Lato-Light.ttf",
-    ];
     cacheImages(imgs);
   }, []);
 

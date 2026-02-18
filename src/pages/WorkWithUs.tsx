@@ -58,17 +58,17 @@ const WorkWithUs = () => {
   useEffect(() => {
     if (showAnimations) {
       setTimeout(() => {
-        setVisible([true, visible[1], visible[2], visible[3]]);
+        setVisible((prev) => [true, prev[1], prev[2], prev[3]]);
       }, timeout);
     }
     if (showAnimations) {
       setTimeout(() => {
-        setVisible([true, true, visible[2], visible[3]]);
+        setVisible((prev) => [true, true, prev[2], prev[3]]);
       }, timeout * 2);
     }
     if (showAnimations) {
       setTimeout(() => {
-        setVisible([true, true, true, visible[3]]);
+        setVisible((prev) => [true, true, true, prev[3]]);
       }, timeout * 3);
     }
     if (showAnimations) {
